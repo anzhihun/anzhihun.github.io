@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+a:link { 
+    text-decoration: none;
+    color: blue;
+}
+
+.container {
+    margin: 0 auto;
+    text-align: left;
+    width: 80%;
+}
+
+.block {
+    width: 100%;
+    background: #acecfc;
+    border: 1px solid #999;
+}
+
+.block .blog_date{
+    display: inline-block;
+    font-size: 1.5em;
+    background: #7be1fa;
+    width: 3em;
+    padding-left: 0.1em;
+    color: #fff;
+}
+
+.block .blog_title{
+    display: inline-block;
+    font-size: 3em;
+    height: auto;
+    vertical-align: top;
+}
