@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>在windows下安装gozmq</title>
+
+</head>
+
+<body>
+
+    <div>
+        <h1>在windows下安装gozmq</h1>
+        gozmq是ZeroMQ消息中间件的go语言客户端，我使用的是最新的ZeroMQ版本4.04， 对应的gozmq的github地址为<a href="https://github.com/pebbe/zmq4">https://github.com/pebbe/zmq4</a>如果是4.0版本以前的ZeroMQ，则使用对应的zmq3，zmq2。
+        <p></p>
+        <div>下面记录一下步骤和遇到的问题，以及解决办法：</div>
+        <ul>
+            <li>按照https://github.com/pebbe/zmq4里面的说明，在dos命令窗口中执行 go get https://github.com/pebbe/zmq4，如果提示git命令找不到，那么你需要在自己的机子上安装一个git客户端，推荐使用<a href="http://msysgit.github.io/">git for windows</a>。
+            </li>
+            <li>
+                在这个过程中，或许还会提示你没有配置GOPATH， 这个时候你需要设置环境变量GOPATH， 随便设置一个目录就好，可以系统环境变量里面设置，也可以再当前窗口使用命令设置：set GOPATH="d:\gopath"。
+            </li>
+            <li>在源码下载完成后，会进行自动安装，因为gozmq使用cgo实现的，所以需要gcc编译，如果提示gcc命令找不到，推荐安装<a href="http://tdm-gcc.tdragon.net/">TDM-GCC</a>，简单实用。
+            </li>
+            <li>在编译过程中，可能会遇到polling.go找不到zmq.h头文件，这时需要下载ZeroMQ，如果已经下载了，就可以修改polling.go文件，在里面加入include的目录，列如我的include文件目录在D:/zeromq-4.0.4/include/，我就在文件里面#include
+                <zmq.h>的上面一行添加设置： #cgo CFLAGS: -I D:/zeromq-4.0.4/include/ 添加了重新执行go get https://github.com/pebbe/zmq4即可。
+            </li>
+            <li>
+                好不容易编译完成了，可能连接又出问题了，比如找不到cannot find -lzmq，这个问题是因为没有找到zmq的连接库，我采用的解决办法是，先用ZeroMQ的源代码生成动态连接库，然后把生成的libzmq.dll拷贝到TMD-GCC安装目录下的lib文件夹里面即可。
+            </li>
+            <li>连接貌似找到了zmq的库，但是可能还是出现skipping incompatible 的错误，这个可能是因为你的go使用的是64位，而libzmq.dll是32位的，或者相反，这个需要自己确认一下，就这个问题，让我郁闷了比较长的时间，开始我以为是gcc连接需要的库和dll不兼容造成的。
+            </li>
+        </ul>
+    </div>
+    <p></p>
+    <div>备注：ZeroMQ可以使用vs2008或者vs2010编译，在源码解压后的目录uilds\msvc里面有对应的工程文件msvc.sln和msvc10.sln。建议用源码自己编译成库。简单灵活。
+    </div>
+</body>
+
+</html>
