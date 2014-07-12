@@ -10,10 +10,24 @@ a:link {
     color: blue;
 }
 
+li {
+    margin-top: 0.5em;
+}
+
+hr {
+    color: #7be1fa;
+}
+
 .container {
     margin: 0 auto;
     text-align: left;
     width: 80%;
+}
+
+.content {
+    font-size: 1.5em;
+    margin-top: 1em;
+    line-height: 1.5em;
 }
 
 .block {
@@ -22,7 +36,7 @@ a:link {
     border: 1px solid #999;
 }
 
-.block .blog_date{
+.blog_date{
     display: inline-block;
     font-size: 1.5em;
     background: #7be1fa;
@@ -31,7 +45,7 @@ a:link {
     color: #fff;
 }
 
-.block .blog_title{
+.blog_title{
     display: inline-block;
     font-size: 3em;
     height: auto;
