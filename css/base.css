@@ -15,7 +15,9 @@ li {
 }
 
 hr {
-    color: #7be1fa;
+    border: 0;
+    background-color: #08acd4;
+    height: 1px;
 }
 
 .container {
