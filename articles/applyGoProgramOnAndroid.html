@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>把Golang写的程序部署到Android上运行</title>
+    <link href="../css/base.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="blog_title" style="margin-top: 1em; margin-bottom: 1em;">把Golang写的程序部署到Android上运行</div>
+        <div>2014-07-20</div>
+        <hr>
+        <div class="content">
+            <p>最近项目需要，想把GO写的web服务器重用，部署在Android环境中，在理论上是可以的，因为Go语言支持linux系统，并且支持arm，而Android底层支持是linux，我们选用的硬件也是arm架构的，这就对了。于是乎先查询了一下对应的资料，刚好找到了Dennis Forbes的一篇文章：<a href="http://dennisforbes.ca/index.php/2014/03/19/go-golang-and-android/">Go (“golang”) and Android</a>, 在这篇文章里面，作者详细阐述了GoLang和Android两者之间的结合。鉴于是英文的，并且在实践上的细节没有比较详细的列出，我在此记录一下我的实践。</p>
+            
+            <p>开发环境使用的是Ubuntu系统，x86, 32位（用的虚拟机），GoLang1.3，Sublime Text 2作为开发工具。</p> 
+            <p>先从官网上下载golang 1.3源码，如果你没有梯子，可以在国内的网站<a href="http://golangtc.com/">GoLang中国</a>上面下载。下载完成后，按照标准的安装流程，假设解压到了/home/go, 则进入/home/go/src，执行sudo ./all.bash进行编译安装。</p>
+            <p>安装好了之后，最后把对应的GOROOT, GOPATH, PATH也设置一下，至于这些设置则比较简单，到处都有说明，故不在此说明。</p>
+            <p>由于我们运行的Android的Android平台是arm架构的，所以要准备交叉编译环境，进入目录 /home/go/src，执行 sudo CGO_ENABLED=0 GOARCH=arm GOOS=linux ./make.bash </p>
+            <p>交叉编译环境好了后，进入自己写的代码所在目录，执行命令 CGO_ENABLED=0 GOARCH=arm GOOS=linux go build 就可以编译出linux arm平台的程序了。</p>
+            <p>自己写的测试程序源码如下
+                <pre>
+                    package main
+
+                    import (
+                        "fmt"
+                        "net/http"
+                    )
+
+                    func main() {
+                        http.HandleFunc("/", getIndex)
+                        http.ListenAndServe(":8888", nil)
+                    }
+
+                    func getIndex(w http.ResponseWriter, r *http.Request) {
+                        fmt.Fprintf(w, "hello world!")
+                    }
+                </pre>
+            </p>
+        
+            <p>剩下的就是构建一个Android程序了，这个网上有很多教程，不在此累述了，需要注意的是创建AVD的时候，CPU/ABI选择arm的，自己用的windows系统，Eclipse开发，用的Android 4.4.2的接口。你也可以选用其他版本的，和其他的方式，应该类似。</p>
+            <p>可以通过向导创建一个Android程序，然后MainActivity的onCreate方法的最后添加上加载go程序的代码，Process p = Runtime.getRuntime().exec(getApplicationInfo().nativeLibraryDir + "/libArmAndroidApp.so"); 这个地方我的程序取名为libArmAndroidApp.so，这个地方如何把.so打包到APK中，也有很多教程。比如我就用的是直接在与src同级目录的libs里面新建了一个文件夹 armeabi , 然后把libArmAndroidApp.so放进去就可以了。注意命名可能需要按照 libxxxxx.so来命名，才会自动打包到APK中。不按照这种命名方式是否就不能打包到APK中，我还没验证过。有兴趣的可以试试。</p>
+            <p>最后有一点需要注意的是： 如果被打包的GO程序需要用到对应的权限，一定得在打包的这个Android程序里面配置权限。比如我测试程序需要开启web服务器，就需要用到网络，我就必须要开启网络权限，要不然就起不了服务。</p>
+            
+            <p>Note: GO不太可能写UI，但是可以做基础服务。这种模式下，或许可以玩出很多实用的东西出来。</p>
+        </div>
+
+    </div>
+</body>
+
+</html>
