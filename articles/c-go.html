@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <title>C与golang类型转换</title>
+    <link href="../css/base.css" type="text/css" rel="stylesheet">
+    <link href="../css/highlight/default.css" type="text/css" rel="stylesheet">
+    <script src="../js/highlight.pack.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="blog_title" style="margin-top: 1em; margin-bottom: 1em;">C与golang类型转换</div>
+        <div>2014-07-21</div>
+        <hr>
+        <div class="content">
+            
+            <p>C类型在Golang中的表示</p>
+            <pre><code class="go">
+            // 字符，对应C的类型 char
+            C.char
+            
+            // 有符号字符，对应C的类型 signed char
+            C.schar 
+            
+            // 无符号字符，对应C的类型 unsigned char
+            C.uchar
+            
+            // 短整形，对应C的类型 short
+            C.short
+            
+            // 无符号短整形，对应C的类型 unsigned short
+            C.ushort
+            
+            // 整形，对应C的类型 int
+            C.int
+            
+            // 无符号整形，对应C的类型 unsigned int
+            C.uint
+            
+            // 长整形，对应C的类型 long
+            C.long
+            
+            // 无符号长整形，对应C的类型 unsigned long
+            C.ulong (unsigned long)
+            
+            // 长长整形，对应C的类型 long long
+            C.longlong (long long)
+            
+            // 无符号长长整形，对应C的类型 unsigned long long
+            C.ulonglong (unsigned long long)
+            
+            // 浮点型，对应C的类型 float
+            C.float
+            
+            // 双精度型，对应C的类型 double
+            C.double. 
+            </code></pre>
+            
+            
+            
+            <p>C类型转换为Golang类型</p>
+            <pre><code class="go">
+            // C 的整形转换为 Golang 整形
+            var golangInt int = int(C.int)
+            
+            // C 的字符串转换为 Golang 字符串
+            var golangString string = C.GoString(*C.char)
+            
+            // C 的字符串转换为 Golang 字符串，带限定长度的情况
+            var golangString string = C.GoString(*C.char, C.int)
+            
+            // C 字节数组转换为 Golang 的字节数组  
+            var golangBytes []byte = C.GoBytes(unsafe.Pointer, C.int) 
+            </code></pre>
+            
+            <p>C类型在Golang中的表示</p>
+            <pre><code class="go">
+
+            unsafe.Pointer (void*)
+
+            // Go string to C string
+            func C.CString(string) *C.char
+
+            var val []byte
+            (*C.char)(unsafe.Pointer(&val[0]))
+            </code></pre>
+            
+        </div>
+
+    </div>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

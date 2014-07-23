@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>在windows上构建用于arm的go程序</title>
+    <link href="../css/base.css" type="text/css" rel="stylesheet">
+    <link href="../css/highlight/default.css" type="text/css" rel="stylesheet">
+    <script src="../js/highlight.pack.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="blog_title" style="margin-top: 1em; margin-bottom: 1em;">在windows上构建用于arm的go程序</div>
+        <div>2014-07-23</div>
+        <hr>
+        <div class="content">
+            <p>
+                最近研究项目的一个技术实现方案，在android上跑go程序，通过实际操作是可行的，参见<a href="applyGoProgramOnAndroid.html">把Golang写的程序部署到Android上运行</a>，但是这个里面使用的开发环境用的是linux操作系统，而我主要是在windows下开发，所以这里记录一下在windows系统下构建用于android的arm架构的程序的方法。
+            </p>
+            
+            <p>
+                如果没有下载go语言源码或者安装包的同学，可以前往<a href="http://www.golang.org/">官网</a>或者<a href="http://www.golangtc.com/">Golang中国</a>进行下载。因为此处说的是windows环境，需要下载Windows版本的。
+                <ul>
+                    <li>先解压或者安装，假设安装到的是c:\go</li>
+                    <li>
+                        上面一步完成后，进入c:\go\src，我们需要先弄出用于构建arm需要的环境，执行下面的命令
+                        <pre><code class="bash">
+\> set CGO_ENABLED=0
+\> set GOOS=linux
+\> set GOARCH=arm
+\> make.bat
+                        </code></pre>
+                        等待构建完成。
+                    </li>
+                    <li>
+                        进入你自己写的go程序的源码目录，执行下面的命令
+                        <pre><code class="bash">\> go build</code></pre>
+                    </li>
+                    <li>注意，如果重新打开cmd终端进行构建的话，记得要先设置 CGO_ENABLED, GOOS, GOARCH。然后执行 go build命令</li>
+            
+                </ul>
+            </p>
+            
+            <p>注意：如果要把编译的go运行在android上，目前我已经实践成功的就是不用CGO的go程序，尝试了使用CGO的情况多次，也没有成功，相关实践和问题在另一篇文章中描述。</p>
+            
+        </div>
+
+    </div>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
