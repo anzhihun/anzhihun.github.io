@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>Golang程序在Android上运行的一些问题</title>
+    <link href="../css/base.css" type="text/css" rel="stylesheet">
+    <link href="../css/highlight/default.css" type="text/css" rel="stylesheet">
+    <script src="../js/highlight.pack.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="blog_title" style="margin-top: 1em; margin-bottom: 1em;">Golang程序在Android上运行的一些问题</div>
+        <div>2014-08-03</div>
+        <hr>
+        <div class="content">
+            <p>
+                继上次在Android上运行简单的golang程序后，开始进行了更多的实践，程序功能也不是简单的hello world，而是实实在在的业务功能。这其中遇到了很多难点，同时还有一些待解决的问题，也一并在这个地方分享出来。
+            </p>
+            
+            <p>
+                这个地方最大的难点在于使用CGO的程序如何在Android上跑起来：
+                <ul>
+                    <li>如果不使用CGO，按照我之前的文章<a href="applyGoProgramOnAndroid.html">[把Golang写的程序部署到Android上运行]</a>的做法是没问题。在使用了CGO之后，问题就很多了，首先是编译的问题，这个地方我尝试了两种交叉编译环境，本质上都是一样的，只是简单一些或者复杂一些而已，简单的是直接使用Android开发用的NDK的交叉编译环境，这种方式构建一个交叉编译环境比较简单，但是很可惜的是不支持pthread，没有办法继续下去，当然也不是完全没有办法，有个国外的哥们通过修改go源码的方式打补丁可以解决这个问题，如果有兴趣可以参考一下<a href="https://github.com/eliasnaur/goandroid">goandroid</a>，这种方式虽然交叉编译环境简单了，但是要修改源码带来的问题还是麻烦，因为golang还在不断的完善，升级版本的时候，就麻烦了。个人不推荐这种方式。于是我采用的第二种方式，自己搭建arm的交叉编译环境，这样是没有问题，至于交叉编译环境的构建，可以参考<a href="http://blog.csdn.net/yakehy/article/details/37691115">Ubuntu 14.04 交叉编译工具制作</a>。这个兄弟写得比较详细，造福大家，致敬！随便说一下，弄好交叉编译环境后，生成golang的arm程序，需要在go的源码路径src下先执行下面的命令
+                    <pre><code class="bash">CGO_ENABLED=1 GOOS=linux GOARCH=arm CC_FOR_TARGET=arm-linux-gcc CXX_FOR_TARGET=arm-linux-g++ ./make.bash</code></pre>来生成arm的编译golang编译环境。注意这个地方需要指定CC_FOR_TARGET和CXX_FOR_TARGET为你制作好的交叉编译环境中的gcc和g++。
+                    </li>
+                    
+                    <li>
+                        弄好环境后，就是编译自己的源码，这个地方记住，还是要指定CGO_ENABLED，GOOS，GOARCH，CC_FOR_TARGET，CXX_FOR_TARGET。不出意外，你会编译并且连接成功，最终生成执行程序。这个时候，别高兴太早，不一定能执行，你需要检查一下生成的文件，是否为arm的，同时也很重要的是，是否是静态链接的？可以通过file命令查看。如果不是静态链接，在Android上加载该模块的时候，多半会出错的。为什么？ 没有更深入的实践和分析，从理论上说，动态链接在不同的环境下，很容易出运行时错误。比如win7环境生成的动态连接的MFC的程序，在xp下运行，多半崩溃。如果是静态链接的就好了。同时，golang目前貌似对动态链接还有些娇气。所以这个地方要保证是静态链接的。
+                    </li>
+                    
+                    <li>
+                        如何确保是静态链接呢？ 可以通过FLAGS进行设定，我使用的参数是 --ldflags '-extldflags "-static"' 。是不是设置这个参数后，就能保证生成的程序肯定是静态链接的呢？ 可能要让你失望了，根据目前的实践来看，答案是不一定，目前我也不知道确切的具体原因是什么，只能推论，因为参数设定的是extldflags，对golang自身不使用任何C代码的情况下，该参数应该是不起作用的。如果要让这个起作用，你可以写一个简单的空c函数，然后在golang代码里面使用即可。目前还没有完善的测试不使用CGO的情况下，默认情况下生成的arm程序就一定为静态链接？有兴趣的朋友可以测试一下，测试结果麻烦直接在<a href="https://github.com/anzhihun/anzhihun.github.io">anzhihun.github.io</a>里面留言或者提交一个pull request，谢谢。
+                    </li>
+                    
+                    <li>
+                        对于程序而言，还有一个不得不面对的问题是调试，可惜，目前我还不知道如何处理，因为我们的代码都会写对应的测试的，可以生成其他的os和arch下程序来测试，最后再生成arm的程序。所以现在问题不大。同时还可以辅以日志的方式来定位一些集成问题。顺便赞赏一下golang在移植方面的工作做得真的很不错，想想移植c/c++代码到其他平台，就觉得选golang可能会多活两天。如果你们有其他的方式，记得告诉我，很期待。
+                    </li>
+            
+                </ul>
+            </p>
+        
+            <p>还有一些比较大的遗留问题没有解决：
+        
+            <ul>
+                <li>采用上面方式构建的程序，在多个不同的Android版本中是否都可以跑？</li>
+                <li>golang写的模块和Android程序通信，哪种方式最好？</li>
+            </ul>
+            </p>
+        </div>
+
+    </div>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
