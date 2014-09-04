@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>[Golang]一种可应用于任意slice的remove方法实现</title>
+    <link href="../css/base.css" type="text/css" rel="stylesheet">
+    <link href="../css/highlight/default.css" type="text/css" rel="stylesheet">
+    <script src="../js/highlight.pack.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="blog_title" style="margin-top: 1em; margin-bottom: 1em;">[Golang]一种可应用于任意slice的remove方法实现</div>
+        <div>2014-09-4</div>
+        <hr>
+        <div class="content">
+        目前由于Golang还不支持泛型，要实现类似于C++ STL中的容器就很困难，要想在不同的数据类型上应用相同的算法也是非常困难的。在实际使用中，遇到了数组元素删除的问题，其他语言上面习惯了直接调用remove方法来移除素组元素，用Golang的方式移除还有点不习惯，比如移除位于index的元素，Golang需要使用下面的代码：
+        <pre><code>array := append(array[:index], array[index+1:])</code></pre>
+        这样用起来还是比较麻烦，理想情况下，是具有一个针对所有类型的数组进行移除的实现，经过则两天的研究，分析encoding/json的代码，终于写出了一个可以针对任意类型slice的移除元素的方法， 详见下面代码：
+        <pre><code>package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type sliceHelper struct {
+	slicePtr interface{}
+}
+
+func (t *sliceHelper) Remove(index int) {
+	slicePtrValue := reflect.ValueOf(t.slicePtr)
+	sliceValue := slicePtrValue.Elem()
+	if index < 0 || index >= sliceValue.Len() {
+		return
+	}
+	sliceValue.Set(reflect.AppendSlice(sliceValue.Slice(0, index), sliceValue.Slice(index+1, sliceValue.Len())))
+}
+
+func SliceHelper(slicePtr interface{}) *sliceHelper {
+	return &sliceHelper{slicePtr}
+}
+
+func main() {
+	bytes := []byte{1, 2, 3}
+	SliceHelper(&bytes).Remove(1)
+	fmt.Println(bytes)
+}
+</code></pre>
+        代码仅为demo代码，先暂时这样，后续会对代码进一步完善，以用于实际项目中。注意这个代码暂时仅对slice生效，对array不生效。如果您有其他方法可以实现，可提出来一并探讨，谢谢。
+        </div>
+    </div>
+        
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
