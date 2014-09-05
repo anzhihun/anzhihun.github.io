@@ -19,23 +19,41 @@
         <pre><code>package main
 
 import (
-	"fmt"
+	"errors"
 	"reflect"
+    "fmt"
 )
 
 type sliceHelper struct {
 	slicePtr interface{}
 }
 
-func (t *sliceHelper) Remove(index int) {
+// 只能用于移除slice的数组中的元素
+func (t *sliceHelper) Remove(index int) error {
+	if t.slicePtr == nil {
+		return errors.New("slice ptr is nil!")
+	}
+
 	slicePtrValue := reflect.ValueOf(t.slicePtr)
+	// 必须为指针
+	if slicePtrValue.Type().Kind() != reflect.Ptr {
+		return errors.New("should be slice ptr!")
+	}
+
 	sliceValue := slicePtrValue.Elem()
+	// 必须为slice
+	if sliceValue.Type().Kind() != reflect.Slice {
+		return errors.New("should be slice ptr!")
+	}
+
 	if index < 0 || index >= sliceValue.Len() {
-		return
+		return errors.New("index out of range!")
 	}
 	sliceValue.Set(reflect.AppendSlice(sliceValue.Slice(0, index), sliceValue.Slice(index+1, sliceValue.Len())))
+	return nil
 }
 
+// 参数slicePtr必须是指向slice的指针
 func SliceHelper(slicePtr interface{}) *sliceHelper {
 	return &sliceHelper{slicePtr}
 }
@@ -46,7 +64,7 @@ func main() {
 	fmt.Println(bytes)
 }
 </code></pre>
-        代码仅为demo代码，先暂时这样，后续会对代码进一步完善，以用于实际项目中。注意这个代码暂时仅对slice生效，对array不生效。如果您有其他方法可以实现，可提出来一并探讨，谢谢。
+        目前该代码已通过测试，可用于实际项目中。注意这个代码暂时仅对slice生效，对array不生效。如果您有其他方法可以实现，可提出来一并探讨，谢谢。
         </div>
     </div>
         
