@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>Github Page自定义域名被别人用过的问题</title>
+    <link href="../css/base.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="blog_title" style="margin-top: 1em; margin-bottom: 1em;">Github Page自定义域名被别人用过的问题</div>
+        <div>2014-12-28</div>
+        <hr>
+        <div class="content">
+        <p>最近打算长期在github上记录相关的信息，发表自己的想法。所以买了一个域名weilin.me。按照Github官方的做法把这个新的域名关联到anzhihun.github.io这个域名上来，让人很欣慰的是，访问网址http://weilin.me，居然直接打开了。感觉还是很顺利的，但令人不开心的是，显示的内容居然是别人的网页。这确实让人很伤心啊。根据页面里面的信息，我找到了博主的Github账户，发现他在2012年的时候，就使用了自定义域名，用的自定义域名就刚好是weilin.me。基本一猜就知道了，我买的这个域名是他之前买过的，然后没有续费了。而在Github的配置的CNAME并没有去掉。所以我配置之后，就很顺利的定向到他的页面了。</p>
+          
+        <p>我认为最简单的处理办法是让那个哥们修改一下他自己的CNAME就好了， 所以给他发了一封email，说明了问题，希望他能修改一下，但是一天过去了，没有任何回信，去Github上看，他的CNAME还是没有修改。这个就把我郁闷了。这怎么办呢？</p>
+          
+        <p>没有办法的情况下，我直接向Github发了一封求助的email，说明了自己的问题，寻求他们的帮助。不管怎么着，也得试试。我知道Github的团队很忙，但也没有办法。让我没想到的是，Github团队中的James Dennes很快就给我回信了，询问我具体的域名，然后让我配置TXT记录，以验证我确实拥有weilin.me这个域名。由于时差的问题，经过一天的来回沟通和处理，我终于可以用上自定义域名了。Github简直是太nice了。超乎我的想象，做到现在这个规模，对于我这个不付费的使用者的这么一个小问题，居然能耐心的给予帮助，解决问题。着实让我觉得敬佩。</p>
+          
+        <p>当然在这个事件中，Github自定义域名的配置，从一开始就让用户必须配置TXT记录来验证用户是否拥有域名是比较完善的做法。这个可以参照GAE的做法。这样我就不用这么发愁了，或许他们后面就会这样做吧。</p>
+          
+        </div>
+
+    </div>
+</body>
+
+</html>
