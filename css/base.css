@@ -27,19 +27,20 @@ hr {
 }
 
 .content {
-    font-size: 1.5em;
+    font-size: 1.8em;
     margin-top: 1em;
     margin-bottom: 2em;
     line-height: 2em;
 }
 
 .content p:first-letter {
-	font-size: 1.5em;
+	font-size: 1.8em;
     margin-left: 1em;
 	color: #000000;
     font-weight: 700;
 	vertical-align: baseline;
 }
+
 
 .block {
     width: 100%;
@@ -59,6 +60,7 @@ hr {
 .blog_title{
     display: inline-block;
     font-size: 3em;
+    font-weight: 700;
     height: auto;
     vertical-align: top;
 }
