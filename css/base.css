@@ -34,10 +34,11 @@ hr {
 }
 
 .content p:first-letter {
-	font-size: 2em;
+	font-size: 1.5em;
     margin-left: 1em;
 	color: #000000;
-	vertical-align: text-bottom;
+    font-weight: 700;
+	vertical-align: baseline;
 }
 
 .block {
