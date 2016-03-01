@@ -1,0 +1,142 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'gitbook-plugin-disqus',
+1 verbose cli   '-g' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose cache add [ 'gitbook-plugin-disqus', null ]
+5 verbose cache add name=undefined spec="gitbook-plugin-disqus" args=["gitbook-plugin-disqus",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'gitbook-plugin-disqus',
+6 verbose parsed url   path: 'gitbook-plugin-disqus',
+6 verbose parsed url   href: 'gitbook-plugin-disqus' }
+7 silly lockFile cda7ebd9-gitbook-plugin-disqus gitbook-plugin-disqus
+8 verbose lock gitbook-plugin-disqus /Users/yuanyuan/.npm/cda7ebd9-gitbook-plugin-disqus.lock
+9 silly lockFile cda7ebd9-gitbook-plugin-disqus gitbook-plugin-disqus
+10 silly lockFile cda7ebd9-gitbook-plugin-disqus gitbook-plugin-disqus
+11 verbose addNamed [ 'gitbook-plugin-disqus', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 593f14ee-gitbook-plugin-disqus gitbook-plugin-disqus@
+14 verbose lock gitbook-plugin-disqus@ /Users/yuanyuan/.npm/593f14ee-gitbook-plugin-disqus.lock
+15 silly addNameRange { name: 'gitbook-plugin-disqus', range: '*', hasData: false }
+16 verbose request where is /gitbook-plugin-disqus
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id ad8486b0f9a7a665
+19 verbose url raw /gitbook-plugin-disqus
+20 verbose url resolving [ 'https://registry.npmjs.org/', './gitbook-plugin-disqus' ]
+21 verbose url resolved https://registry.npmjs.org/gitbook-plugin-disqus
+22 verbose request where is https://registry.npmjs.org/gitbook-plugin-disqus
+23 info trying registry request attempt 1 at 08:33:52
+24 http GET https://registry.npmjs.org/gitbook-plugin-disqus
+25 http 200 https://registry.npmjs.org/gitbook-plugin-disqus
+26 silly registry.get cb [ 200,
+26 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"DQ8VQR7UNG14XZTJOCVIR033T"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=300',
+26 silly registry.get     'content-length': '6057',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     date: 'Sat, 27 Feb 2016 00:33:49 GMT',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     connection: 'keep-alive',
+26 silly registry.get     'x-served-by': 'cache-nrt6120-NRT',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1456533229.444839,VS0,VE192',
+26 silly registry.get     vary: 'Accept' } ]
+27 silly addNameRange number 2 { name: 'gitbook-plugin-disqus', range: '*', hasData: true }
+28 silly addNameRange versions [ 'gitbook-plugin-disqus',
+28 silly addNameRange   [ '0.0.1', '0.0.2', '0.0.3', '0.0.4', '0.1.0' ] ]
+29 verbose addNamed [ 'gitbook-plugin-disqus', '0.1.0' ]
+30 verbose addNamed [ '0.1.0', '0.1.0' ]
+31 silly lockFile 118b9012-gitbook-plugin-disqus-0-1-0 gitbook-plugin-disqus@0.1.0
+32 verbose lock gitbook-plugin-disqus@0.1.0 /Users/yuanyuan/.npm/118b9012-gitbook-plugin-disqus-0-1-0.lock
+33 silly lockFile ccf7b918--gitbook-plugin-disqus-0-1-0-tgz https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz
+34 verbose lock https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz /Users/yuanyuan/.npm/ccf7b918--gitbook-plugin-disqus-0-1-0-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz',
+35 verbose addRemoteTarball   'f6035f9c4987cf5fc9180e05a64435a678296ad6' ]
+36 info retry fetch attempt 1 at 08:33:58
+37 verbose fetch to= /var/folders/rg/wpq2t95d7q1gtyrlts57n43m0000gn/T/npm-6431-PSpScz5S/registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz
+38 http GET https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz
+39 http 200 https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz
+40 silly lockFile ccf7b918--gitbook-plugin-disqus-0-1-0-tgz https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz
+41 silly lockFile ccf7b918--gitbook-plugin-disqus-0-1-0-tgz https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz
+42 silly lockFile 118b9012-gitbook-plugin-disqus-0-1-0 gitbook-plugin-disqus@0.1.0
+43 silly lockFile 118b9012-gitbook-plugin-disqus-0-1-0 gitbook-plugin-disqus@0.1.0
+44 silly lockFile 593f14ee-gitbook-plugin-disqus gitbook-plugin-disqus@
+45 silly lockFile 593f14ee-gitbook-plugin-disqus gitbook-plugin-disqus@
+46 silly resolved [ { name: 'gitbook-plugin-disqus',
+46 silly resolved     description: 'Disqus integration into GitBook',
+46 silly resolved     main: 'index.js',
+46 silly resolved     version: '0.1.0',
+46 silly resolved     engines: { gitbook: '>=2.5.0' },
+46 silly resolved     homepage: 'https://github.com/GitbookIO/plugin-disqus',
+46 silly resolved     repository:
+46 silly resolved      { type: 'git',
+46 silly resolved        url: 'git+https://github.com/GitbookIO/plugin-disqus.git' },
+46 silly resolved     license: 'Apache-2.0',
+46 silly resolved     bugs: { url: 'https://github.com/GitbookIO/plugin-disqus/issues' },
+46 silly resolved     gitbook: { properties: [Object] },
+46 silly resolved     gitHead: 'bd3f256d1ee529764dc7e04e4ad40efd93572008',
+46 silly resolved     _id: 'gitbook-plugin-disqus@0.1.0',
+46 silly resolved     scripts: {},
+46 silly resolved     _shasum: 'f6035f9c4987cf5fc9180e05a64435a678296ad6',
+46 silly resolved     _from: 'gitbook-plugin-disqus@',
+46 silly resolved     _npmVersion: '2.14.5',
+46 silly resolved     _nodeVersion: '0.12.7',
+46 silly resolved     _npmUser: { name: 'samypesse', email: 'samypesse@gmail.com' },
+46 silly resolved     dist:
+46 silly resolved      { shasum: 'f6035f9c4987cf5fc9180e05a64435a678296ad6',
+46 silly resolved        tarball: 'http://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz' },
+46 silly resolved     maintainers: [ [Object] ],
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/gitbook-plugin-disqus/-/gitbook-plugin-disqus-0.1.0.tgz' } ]
+47 info install gitbook-plugin-disqus@0.1.0 into /usr/local/lib
+48 info installOne gitbook-plugin-disqus@0.1.0
+49 verbose lib/node_modules/gitbook-plugin-disqus unbuild
+50 verbose tar unpack /Users/yuanyuan/.npm/gitbook-plugin-disqus/0.1.0/package.tgz
+51 silly lockFile 637ab5bf-de-modules-gitbook-plugin-disqus tar:///usr/local/lib/node_modules/gitbook-plugin-disqus
+52 verbose lock tar:///usr/local/lib/node_modules/gitbook-plugin-disqus /Users/yuanyuan/.npm/637ab5bf-de-modules-gitbook-plugin-disqus.lock
+53 silly lockFile 19c696c5--plugin-disqus-0-1-0-package-tgz tar:///Users/yuanyuan/.npm/gitbook-plugin-disqus/0.1.0/package.tgz
+54 verbose lock tar:///Users/yuanyuan/.npm/gitbook-plugin-disqus/0.1.0/package.tgz /Users/yuanyuan/.npm/19c696c5--plugin-disqus-0-1-0-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/gitbook-plugin-disqus'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/gitbook-plugin-disqus']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/gitbook-plugin-disqus',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/gitbook-plugin-disqus',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 15.3.0
+59 error command "node" "/usr/local/bin/npm" "install" "gitbook-plugin-disqus" "-g"
+60 error cwd /Users/yuanyuan/Documents/workspace/anzhihun.github.io
+61 error node -v v0.10.33
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/gitbook-plugin-disqus
+64 error fstream_path /usr/local/lib/node_modules/gitbook-plugin-disqus
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/gitbook-plugin-disqus'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]
