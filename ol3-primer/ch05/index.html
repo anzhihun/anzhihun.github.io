@@ -57,7 +57,7 @@
         data-chapter-title="Source和Layer"
         data-filepath="ch05/index.md"
         data-basepath=".."
-        data-revision="Tue Mar 08 2016 23:00:11 GMT+0800 (CST)"
+        data-revision="Sun Mar 20 2016 09:19:43 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -851,6 +851,26 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="source&#x548C;layer">Source&#x548C;Layer</h1>
+<p>&#x5728;&#x524D;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x5DF2;&#x7ECF;&#x5BF9;<code>Source</code>&#x548C;<code>Layer</code>&#x6709;&#x6240;&#x4E86;&#x89E3;&#x4E86;&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x52A0;&#x8F7D;&#x4E86;Open Street Map&#x7684;&#x5730;&#x56FE;&#x3002;&#x7136;&#x800C;&#x4E16;&#x754C;&#x4E0A;&#x7684;&#x5730;&#x56FE;&#x5E76;&#x4E0D;&#x53EA;&#x6709;Open Street Map&#xFF0C;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x7684;&#x5730;&#x56FE;&#xFF0C;&#x6BD4;&#x5982;Google&#x5730;&#x56FE;&#xFF0C;&#x5929;&#x5730;&#x56FE;&#xFF0C;&#x9AD8;&#x5FB7;&#x5730;&#x56FE;&#xFF0C;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x7B49;&#x3002;&#x5982;&#x679C;OpenLayers&#x652F;&#x6301;&#x7684;&#x5730;&#x56FE;&#x6765;&#x6E90;&#x8D8A;&#x591A;&#xFF0C;&#x5C31;&#x4F1A;&#x8D8A;&#x9002;&#x7528;&#xFF0C;&#x8D8A;&#x5F3A;&#x5927;&#x3002;&#x9664;&#x4E86;&#x52A0;&#x8F7D;&#x57FA;&#x672C;&#x7684;&#x5730;&#x56FE;&#x4E4B;&#x5916;&#xFF0C;GIS&#x8FD8;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;&#x8857;&#x9053;&#x540D;&#x79F0;&#xFF0C;&#x5546;&#x5E97;&#x540D;&#x79F0;&#xFF0C;&#x516C;&#x4EA4;&#x7AD9;&#x70B9;&#xFF0C;&#x9053;&#x8DEF;&#x7B49;&#x7B49;&#x3002;&#x90A3;&#x4E48;&#x5728;OpenLayers 3&#x4E2D;&#xFF0C;&#x5177;&#x4F53;&#x8BE5;&#x5982;&#x4F55;&#x628A;&#x8FD9;&#x4E9B;&#x6DFB;&#x52A0;&#x5728;&#x5730;&#x56FE;&#x4E0A;&#x5462;&#xFF1F;</p>
+<p>&#x9996;&#x5148;&#x9700;&#x8981;&#x660E;&#x767D;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;<code>Source</code>&#x548C;<code>Layer</code>&#x662F;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;<code>Source</code>&#xFF0C;&#x5FC5;&#x7136;&#x9700;&#x8981;&#x4E00;&#x4E2A;<code>Layer</code>&#xFF0C;&#x7136;&#x540E;&#x628A;&#x8FD9;&#x4E2A;<code>Layer</code>&#x6DFB;&#x52A0;&#x5230;<code>Map</code>&#x4E0A;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x51FA;&#x6765;&#x4E86;&#x3002;&#x901A;&#x8FC7;&#x5B98;&#x7F51;&#x7684;API&#x641C;&#x7D22;<code>ol.source</code>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6709;&#x5F88;&#x591A;&#x4E0D;&#x540C;&#x7684;<code>Source</code>&#xFF0C;&#x4F46;&#x5F52;&#x7EB3;&#x8D77;&#x6765;&#x5171;&#x4E09;&#x79CD;&#xFF1A;<code>ol.source.Tile</code>&#xFF0C;<code>ol.source.Image</code>&#x548C;<code>ol.source.Vector</code>&#x3002; </p>
+<ul>
+<li><code>ol.source.Tile</code>&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x74E6;&#x7247;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x73B0;&#x5728;&#x7F51;&#x9875;&#x5730;&#x56FE;&#x670D;&#x52A1;&#x4E2D;&#xFF0C;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#xFF0C;&#x800C;OpenLayers 3&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;WebGIS&#x5F15;&#x64CE;&#xFF0C;&#x7406;&#x6240;&#x5F53;&#x7136;&#x5E94;&#x8BE5;&#x652F;&#x6301;&#x74E6;&#x7247;&#x3002;</li>
+<li><code>ol.source.Image</code>&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x4E00;&#x6574;&#x5F20;&#x56FE;&#xFF0C;&#x800C;&#x4E0D;&#x50CF;&#x74E6;&#x7247;&#x90A3;&#x6837;&#x5F88;&#x591A;&#x5F20;&#x56FE;&#xFF0C;&#x4ECE;&#x800C;&#x65E0;&#x9700;&#x5207;&#x7247;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x4E00;&#x4E9B;&#x5730;&#x56FE;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x4E00;&#x4E9B;&#x5C0F;&#x573A;&#x666F;&#x5730;&#x56FE;&#x3002;</li>
+<li><code>ol.source.Vector</code>&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x77E2;&#x91CF;&#x5730;&#x56FE;&#x6E90;&#xFF0C;&#x70B9;&#xFF0C;&#x7EBF;&#xFF0C;&#x9762;&#x7B49;&#x7B49;&#x5E38;&#x7528;&#x7684;&#x5730;&#x56FE;&#x5143;&#x7D20;(Feature)&#xFF0C;&#x5C31;&#x56CA;&#x62EC;&#x5230;&#x8FD9;&#x91CC;&#x9762;&#x4E86;&#x3002;&#x8FD9;&#x6837;&#x770B;&#x6765;&#xFF0C;&#x53EA;&#x8981;&#x8FD9;&#x4E24;&#x79CD;<code>Source</code>&#x5C31;&#x53EF;&#x4EE5;&#x641E;&#x5B9A;80%&#x7684;&#x9700;&#x6C42;&#x4E86;&#x3002;</li>
+</ul>
+<p>&#x4ECE;&#x590D;&#x6742;&#x5EA6;&#x6765;&#x5206;&#x6790;&#xFF0C;<code>ol.source.Image</code>&#x548C;<code>ol.source.Vector</code>&#x90FD;&#x4E0D;&#x590D;&#x6742;&#xFF0C;&#x5176;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x548C;&#x6765;&#x6E90;&#x65B9;&#x5F0F;&#x90FD;&#x7B80;&#x5355;&#x3002;&#x800C;<code>ol.source.Tile</code>&#x5219;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x7531;&#x4E8E;&#x4E00;&#x4E9B;&#x5386;&#x53F2;&#x95EE;&#x9898;&#xFF0C;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x5546;&#xFF0C;&#x591A;&#x79CD;&#x6807;&#x51C6;&#x7B49;&#x8BF8;&#x591A;&#x539F;&#x56E0;&#xFF0C;&#x5BFC;&#x81F4;&#x8981;&#x652F;&#x6301;&#x4E16;&#x754C;&#x4E0A;&#x5927;&#x591A;&#x6570;&#x7684;&#x74E6;&#x7247;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x5DEE;&#x5F02;&#x63D0;&#x4F9B;&#x4E0D;&#x540C;&#x7684;<code>Tile</code>&#x6570;&#x636E;&#x6E90;&#x652F;&#x6301;&#x3002;&#x5728;&#x66F4;&#x8FDB;&#x4E00;&#x6B65;&#x4E86;&#x89E3;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B;OpenLayers 3&#x73B0;&#x5728;&#x652F;&#x6301;&#x7684;<code>Source</code>&#x5177;&#x4F53;&#x6709;&#x54EA;&#x4E9B;&#xFF1A;
+<img src="../img/ol.source.Tile.png" alt="ol.source.Tile&#x7C7B;&#x56FE;"></p>
+<p>&#x4E0A;&#x56FE;&#x4E2D;&#x7684;&#x7C7B;&#x662F;&#x6309;&#x7167;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#xFF0C;&#x4ECE;&#x5DE6;&#x5411;&#x53F3;&#x5C55;&#x5F00;&#x7684;&#xFF0C;&#x5DE6;&#x8FB9;&#x7684;&#x4E3A;&#x7236;&#x7C7B;&#xFF0C;&#x53F3;&#x8FB9;&#x7684;&#x4E3A;&#x5B50;&#x7C7B;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x90FD;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x7C7B;&#xFF0C;&#x57FA;&#x672C;&#x5C31;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x9700;&#x6C42;&#x3002;&#x7236;&#x7C7B;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8FDB;&#x4E00;&#x6B65;&#x6269;&#x5C55;&#x6216;&#x8005;&#x5904;&#x7406;&#x624D;&#x80FD;&#x6709;&#x6548;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x4E86;&#x89E3;&#x6700;&#x4E3A;&#x590D;&#x6742;&#x7684;<code>ol.source.Tile</code>&#xFF0C;&#x5176;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7C7B;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5927;&#x81F4;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x51E0;&#x7C7B;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x7EBF;&#x670D;&#x52A1;&#x7684;<code>Source</code>&#xFF0C;&#x5305;&#x62EC;<code>ol.source.BingMaps</code>(&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5FAE;&#x8F6F;&#x63D0;&#x4F9B;&#x7684;Bing&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x6570;&#x636E;)&#xFF0C;<code>ol.source.MapQuest</code>(&#x4F7F;&#x7528;&#x7684;&#x662F;MapQuest&#x63D0;&#x4F9B;&#x7684;&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x6570;&#x636E;)&#xFF0C;<code>ol.source.OSM</code>(&#x4F7F;&#x7528;&#x7684;&#x662F;Open Street Map&#x63D0;&#x4F9B;&#x7684;&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x6570;&#x636E;)&#xFF0C;<code>ol.source.Stamen</code>(&#x4F7F;&#x7528;&#x7684;&#x662F;Stamen&#x63D0;&#x4F9B;&#x7684;&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x6570;&#x636E;)&#x3002;&#x6CA1;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x5730;&#x56FE;&#x670D;&#x52A1;&#x5668;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#xFF0C;&#x52A0;&#x8F7D;&#x5730;&#x56FE;&#x5E95;&#x56FE;&#x3002;</li>
+<li>&#x652F;&#x6301;&#x534F;&#x8BAE;&#x6807;&#x51C6;&#x7684;<code>Source</code>&#xFF0C;&#x5305;&#x62EC;<code>ol.source.TileArcGISRest</code>&#xFF0C;<code>ol.source.TileWMS</code>&#xFF0C;<code>ol.source.WMTS</code>&#xFF0C;<code>ol.source.UTFGrid</code>&#xFF0C;<code>ol.source.TileJSON</code>&#x3002;&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#xFF0C;&#x9996;&#x5148;&#x4F60;&#x5F97;&#x5148;&#x5B66;&#x4E60;&#x5BF9;&#x5E94;&#x7684;&#x534F;&#x8BAE;&#xFF0C;&#x4E4B;&#x540E;&#x5FC5;&#x987B;&#x627E;&#x5230;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x534F;&#x8BAE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x6765;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x662F;&#x5730;&#x56FE;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x5546;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x81EA;&#x5DF1;&#x642D;&#x5EFA;&#x7684;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5173;&#x952E;&#x662F;&#x5F97;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x534F;&#x8BAE;&#x3002;</li>
+<li>ol.source.XYZ&#xFF0C;&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x5355;&#x72EC;&#x63D0;&#x4E00;&#x4E0B;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x73B0;&#x5728;&#x5F88;&#x591A;&#x5730;&#x56FE;&#x670D;&#x52A1;&#xFF08;&#x5728;&#x7EBF;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x81EA;&#x5DF1;&#x642D;&#x5EFA;&#x7684;&#x670D;&#x52A1;&#x5668;&#xFF09;&#x90FD;&#x652F;&#x6301;xyz&#x65B9;&#x5F0F;&#x7684;&#x8BF7;&#x6C42;&#x3002;&#x56FD;&#x5185;&#x5728;&#x7EBF;&#x7684;&#x5730;&#x56FE;&#x670D;&#x52A1;&#xFF0C;&#x9AD8;&#x5FB7;&#xFF0C;&#x5929;&#x5730;&#x56FE;&#x7B49;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x52A0;&#x8F7D;&#xFF0C;&#x672C;&#x5730;&#x79BB;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x7528;&#x9014;&#x5E7F;&#x6CDB;&#xFF0C;&#x4E14;&#x7B80;&#x5355;&#x6613;&#x5B66;&#xFF0C;&#x9700;&#x8981;&#x638C;&#x63E1;&#x3002;</li>
+</ul>
+<p><code>ol.source.Image</code>&#x867D;&#x7136;&#x6709;&#x51E0;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x4F46;&#x5927;&#x591A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x7275;&#x6D89;&#x5230;&#x8FC7;&#x591A;&#x7684;&#x534F;&#x8BAE;&#x548C;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4F9B;&#x5546;&#x3002;&#x800C;<code>ol.source.Vector</code>&#x5C31;&#x66F4;&#x52A0;&#x7684;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x4F46;&#x6709;&#x65F6;&#x5019;&#x5176;&#x552F;&#x4E00;&#x7684;&#x5B50;&#x7C7B;<code>ol.source.Cluster</code>&#x5728;&#x5904;&#x7406;&#x5927;&#x91CF;&#x7684;<code>Feature</code>&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5728;&#x5927;&#x6982;&#x4E86;&#x89E3;&#x4E86;&#x6574;&#x4E2A;<code>Source</code>&#x4E4B;&#x540E;&#xFF0C;&#x7D27;&#x63A5;&#x7740;&#x8BE5;&#x4ECB;&#x7ECD;&#x5B83;&#x7684;&#x642D;&#x6863;<code>Layer</code>&#x4E86;&#xFF0C;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x5148;&#x4ECE;OpenLayers 3&#x73B0;&#x6709;&#x7684;<code>Layer</code>&#x7C7B;&#x56FE;&#x5927;&#x81F4;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#xFF1A;
+<img src="../img/ol_layer_Base.png" alt="ol.layer.Base&#x7C7B;&#x56FE;"></p>
+<p>&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x4E86;&#x89E3;&#x548C;&#x4F7F;&#x7528;&#xFF0C;&#x56FE;&#x4E2D;&#x6807;&#x6CE8;&#x4E86;&#x6BCF;&#x4E00;&#x4E2A;<code>Layer</code>&#x5BF9;&#x5E94;&#x7684;<code>Source</code>&#x3002;</p>
 
                     
                     </section>
@@ -881,6 +901,10 @@
     
 
     
+    <script src="../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
+    
+
+    
     <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
     
 
@@ -902,12 +926,12 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>
 
-        
+        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?598c9c941360724a65331e7d9a66c9b6';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
     </body>
     
 </html>
