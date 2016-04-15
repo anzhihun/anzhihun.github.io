@@ -1,0 +1,1326 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>万能瓦片地图加载秘籍 | OpenLayers 3 Primer</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../ch06/index.html" />
+    
+    
+    <link rel="prev" href="../ch05/05-02.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.1.2"
+        data-chapter-title="万能瓦片地图加载秘籍"
+        data-filepath="ch05/05-03.md"
+        data-basepath=".."
+        data-revision="Fri Apr 15 2016 20:19:51 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="ch01/index.html">
+            
+                
+                    <a href="../ch01/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        OpenLayers 3 介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="ch02/index.html">
+            
+                
+                    <a href="../ch02/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        一个简单的地图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="ch03/index.html">
+            
+                
+                    <a href="../ch03/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        OpenLayers 3地图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="ch03/03-01.html">
+            
+                
+                    <a href="../ch03/03-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        初步解析地图组成
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="ch03/03-02.html">
+            
+                
+                    <a href="../ch03/03-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        地图所有组成部分
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="ch03/03-03.html">
+            
+                
+                    <a href="../ch03/03-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        看懂API
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="ch03/03-04.html">
+            
+                
+                    <a href="../ch03/03-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        结合API文档分析代码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="ch03/03-05.html">
+            
+                
+                    <a href="../ch03/03-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        ol.Map的应用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="ch03/03-06.html">
+            
+                
+                    <a href="../ch03/03-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.1.</b>
+                        
+                        定制地图logo
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="ch03/03-07.html">
+            
+                
+                    <a href="../ch03/03-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.2.</b>
+                        
+                        单页面多地图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="ch03/03-08.html">
+            
+                
+                    <a href="../ch03/03-08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.3.</b>
+                        
+                        地图联动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.4" data-path="ch03/03-09.html">
+            
+                
+                    <a href="../ch03/03-09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.4.</b>
+                        
+                        动态交换地图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="ch04/index.html">
+            
+                
+                    <a href="../ch04/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        View
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="ch04/04-01.html">
+            
+                
+                    <a href="../ch04/04-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        地图导航
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="ch04/04-02.html">
+            
+                
+                    <a href="../ch04/04-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        坐标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="ch04/04-03.html">
+            
+                
+                    <a href="../ch04/04-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        坐标系及投影
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="ch04/04-04.html">
+            
+                
+                    <a href="../ch04/04-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        OpenLayers 3使用的坐标系
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="ch04/04-05.html">
+            
+                
+                    <a href="../ch04/04-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        ol.View的应用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="ch04/04-06.html">
+            
+                
+                    <a href="../ch04/04-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.1.</b>
+                        
+                        限制地图范围
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="ch04/04-07.html">
+            
+                
+                    <a href="../ch04/04-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.2.</b>
+                        
+                        限制地图缩放级别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="ch04/04-08.html">
+            
+                
+                    <a href="../ch04/04-08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.3.</b>
+                        
+                        自适配区域
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="ch05/index.html">
+            
+                
+                    <a href="../ch05/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Source和Layer
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="ch05/05-01.html">
+            
+                
+                    <a href="../ch05/05-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        加载瓦片地图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="ch05/05-02.html">
+            
+                
+                    <a href="../ch05/05-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.1.</b>
+                        
+                        最简单的加载在线地图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.1.2" data-path="ch05/05-03.html">
+            
+                
+                    <a href="../ch05/05-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.2.</b>
+                        
+                        万能瓦片地图加载秘籍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+            <span><b>5.1.3.</b> 加载WMS服务地图</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+            <span><b>5.1.4.</b> 加载离线瓦片地图</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+            <span><b>5.2.</b> 静态地图及应用</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+            <span><b>5.3.</b> 矢量地图</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+            <span><b>5.4.</b> 图层叠加及管理</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="ch06/index.html">
+            
+                
+                    <a href="../ch06/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        LOD与分辨率
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" >
+            
+            <span><b>6.1.</b> LOD原理</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+            <span><b>6.2.</b> 瓦片计算</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+            <span><b>6.3.</b> 分辨率</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" >
+            
+            <span><b>6.4.</b> 自定义瓦片地图及加载</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="ch07/index.html">
+            
+                
+                    <a href="../ch07/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        图标及提示信息
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" >
+            
+            <span><b>7.1.</b> style及应用</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+            <span><b>7.2.</b> 自定义图标</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+            <span><b>7.3.</b> 大量图标方案</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+            <span><b>7.4.</b> 提示信息</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="ch08/index.html">
+            
+                
+                    <a href="../ch08/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        事件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" >
+            
+            <span><b>8.1.</b> 鼠标及按键事件</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" >
+            
+            <span><b>8.2.</b> 事件派发与监听</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="ch08/08-03.html">
+            
+                
+                    <a href="../ch08/08-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        自定义事件及应用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="ch09/index.html">
+            
+                
+                    <a href="../ch09/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Interaction
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" >
+            
+            <span><b>9.1.</b> 交互简介</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+            <span><b>9.2.</b> 实现原理</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+            <span><b>9.3.</b> 要素选取</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+            <span><b>9.4.</b> 自定义绘图</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="ch10/index.html">
+            
+                
+                    <a href="../ch10/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Control
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" >
+            
+            <span><b>10.1.</b> 控件简介</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" >
+            
+            <span><b>10.2.</b> 控件美颜</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" >
+            
+            <span><b>10.3.</b> 自定义控件</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="ch11/index.html">
+            
+                
+                    <a href="../ch11/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        动画
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" >
+            
+            <span><b>11.1.</b> 导航动画简介</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" >
+            
+            <span><b>11.2.</b> 应用动画</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" >
+            
+            <span><b>11.3.</b> 自定义动画</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="ch12/index.html">
+            
+            <span><b>12.</b> 常见问题</span>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >OpenLayers 3 Primer</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x4E07;&#x80FD;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x79D8;&#x7C4D;">&#x4E07;&#x80FD;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x79D8;&#x7C4D;</h1>
+<p>&#x5176;&#x5B9E;&#x52A0;&#x8F7D;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x57FA;&#x672C;&#x662F;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x89C9;&#x5F97;&#x5F88;&#x60CA;&#x8BB6;&#xFF0C;&#x56E0;&#x4E3A;&#x7F51;&#x4E0A;&#x5728;&#x7EBF;&#x7684;&#x5730;&#x56FE;&#x670D;&#x52A1;&#xFF0C;&#x770B;&#x8D77;&#x90FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x672C;&#x8282;&#x5373;&#x5C06;&#x4E3A;&#x4F60;&#x89E3;&#x5F00;&#x8FD9;&#x5C42;&#x795E;&#x79D8;&#x7684;&#x9762;&#x7EB1;&#x3002;&#x5728;&#x524D;&#x9762;&#x5DF2;&#x57FA;&#x672C;&#x4ECB;&#x7ECD;&#x4E86;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x548C;&#x4F5C;&#x7528;&#xFF0C;&#x6B64;&#x5904;&#x518D;&#x7528;&#x4E00;&#x5F20;&#x56FE;&#x6765;&#x76F4;&#x89C2;&#x5730;&#x8BA4;&#x8BC6;&#x4E00;&#x4E0B;&#x74E6;&#x7247;&#x7ED3;&#x6784;&#xFF1A;
+<img src="../img/lod.png" alt="&#x74E6;&#x7247;&#x5730;&#x56FE;&#x7ED3;&#x6784;"></p>
+<p>&#x4ECE;&#x4E0A;&#x56FE;&#x53EF;&#x77E5;&#xFF0C;&#x5927;&#x5BB6;&#x5E38;&#x7528;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x662F;&#x4E00;&#x4E2A;&#x4E09;&#x7EF4;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4F7F;&#x7528;xyz&#x8FD9;&#x6837;&#x7684;&#x5750;&#x6807;&#x6765;&#x7CBE;&#x786E;&#x5B9A;&#x4F4D;&#x4E00;&#x5F20;&#x74E6;&#x7247;&#x3002;&#x901A;&#x5E38;z&#x7528;&#x4E8E;&#x8868;&#x793A;&#x5730;&#x56FE;&#x5C42;&#x7EA7;&#xFF0C;&#x800C;xy&#x8868;&#x793A;&#x67D0;&#x4E2A;&#x5C42;&#x7EA7;&#x5185;&#x7684;&#x74E6;&#x7247;&#x5E73;&#x9762;&#xFF0C;x&#x4E3A;&#x6A2A;&#x7EB5;&#x5750;&#x6807;&#xFF0C;y&#x4E3A;&#x7EB5;&#x8F74;&#x5750;&#x6807;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x6570;&#x5B66;&#x4E0A;&#x5E38;&#x89C1;&#x7684;&#x7B1B;&#x5361;&#x5C14;&#x5750;&#x6807;&#x7CFB;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x74E6;&#x7247;&#x5E73;&#x9762;&#x4E0A;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x74E6;&#x7247;&#x5728;&#x6A2A;&#x8F74;&#x548C;&#x7EB5;&#x8F74;&#x4E0A;&#x90FD;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5750;&#x6807;&#xFF1A;x&#x548C;y&#x3002;</p>
+<h2 id="&#x52A0;&#x8F7D;&#x7B80;&#x5355;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;">&#x52A0;&#x8F7D;&#x7B80;&#x5355;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;</h2>
+<p>&#x867D;&#x7136;&#x73B0;&#x5728;&#x5927;&#x591A;&#x6570;&#x7F51;&#x9875;&#x5730;&#x56FE;&#x90FD;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x74E6;&#x7247;&#x5730;&#x56FE;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x6709;&#x5FC5;&#x8981;&#x5148;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x8BC6;&#x522B;&#x5B83;&#x3002;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x6253;&#x5F00;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x5728;&#x7EBF;&#x7684;&#x7F51;&#x9875;&#x5730;&#x56FE;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5F00;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#xFF0C;&#x518D;&#x968F;&#x610F;&#x62D6;&#x52A8;&#xFF0C;&#x653E;&#x5927;&#x7F29;&#x5C0F;&#x5730;&#x56FE;&#x3002;&#x4E4B;&#x540E;&#x5728;&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x91CC;&#x67E5;&#x770B;&#x65B0;&#x53D1;&#x8D77;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x662F;&#x5426;&#x6709;&#x4E00;&#x4E9B;&#x56FE;&#x7247;&#x8BF7;&#x6C42;&#xFF0C;&#x67E5;&#x770B;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x7684;&#x56FE;&#x7247;&#xFF0C;&#x662F;&#x5426;&#x4E3A;&#x6B63;&#x5728;&#x6D4F;&#x89C8;&#x7684;&#x5730;&#x56FE;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x5219;&#x57FA;&#x672C;&#x4E3A;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x3002;&#x4E0B;&#x9762;&#x4EE5;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x4E3A;&#x4F8B;&#xFF0C;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x8BF7;&#x6C42;&#x4FE1;&#x606F;&#xFF1A;
+<img src="../img/baiduMap.png" alt="&#x767E;&#x5EA6;&#x5730;&#x56FE;"></p>
+<p>&#x5728;&#x8BF7;&#x6C42;&#x7684;url&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F88;&#x660E;&#x663E;&#x5730;&#x770B;&#x5230;xyz&#x8FD9;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x8FDB;&#x4E00;&#x6B65;&#x8BF4;&#x660E;&#x4E86;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x5C31;&#x662F;&#x7528;&#x4E86;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x3002;&#x5982;&#x679C;&#x4F60;&#x591A;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x73B0;&#x6709;&#x7684;&#x5728;&#x7EBF;&#x7F51;&#x9875;&#x5730;&#x56FE;&#xFF0C;&#x57FA;&#x672C;&#x90FD;&#x662F;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x3002;&#x6B63;&#x56E0;&#x4E3A;&#x5982;&#x6B64;&#xFF0C;OpenLayers 3&#x63D0;&#x4F9B;&#x4E86;<code>ol.source.XYZ</code>&#x8FD9;&#x79CD;&#x901A;&#x7528;&#x7684;<code>Source</code>&#x6765;&#x9002;&#x5E94;&#x5E7F;&#x5927;&#x7684;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x5177;&#x5907;&#x5F88;&#x597D;&#x7684;&#x9002;&#x7528;&#x6027;&#x3002;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x60F3;&#x8981;&#x52A0;&#x8F7D;&#x4E0D;&#x540C;&#x7684;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x6E90;&#xFF0C;&#x5219;&#x53EA;&#x9700;&#x8981;&#x66F4;&#x6539;<code>ol.source.XYZ</code>&#x7684;&#x6784;&#x9020;&#x53C2;&#x6570;&#x4E2D;<code>url</code>&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002; &#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;<code>ol.source.OSM</code>&#xFF0C;&#x800C;&#x7528;<code>ol.source.XYZ</code>&#x6765;&#x52A0;&#x8F7D;Open Street Map&#x5730;&#x56FE;&#xFF0C;&#x7ED3;&#x679C;&#x4E00;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
+        <span class="hljs-comment">// Open Street Map &#x5730;&#x56FE;&#x5C42;</span>
+        <span class="hljs-keyword">var</span> openStreetMapLayer = <span class="hljs-keyword">new</span> ol.layer.Tile({
+            source: <span class="hljs-keyword">new</span> ol.source.XYZ({
+                url: <span class="hljs-string">&apos;http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png&apos;</span>
+            })
+        });
+
+        <span class="hljs-comment">// &#x521B;&#x5EFA;&#x5730;&#x56FE;</span>
+      <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+            layers: [
+                openStreetMapLayer
+            ],
+            view: <span class="hljs-keyword">new</span> ol.View({
+                <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6210;&#x90FD;&#x4E3A;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;</span>
+                center: [<span class="hljs-number">104.06</span>, <span class="hljs-number">30.67</span>],
+                projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+                zoom: <span class="hljs-number">10</span>
+            }),
+            target: <span class="hljs-string">&apos;map&apos;</span>
+      });
+    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+</code></pre>
+<p>&#x9664;&#x4E86;Open Street Map&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x52A0;&#x8F7D;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x7684;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x6E90;&#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x6BD4;&#x5982;&#x9AD8;&#x5FB7;&#x5730;&#x56FE;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x9AD8;&#x5FB7;&#x5730;&#x56FE;&#x5C42;</span>
+<span class="hljs-keyword">var</span> gaodeMapLayer = <span class="hljs-keyword">new</span> ol.layer.Tile({
+    source: <span class="hljs-keyword">new</span> ol.source.XYZ({
+        url:<span class="hljs-string">&apos;http://webst0{1-4}.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7&amp;x={x}&amp;y={y}&amp;z={z}&apos;</span>
+    })
+});
+</code></pre>
+<p>&#x6BD4;&#x5982;Yahoo&#x5730;&#x56FE;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// yahoo&#x5730;&#x56FE;&#x5C42;</span>
+<span class="hljs-keyword">var</span> yahooMapLayer = <span class="hljs-keyword">new</span> ol.layer.Tile({
+    source: <span class="hljs-keyword">new</span> ol.source.XYZ({
+        tileSize: <span class="hljs-number">512</span>,
+        url:<span class="hljs-string">&apos;https://{0-3}.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day/{z}/{x}/{y}/512/png8?lg=ENG&amp;ppi=250&amp;token=TrLJuXVK62IQk0vuXFzaig%3D%3D&amp;requestid=yahoo.prod&amp;app_id=eAdkWGYRoc4RfxVo0Z4B&apos;</span>
+    })
+});
+</code></pre>
+<p>&#x5927;&#x540C;&#x5C0F;&#x5F02;&#xFF0C;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x4E09;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x53EA;&#x6709;Yahoo&#x5730;&#x56FE;&#x7684;&#x4EE3;&#x7801;&#x6709;&#x70B9;&#x4E0D;&#x4E00;&#x6837;&#xFF1A;&#x591A;&#x4E86;<code>tileSize</code>&#x53C2;&#x6570;&#x7684;&#x8BBE;&#x7F6E;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>tileSize</code>&#x4E3A;256&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x73B0;&#x5728;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x74E6;&#x7247;&#x91C7;&#x7528;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x4F46;Yahoo&#x5730;&#x56FE;&#x4F7F;&#x7528;&#x7684;&#x662F;512&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x663E;&#x793A;&#x6307;&#x5B9A;&#x3002;</p>
+<h2 id="&#x74E6;&#x7247;&#x5730;&#x56FE;&#x4E4B;&#x767E;&#x5EA6;&#x5730;&#x56FE;">&#x74E6;&#x7247;&#x5730;&#x56FE;&#x4E4B;&#x767E;&#x5EA6;&#x5730;&#x56FE;</h2>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x53D1;&#x73B0;&#xFF0C;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x8F7B;&#x677E;&#x5730;&#x52A0;&#x8F7D;&#x591A;&#x79CD;&#x4E0D;&#x540C;&#x6765;&#x6E90;&#x7684;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x3002;&#x4F46;&#x9057;&#x61BE;&#x5730;&#x662F;&#xFF0C;&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x7B80;&#x5355;&#x65B9;&#x6CD5;&#x5E76;&#x4E0D;&#x9002;&#x7528;&#x4E8E;&#x6240;&#x6709;&#x7684;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#xFF0C;&#x603B;&#x6709;&#x4E00;&#x4E9B;&#x662F;&#x7279;&#x6B8A;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#xFF0C;&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5C31;&#x4E0D;&#x751F;&#x6548;&#x4E86;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x56DE;&#x8FC7;&#x5934;&#x6765;&#x601D;&#x8003;&#x4E00;&#x4E0B;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x7684;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF1A;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x7684;&#x5173;&#x952E;&#x5728;&#x4E8E;&#x627E;&#x5BF9;&#x74E6;&#x7247;&#xFF0C;&#x4F46;&#x8981;&#x627E;&#x5BF9;&#x74E6;&#x7247;&#xFF0C;&#x5C31;&#x5F97;&#x77E5;&#x9053;&#x74E6;&#x7247;&#x7684;&#x5750;&#x6807;&#xFF0C;&#x800C;&#x5750;&#x6807;&#x53C8;&#x9700;&#x8981;&#x660E;&#x786E;&#x7684;&#x5750;&#x6807;&#x7CFB;&#x3002;&#x6211;&#x4EEC;&#x5728;<a href="../ch04/04-02.html">&#x5750;&#x6807;</a>&#x91CC;&#x8BF4;&#x8FC7;&#xFF0C;&#x4EFB;&#x4F55;&#x5750;&#x6807;&#x90FD;&#x5F97;&#x6709;&#x5750;&#x6807;&#x7CFB;&#x624D;&#x6709;&#x610F;&#x4E49;&#x3002;&#x5728;OpenLayers 3&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x7684;&#x5750;&#x6807;&#x7CFB;&#x662F;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x7684;&#xFF1F;&#x7ECF;&#x5206;&#x6790;&#x53EF;&#x77E5;&#xFF0C;OpenLayers 3&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#x7CFB;&#x7684;&#x539F;&#x70B9;&#x5728;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;&#x5411;&#x4E0A;&#x4E3A;y&#x8F74;&#x6B63;&#x65B9;&#x5411;&#xFF0C;&#x5411;&#x53F3;&#x4E3A;x&#x8F74;&#x6B63;&#x65B9;&#x5411;&#x3002;&#x5177;&#x4F53;&#x5230;&#x5730;&#x56FE;&#x4E0A;&#x6765;&#x8BB2;&#xFF0C;&#x5730;&#x7403;&#x7ECF;&#x8FC7;&#x6295;&#x5F71;&#xFF0C;&#x6295;&#x5F71;&#x5230;&#x4E00;&#x4E2A;&#x5E73;&#x9762;&#x4E0A;&#xFF0C;&#x5E73;&#x9762;&#x6700;&#x5DE6;&#x8FB9;&#x5BF9;&#x5E94;&#x5730;&#x7403;&#x6700;&#x897F;&#x8FB9;&#xFF0C;&#x5E73;&#x9762;&#x6700;&#x4E0A;&#x8FB9;&#x5BF9;&#x5E94;&#x5730;&#x7403;&#x6700;&#x5317;&#x8FB9;&#x3002;&#x539F;&#x70B9;&#x5C31;&#x5904;&#x4E8E;&#x6574;&#x4E2A;&#x5E73;&#x9762;&#x7684;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;&#x5373;&#x5730;&#x7403;&#x7684;&#x897F;&#x5317;&#x89D2;&#xFF0C;&#x4ECE;&#x5317;&#x5411;&#x5357;&#x4E3A;y&#x8F74;&#x8D1F;&#x65B9;&#x5411;&#xFF0C;&#x4ECE;&#x897F;&#x5411;&#x4E1C;&#x4E3A;x&#x8F74;&#x6B63;&#x65B9;&#x5411;&#x3002;&#x7406;&#x89E3;&#x8FD9;&#x4E00;&#x70B9;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x5728;&#x7EBF;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x90FD;&#x662F;&#x91C7;&#x7528;&#x8FD9;&#x6837;&#x7684;&#x5750;&#x6807;&#x7CFB;&#x3002;&#x7528;OpenLayers 3&#x52A0;&#x8F7D;&#x5B83;&#x4EEC;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x5750;&#x6807;&#x7CFB;&#x4E0D;&#x540C;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x74E6;&#x7247;&#x5730;&#x5740;&#x5C31;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x74E6;&#x7247;&#xFF0C;&#x4E3A;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x8981;&#x5148;&#x5BF9;&#x74E6;&#x7247;&#x5750;&#x6807;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x5177;&#x4F53;&#x8BE5;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x8F6C;&#x6362;&#xFF1F;&#x6700;&#x8BE6;&#x7EC6;&#x660E;&#x4E86;&#x7684;&#x65B9;&#x5F0F;&#x8FD8;&#x662F;&#x770B;&#x5B9E;&#x4F8B;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x52A0;&#x8F7D;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<p><head>                  
+    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
+</head></p>
+<p><div id="baiduMap" style="width: 100%"></div></p>
+<script>
+    // 百度地图层
+    var baiduMapLayer = new ol.layer.Tile({
+        source: new ol.source.XYZ({
+            tilePixelRatio: 2,
+            tileUrlFunction: function(tileCoord){ // 参数tileCoord为瓦片坐标
+                    var z = tileCoord[0];
+          var x = tileCoord[1];
+          var y = tileCoord[2];
+
+          var halfTileNum = Math.pow(2, z-1);
+
+          var baiduX =  x - halfTileNum;
+          var baiduY =  y + halfTileNum;
+
+          if (baiduX < 0) {
+              baiduX = 'M' + (-baiduX);
+          }
+          if (baiduY < 0) {
+              baiduY = 'M' + (-baiduY);
+          }
+
+          return 'http://online2.map.bdimg.com/onlinelabel/?qt=tile&x=' + baiduX + '&y=' + baiduY + '&z=' + z + '&styles=pl&udt=20160321&scaler=2&p=0';
+            }
+        })
+    });
+
+    // 创建地图
+  var map = new ol.Map({
+        layers: [
+            baiduMapLayer
+        ],
+        view: new ol.View({
+            // 设置成都为地图中心
+            center: [104.06, 30.67],
+            projection: 'EPSG:4326',
+            zoom: 4
+        }),
+        target: 'baiduMap'
+  });
+</script>
+
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;baiduMap&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-comment">// &#x767E;&#x5EA6;&#x5730;&#x56FE;&#x5C42;</span>
+    <span class="hljs-keyword">var</span> baiduMapLayer = <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: <span class="hljs-keyword">new</span> ol.source.XYZ({
+            tilePixelRatio: <span class="hljs-number">2</span>,
+            tileUrlFunction: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">tileCoord</span>)</span>{  <span class="hljs-comment">// &#x53C2;&#x6570;tileCoord&#x4E3A;&#x74E6;&#x7247;&#x5750;&#x6807;</span>
+                <span class="hljs-keyword">var</span> z = tileCoord[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">var</span> x = tileCoord[<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">var</span> y = tileCoord[<span class="hljs-number">2</span>];
+
+        <span class="hljs-comment">// &#x8BA1;&#x7B97;&#x5F53;&#x524D;&#x5C42;&#x7EA7;&#x4E0B;&#x74E6;&#x7247;&#x603B;&#x6570;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x7528;&#x4E8E;&#x5B9A;&#x4F4D;&#x6574;&#x4E2A;&#x5730;&#x56FE;&#x7684;&#x4E2D;&#x5FC3;&#x70B9;</span>
+        <span class="hljs-keyword">var</span> halfTileNum = <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, z-<span class="hljs-number">1</span>);
+        <span class="hljs-comment">// &#x539F;&#x70B9;&#x79FB;&#x5230;&#x4E2D;&#x5FC3;&#x70B9;&#x540E;&#xFF0C;&#x8BA1;&#x7B97;xy&#x65B9;&#x5411;&#x4E0A;&#x65B0;&#x7684;&#x5750;&#x6807;&#x4F4D;&#x7F6E;</span>
+        <span class="hljs-keyword">var</span> baiduX =  x - halfTileNum;
+        <span class="hljs-keyword">var</span> baiduY =  y + halfTileNum;
+
+        <span class="hljs-comment">// &#x767E;&#x5EA6;&#x74E6;&#x7247;&#x670D;&#x52A1;url&#x5C06;&#x8D1F;&#x6570;&#x4F7F;&#x7528;M&#x524D;&#x7F00;&#x6765;&#x6807;&#x8BC6;</span>
+        <span class="hljs-keyword">if</span> (baiduX &lt; <span class="hljs-number">0</span>) {
+            baiduX = <span class="hljs-string">&apos;M&apos;</span> + (-baiduX);
+        }
+        <span class="hljs-keyword">if</span> (baiduY &lt; <span class="hljs-number">0</span>) {
+            baiduY = <span class="hljs-string">&apos;M&apos;</span> + (-baiduY);
+        }
+
+        <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x7ECF;&#x8FC7;&#x8F6C;&#x6362;&#x540E;&#xFF0C;&#x5BF9;&#x5E94;&#x4E8E;&#x767E;&#x5EA6;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x7684;url</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;http://online2.map.bdimg.com/onlinelabel/?qt=tile&amp;x=&apos;</span> + baiduX + <span class="hljs-string">&apos;&amp;y=&apos;</span> + baiduY + <span class="hljs-string">&apos;&amp;z=&apos;</span> + z + <span class="hljs-string">&apos;&amp;styles=pl&amp;udt=20160321&amp;scaler=2&amp;p=0&apos;</span>;
+            }
+        })
+    });
+
+    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x5730;&#x56FE;</span>
+  <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+            baiduMapLayer
+        ],
+        view: <span class="hljs-keyword">new</span> ol.View({
+            <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6210;&#x90FD;&#x4E3A;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;</span>
+            center: [<span class="hljs-number">104.06</span>, <span class="hljs-number">30.67</span>],
+            projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+            zoom: <span class="hljs-number">4</span>
+        }),
+        target: <span class="hljs-string">&apos;baiduMap&apos;</span>
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x548C;&#x524D;&#x9762;&#x51E0;&#x4E2A;&#x52A0;&#x8F7D;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x7684;&#x4F8B;&#x5B50;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x5730;&#x65B9;&#x5728;&#x4E8E;&#xFF0C;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;<code>url</code>&#xFF0C;&#x800C;&#x662F;&#x8BBE;&#x7F6E;&#x4E86;<code>tileUrlFunction</code>&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x83B7;&#x53D6;&#x74E6;&#x7247;<code>url</code>&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x81EA;&#x5B9A;&#x4E49;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4E0D;&#x540C;&#x5750;&#x6807;&#x7CFB;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x4ECE;&#x800C;&#x8FD4;&#x56DE;&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x670D;&#x52A1;&#x5BF9;&#x5E94;&#x74E6;&#x7247;&#x7684;<code>url</code>&#x3002;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x51FD;&#x6570;&#x5165;&#x53C2;&#x662F;&#x4E00;&#x4E2A;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x5F97;&#x5230;&#x767E;&#x5EA6;&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x7684;&#x74E6;&#x7247;&#x5730;&#x5740;&#x3002;&#x6548;&#x679C;&#x53C2;&#x89C1;&#x4E0A;&#x65B9;&#x5730;&#x56FE;&#xFF0C;&#x4E0D;&#x59A8;&#x62D6;&#x52A8;&#x3001;&#x7F29;&#x653E;&#x8BD5;&#x8BD5;&#xFF0C;&#x62FC;&#x63A5;&#x65E0;&#x7F1D;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x3002;</p>
+<p><code>tileUrlFunction</code>&#x8FD9;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x6709;&#x53EF;&#x80FD;&#x770B;&#x4E0D;&#x61C2;&#xFF0C;&#x867D;&#x7136;&#x77E5;&#x9053;&#x5728;&#x8FDB;&#x884C;&#x5750;&#x6807;&#x8F6C;&#x6362;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x5B9E;&#x73B0;&#x3002;&#x4E3A;&#x4E86;&#x5F7B;&#x5E95;&#x5F04;&#x660E;&#x767D;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5F97;&#x628A;&#x4E4B;&#x524D;&#x9057;&#x6F0F;&#x7684;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x73AF;&#x8282;&#x8865;&#x4E0A;&#xFF1A;&#x5F04;&#x660E;&#x767D;&#x5F85;&#x52A0;&#x8F7D;&#x7684;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x7684;&#x5750;&#x6807;&#x7CFB;&#x3002;&#x5BF9;&#x767E;&#x5EA6;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5750;&#x6807;&#x7CFB;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x5206;&#x6790;&#x53D1;&#x73B0;&#xFF0C;&#x5B83;&#x662F;&#x4EE5;&#x67D0;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x4E3A;&#x539F;&#x70B9;&#xFF0C;&#x5411;&#x53F3;&#x4E3A;x&#x6B63;&#x65B9;&#x5411;&#xFF0C;&#x5411;&#x4E0A;&#x4E3A;y&#x6B63;&#x65B9;&#x5411;&#x7684;&#x5750;&#x6807;&#x7CFB;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x5206;&#x6790;&#x53D1;&#x73B0;&#xFF0C;&#x539F;&#x70B9;&#x5E94;&#x8BE5;&#x5728;&#x4E2D;&#x5FC3;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E3A;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x662F;&#x4EE5;&#x7ECF;&#x7EAC;&#x5EA6;[0,0]&#x4E3A;&#x539F;&#x70B9;&#xFF0C;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x7F16;&#x5199;&#x51FD;&#x6570;<code>tileUrlFunction</code>&#x7684;&#x5B9E;&#x73B0;&#x3002;<code>halfTileNum</code>&#x8868;&#x793A;&#x7684;&#x662F;&#x5728;&#x5F53;&#x524D;&#x7F29;&#x653E;&#x5C42;&#x7EA7;&#x4E4B;&#x4E0B;&#xFF0C;&#x603B;&#x7684;&#x74E6;&#x7247;&#x4E2A;&#x6570;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x5B83;&#x5C31;&#x662F;&#x4E2D;&#x5FC3;&#x4F4D;&#x7F6E;&#x3002;&#x5BF9;&#x4E8E;<code>baiduX</code>&#x5C0F;&#x4E8E;0&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x767E;&#x5EA6;&#x4F7F;&#x7528;&#x4E86;<code>M</code>&#x6765;&#x8868;&#x793A;&#x8D1F;&#x53F7;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x7279;&#x6B8A;&#x5904;&#x7406;&#x4E00;&#x4E0B;&#x3002;&#x60F3;&#x5FC5;&#x8FD9;&#x4E0B;&#x5E94;&#x8BE5;&#x66F4;&#x52A0;&#x7406;&#x89E3;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x4E86;&#x3002;&#x4E0D;&#x540C;&#x7684;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x7684;&#x8F6C;&#x6362;&#x4EE3;&#x7801;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x5BF9;&#x5E94;&#x7684;&#x5750;&#x6807;&#x7CFB;&#x6765;&#x786E;&#x5B9A;&#x3002;</p>
+<p>&#x4F46;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x5730;&#x56FE;&#x5E76;&#x4E0D;&#x5B8C;&#x7F8E;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8BBE;&#x5B9A;&#x7684;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;&#x4E3A;&#x6210;&#x90FD;&#xFF0C;&#x7136;&#x800C;&#x5B9E;&#x9645;&#x4E0A;&#x663E;&#x793A;&#x7684;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;&#x5E76;&#x4E0D;&#x5728;&#x6210;&#x90FD;&#x3002;&#x867D;&#x7136;&#x65E0;&#x7F1D;&#x62FC;&#x63A5;&#xFF0C;&#x4F46;&#x4F4D;&#x7F6E;&#x504F;&#x5DEE;&#x6709;&#x70B9;&#x8FDC;&#x3002;&#x7531;&#x6B64;&#x57FA;&#x672C;&#x53EF;&#x4EE5;&#x6392;&#x9664;&#x5750;&#x6807;&#x8F6C;&#x6362;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x5E94;&#x8BE5;&#x662F;OpenLayers 3&#x7684;&#x5206;&#x8FA8;&#x7387;&#x548C;&#x767E;&#x5EA6;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x4F7F;&#x7528;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x5BF9;&#x4E0D;&#x4E0A;&#x3002;&#x7ECF;&#x8FC7;&#x5206;&#x6790;&#x53D1;&#x73B0;&#xFF0C;&#x786E;&#x5B9E;&#x5982;&#x6B64;&#xFF0C;&#x5728;&#x7F51;&#x4E0A;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x5206;&#x6790;&#x6587;&#x7AE0;&#x53EF;&#x4EE5;&#x67E5;&#x9605;&#x3002;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x5206;&#x8FA8;&#x7387;&#x5462;&#xFF1F; &#x7B54;&#x6848;&#x662F;&#x80AF;&#x5B9A;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>ol.source.XYZ</code>&#x7684;&#x7236;&#x7C7B;&#x6765;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="&#x91CD;&#x65B0;&#x5B9A;&#x4E49;openlayers-3&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#x7CFB;">&#x91CD;&#x65B0;&#x5B9A;&#x4E49;OpenLayers 3&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#x7CFB;</h2>
+<p><code>ol.source.TileImage</code>&#x4F5C;&#x4E3A;<code>ol.source.XYZ</code>&#x7684;&#x7236;&#x7C7B;&#xFF0C;&#x9664;&#x4E86;&#x53EF;&#x4EE5;&#x8F6C;&#x6362;&#x5750;&#x6807;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x5177;&#x5907;&#x66F4;&#x52A0;&#x5F3A;&#x5927;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4FEE;&#x6539;&#x5206;&#x8FA8;&#x7387;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5B83;&#x6765;&#x52A0;&#x8F7D;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#xFF0C;&#x8FD9;&#x6B21;&#x662F;&#x6B63;&#x786E;&#x7684;&#xFF1A;</p>
+<p><div id="baiduMap2" style="width: 100%"></div></p>
+<script>
+
+    // 自定义分辨率和瓦片坐标系
+  var resolutions = [];
+  var maxZoom = 18;
+
+  for(var i=0; i<=maxZoom; i++){
+      resolutions[i] = Math.pow(2, maxZoom-i);
+  }
+  var tilegrid  = new ol.tilegrid.TileGrid({
+      origin: [0,0],
+      resolutions: resolutions
+  });
+
+  // 创建百度地图的数据源
+  var baiduSource = new ol.source.TileImage({
+      projection: 'EPSG:3857',
+      tileGrid: tilegrid,
+      tileUrlFunction: function(tileCoord, pixelRatio, proj){
+          var z = tileCoord[0];
+          var x = tileCoord[1];
+          var y = tileCoord[2];
+
+          if(x<0){
+              x = "M"+(-x);
+          }
+          if(y<0){
+              y = "M"+(-y);
+          }
+
+          return "http://online3.map.bdimg.com/onlinelabel/?qt=tile&x="+x+"&y="+y+"&z="+z+"&styles=pl&udt=20160321&scaler=2&p=1";
+      }
+  });
+
+    // 百度地图层
+    var baiduMapLayer2 = new ol.layer.Tile({
+        source: baiduSource
+    });
+
+    // 创建地图
+  new ol.Map({
+        layers: [
+            baiduMapLayer2
+        ],
+        view: new ol.View({
+            // 设置成都为地图中心
+            center: [104.06, 30.67],
+            projection: 'EPSG:4326',
+            zoom: 10
+        }),
+        target: 'baiduMap2'
+  });
+</script>
+
+<p>&#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;baiduMap2&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x8FA8;&#x7387;&#x548C;&#x74E6;&#x7247;&#x5750;&#x6807;&#x7CFB;</span>
+  <span class="hljs-keyword">var</span> resolutions = [];
+  <span class="hljs-keyword">var</span> maxZoom = <span class="hljs-number">18</span>;
+
+  <span class="hljs-comment">// &#x8BA1;&#x7B97;&#x767E;&#x5EA6;&#x4F7F;&#x7528;&#x7684;&#x5206;&#x8FA8;&#x7387;</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;=maxZoom; i++){
+      resolutions[i] = <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, maxZoom-i);
+  }
+  <span class="hljs-keyword">var</span> tilegrid  = <span class="hljs-keyword">new</span> ol.tilegrid.TileGrid({
+      origin: [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x539F;&#x70B9;&#x5750;&#x6807;</span>
+      resolutions: resolutions    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5206;&#x8FA8;&#x7387;</span>
+  });
+
+  <span class="hljs-comment">// &#x521B;&#x5EFA;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x7684;&#x6570;&#x636E;&#x6E90;</span>
+  <span class="hljs-keyword">var</span> baiduSource = <span class="hljs-keyword">new</span> ol.source.TileImage({
+      projection: <span class="hljs-string">&apos;EPSG:3857&apos;</span>,    
+      tileGrid: tilegrid,
+      tileUrlFunction: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">tileCoord, pixelRatio, proj</span>)</span>{
+          <span class="hljs-keyword">var</span> z = tileCoord[<span class="hljs-number">0</span>];
+          <span class="hljs-keyword">var</span> x = tileCoord[<span class="hljs-number">1</span>];
+          <span class="hljs-keyword">var</span> y = tileCoord[<span class="hljs-number">2</span>];
+
+          <span class="hljs-comment">// &#x767E;&#x5EA6;&#x74E6;&#x7247;&#x670D;&#x52A1;url&#x5C06;&#x8D1F;&#x6570;&#x4F7F;&#x7528;M&#x524D;&#x7F00;&#x6765;&#x6807;&#x8BC6;</span>
+          <span class="hljs-keyword">if</span>(x&lt;<span class="hljs-number">0</span>){
+              x = <span class="hljs-string">&apos;M&apos;</span> + (-x);
+          }
+          <span class="hljs-keyword">if</span>(y&lt;<span class="hljs-number">0</span>){
+              y = <span class="hljs-string">&apos;M&apos;</span> + (-y);
+          }
+
+          <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;http://online3.map.bdimg.com/onlinelabel/?qt=tile&amp;x=&apos;</span> + x + <span class="hljs-string">&apos;&amp;y=&apos;</span> + y + <span class="hljs-string">&apos;&amp;z=&apos;</span> + z + <span class="hljs-string">&apos;&amp;styles=pl&amp;udt=20160321&amp;scaler=2&amp;p=1&apos;</span>;
+      }
+  });
+
+    <span class="hljs-comment">// &#x767E;&#x5EA6;&#x5730;&#x56FE;&#x5C42;</span>
+    <span class="hljs-keyword">var</span> baiduMapLayer2 = <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: baiduSource
+    });
+
+    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x5730;&#x56FE;</span>
+  <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+            baiduMapLayer2
+        ],
+        view: <span class="hljs-keyword">new</span> ol.View({
+            <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6210;&#x90FD;&#x4E3A;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;</span>
+            center: [<span class="hljs-number">104.06</span>, <span class="hljs-number">30.67</span>],
+            projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+            zoom: <span class="hljs-number">10</span>
+        }),
+        target: <span class="hljs-string">&apos;baiduMap2&apos;</span>
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x540C;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x76F8;&#x6BD4;&#xFF0C;&#x5F15;&#x5165;&#x4E86;<code>ol.tilegrid.TileGrid</code>&#xFF0C;&#x7531;&#x540D;&#x5B57;&#x53EF;&#x89C1;&#xFF0C;&#x8FD9;&#x662F;&#x5B9A;&#x4E49;&#x74E6;&#x7247;&#x7F51;&#x683C;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x74E6;&#x7247;&#x5750;&#x6807;&#x7CFB;&#xFF0C;&#x6784;&#x9020;&#x65F6;&#x9700;&#x8981;&#x8BBE;&#x5B9A;&#x539F;&#x70B9;&#xFF0C;&#x7D27;&#x63A5;&#x7740;&#x8BBE;&#x7F6E;&#x5206;&#x8FA8;&#x7387;&#xFF0C;&#x5176;&#x4F5C;&#x7528;&#x5728;&#x4E8E;&#x8BBE;&#x5B9A;&#x6BCF;&#x4E00;&#x5730;&#x56FE;&#x5C42;&#x7EA7;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x3002;&#x6211;&#x4EEC;&#x662F;&#x5426;&#x9057;&#x6F0F;&#x4E86;&#x5750;&#x6807;&#x7CFB;&#x7684;&#x6B63;&#x5411;&#x548C;&#x8D1F;&#x5411;&#x7684;&#x8BBE;&#x5B9A;&#xFF1F;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4ECE;&#x5DE6;&#x5411;&#x53F3;&#x4E3A;x&#x6B63;&#x65B9;&#x5411;&#xFF0C;&#x4ECE;&#x4E0B;&#x5411;&#x4E0A;&#x4E3A;y&#x8F74;&#x6B63;&#x65B9;&#x5411;&#x3002;&#x8FD9;&#x548C;&#x6211;&#x4EEC;&#x6570;&#x5B66;&#x4E0A;&#x901A;&#x5E38;&#x5B9A;&#x4E49;&#x7684;&#x7B1B;&#x5361;&#x5C14;&#x5750;&#x6807;&#x7CFB;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x4E00;&#x70B9;&#x9700;&#x8981;&#x5927;&#x5BB6;&#x8BB0;&#x4F4F;&#x3002;&#x5982;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;OpenLayers 3&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x5750;&#x6807;&#x7CFB;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x4EE3;&#x7801;&#x6BD4;&#x4E0A;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x66F4;&#x52A0;&#x7684;&#x53EF;&#x8BFB;&#x548C;&#x7B80;&#x6D01;&#x3002; &#x5982;&#x679C;&#x7528;&#x901A;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x89E3;&#x51B3;&#x4E0D;&#x4E86;&#xFF0C;&#x8BF7;&#x522B;&#x5FD8;&#x8BB0;&#x8FD8;&#x6709;&#x8FD9;&#x4E00;&#x5F3A;&#x5927;&#x7075;&#x6D3B;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x3002;</p>
+<h2 id="&#x5206;&#x6790;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x5750;&#x6807;&#x7CFB;">&#x5206;&#x6790;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x5750;&#x6807;&#x7CFB;</h2>
+<p>&#x5982;&#x4F55;&#x5206;&#x6790;&#x4E0D;&#x540C;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x7684;&#x5750;&#x6807;&#x7CFB;&#x5462;&#xFF1F;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x5148;&#x4ECE;&#x7279;&#x4F8B;&#x51FA;&#x53D1;&#xFF0C;&#x627E;&#x7B80;&#x5355;&#x7684;&#x60C5;&#x51B5;&#x5206;&#x6790;&#xFF0C;&#x6BD4;&#x5982;&#x9009;&#x62E9;z&#x4E3A;2&#x6216;&#x8005;3&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x74E6;&#x7247;&#x7684;&#x6570;&#x91CF;&#x6BD4;&#x8F83;&#x5C11;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x6574;&#x4E2A;&#x5730;&#x7403;&#x8303;&#x56F4;&#x5185;&#x7684;&#x5730;&#x56FE;&#x7684;&#x74E6;&#x7247;&#x8BF7;&#x6C42;&#xFF0C;&#x6CE8;&#x610F;&#x5206;&#x6790;&#x5176;&#x8BF7;&#x6C42;&#x7684;<code>url</code>&#x53C2;&#x6570;&#x3002;&#x4E0A;&#x8FF0;&#x7684;&#x6240;&#x6709;&#x5730;&#x56FE;&#x90FD;&#x53EF;&#x4EE5;&#x4EE5;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x5165;&#x624B;&#x6765;&#x5206;&#x6790;&#xFF0C;&#x5305;&#x62EC;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x5C1D;&#x8BD5;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x4F60;&#x6709;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x613F;&#x610F;&#x7684;&#x8BDD;&#xFF0C;&#x8BF7;&#x7ED9;&#x5927;&#x5BB6;&#x4E00;&#x8D77;&#x5206;&#x4EAB;&#x4E00;&#x4E0B;&#x3002;</p>
+<h2 id="&#x89E3;&#x5BC6;&#x74E6;&#x7247;url">&#x89E3;&#x5BC6;&#x74E6;&#x7247;url</h2>
+<p>&#x74E6;&#x7247;&#x7684;url&#x89E3;&#x6790;&#x5BF9;&#x4E8E;&#x60F3;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5728;&#x7EBF;&#x74E6;&#x7247;&#x670D;&#x52A1;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x800C;&#x8A00;&#xFF0C;&#x662F;&#x4E00;&#x9879;&#x7ECF;&#x5E38;&#x8981;&#x505A;&#x7684;&#x4E8B;&#x3002;&#x6839;&#x636E;&#x96BE;&#x5EA6;&#xFF0C;&#x5927;&#x81F4;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x79CD;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x8BF7;&#x6C42;&#x74E6;&#x7247;&#x7684;<code>url</code>&#x660E;&#x786E;&#x6709;xyz&#x53C2;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#x9AD8;&#x5FB7;&#x5730;&#x56FE;&#x548C;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#x79CD;&#x7A0D;&#x5FAE;&#x96BE;&#x4E00;&#x70B9;&#xFF0C;<code>xyz</code>&#x4F5C;&#x4E3A;&#x8DEF;&#x5F84;&#x76F4;&#x63A5;&#x5B58;&#x5728;&#x4E8E;<code>url</code>&#x91CC;&#x9762;&#xFF0C;&#x6CA1;&#x6709;&#x660E;&#x786E;&#x7684;&#x53C2;&#x6570;&#x8868;&#x660E;&#x54EA;&#x4E9B;&#x662F;xyz&#xFF0C;&#x6BD4;&#x5982;Open Street Map&#x548C;Yahoo&#x5730;&#x56FE;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5730;&#x56FE;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x5728;&#x670D;&#x52A1;&#x5668;&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84;&#x83B7;&#x53D6;&#x56FE;&#x7247;&#xFF0C;&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#xFF0C;&#x4E00;&#x822C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x662F;z&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;x&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;y&#x3002;&#x8981;&#x60F3;&#x786E;&#x8BA4;&#x662F;&#x5426;&#x771F;&#x662F;&#x8FD9;&#x6837;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x4E00;&#x4E2A;&#x5C0F;&#x7A0B;&#x5E8F;&#x6765;&#x9A8C;&#x8BC1;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x5EFA;&#x8BAE;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x5206;&#x6790;&#x5730;&#x56FE;&#x5750;&#x6807;&#x7CFB;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4ECE;z&#x6BD4;&#x8F83;&#x5C0F;&#x7684;&#x60C5;&#x51B5;&#x5165;&#x624B;&#x6765;&#x5206;&#x6790;x&#xFF0C;y&#xFF0C;z&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x7B2C;&#x4E09;&#x79CD;&#x5219;&#x6700;&#x96BE;&#xFF0C;&#x5730;&#x56FE;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x5546;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5927;&#x5BB6;&#x76F4;&#x63A5;&#x975E;&#x6CD5;&#x4F7F;&#x7528;&#x74E6;&#x7247;&#x5730;&#x56FE;&#xFF0C;&#x5BF9;&#x74E6;&#x7247;&#x7684;url&#x8FDB;&#x884C;&#x4E86;&#x52A0;&#x5BC6;&#xFF0C;&#x6BD4;&#x5982;&#x73B0;&#x5728;&#x7684;&#x5FAE;&#x8F6F;Bing&#x4E2D;&#x6587;&#x5730;&#x56FE;&#x548C;Google&#x5730;&#x56FE;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x53EA;&#x6709;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x89E3;&#x5BC6;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x3002;</li>
+</ul>
+<h2 id="&#x52A0;&#x8F7D;&#x5FAE;&#x8F6F;bing&#x4E2D;&#x6587;&#x5730;&#x56FE;">&#x52A0;&#x8F7D;&#x5FAE;&#x8F6F;Bing&#x4E2D;&#x6587;&#x5730;&#x56FE;</h2>
+<p>&#x524D;&#x9762;&#x4E24;&#x79CD;url&#x7684;&#x5B9E;&#x4F8B;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#xFF0C;&#x6B64;&#x5904;&#x5206;&#x4EAB;&#x4E00;&#x4E0B;&#x7B2C;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#x7684;url&#x89E3;&#x5BC6;&#xFF0C;&#x4EE5;&#x5FAE;&#x8F6F;Bing&#x4E2D;&#x6587;&#x5730;&#x56FE;&#x4E3A;&#x4F8B;&#xFF1A;
+<img src="../img/bingmap-zh.png" alt="Bing&#x4E2D;&#x6587;&#x5730;&#x56FE;"></p>
+<p>&#x56FE;&#x4E2D;&#x663E;&#x793A;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x8BF7;&#x6C42;&#x7684;url&#xFF0C;&#x6CA1;&#x6709;&#x660E;&#x663E;&#x7684;xyz&#x53C2;&#x6570;&#xFF0C;&#x6700;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x5B58;&#x653E;xyz&#x53C2;&#x6570;&#x7684;&#x5730;&#x65B9;&#x5728;&#x4E8E;url&#x524D;&#x9762;&#x90A3;&#x4E00;&#x4E32;&#x6570;&#x5B57;&#xFF0C;&#x771F;&#x5B9E;&#x60C5;&#x51B5;&#x786E;&#x5B9E;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x7ECF;&#x8FC7;&#x5206;&#x6790;&#x548C;&#x89E3;&#x7801;&#xFF0C;&#x6700;&#x7EC8;&#x5B9E;&#x73B0;&#x4E86;&#x52A0;&#x8F7D;Bing&#x4E2D;&#x6587;&#x5730;&#x56FE;&#xFF1A;</p>
+<p><div id="bingMap" style="width: 100%"></div></p>
+<script>
+    // Bing中文地图层
+    var bingMapLayer = new ol.layer.Tile({
+        source: new ol.source.XYZ({
+            tilePixelRatio: 2,
+            tileUrlFunction: function(tileCoord){
+                var z = tileCoord[0];
+        var x = tileCoord[1];
+        var y = -tileCoord[2] - 1;
+        var result='', zIndex=0;
+
+        for(; zIndex<z; zIndex++) {
+            result = ((x&1)+2*(y&1)).toString() + result;
+            x >>= 1;
+            y >>= 1;
+        }
+        return 'http://dynamic.t0.tiles.ditu.live.com/comp/ch/' + result + '?it=G,VE,BX,L,LA&mkt=zh-cn,syr&n=z&og=111&ur=CN';
+      }
+        })
+    });
+
+    // 创建地图
+  var map = new ol.Map({
+        layers: [
+            bingMapLayer
+        ],
+        view: new ol.View({
+            // 设置成都为地图中心
+            center: [104.06, 30.67],
+            projection: 'EPSG:4326',
+            zoom: 10
+        }),
+        target: 'bingMap'
+  });
+</script>
+
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;bingMap&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">// Bing&#x4E2D;&#x6587;&#x5730;&#x56FE;&#x5C42;</span>
+    <span class="hljs-keyword">var</span> bingMapLayer = <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: <span class="hljs-keyword">new</span> ol.source.XYZ({
+            tileUrlFunction: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(tileCoord)</span></span>{
+                <span class="hljs-keyword">var</span> z = tileCoord[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">var</span> x = tileCoord[<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">var</span> y = -tileCoord[<span class="hljs-number">2</span>] - <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">var</span> result=<span class="hljs-string">&apos;&apos;</span>, zIndex=<span class="hljs-number">0</span>;
+
+        <span class="hljs-keyword">for</span>(; zIndex&lt;z; zIndex++) {
+            result = ((x&amp;<span class="hljs-number">1</span>)+<span class="hljs-number">2</span>*(y&amp;<span class="hljs-number">1</span>)).toString() + result;
+            x &gt;&gt;= <span class="hljs-number">1</span>;
+            y &gt;&gt;= <span class="hljs-number">1</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;http://dynamic.t0.tiles.ditu.live.com/comp/ch/&apos;</span> + result + <span class="hljs-string">&apos;?it=G,VE,BX,L,LA&amp;mkt=zh-cn,syr&amp;n=z&amp;og=111&amp;ur=CN&apos;</span>;
+      }
+        })
+    });
+
+    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x5730;&#x56FE;</span>
+  <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+            bingMapLayer
+        ],
+        view: <span class="hljs-keyword">new</span> ol.View({
+            <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6210;&#x90FD;&#x4E3A;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;</span>
+            center: [<span class="hljs-number">104.06</span>, <span class="hljs-number">30.67</span>],
+            projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+            zoom: <span class="hljs-number">10</span>
+        }),
+        target: <span class="hljs-string">&apos;bingMap&apos;</span>
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5730;&#x56FE;&#x6570;&#x636E;&#x662F;&#x975E;&#x5E38;&#x6602;&#x8D35;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x67D0;&#x4E00;&#x4E2A;&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x670D;&#x52A1;&#xFF0C;&#x8BF7;&#x5148;&#x6838;&#x5B9E;&#x5BF9;&#x65B9;&#x7684;&#x7248;&#x6743;&#x548C;&#x6570;&#x636E;&#x4F7F;&#x7528;&#x7533;&#x660E;&#xFF0C;&#x4E0D;&#x8981;&#x4FB5;&#x72AF;&#x5BF9;&#x65B9;&#x7684;&#x6743;&#x76CA;&#xFF0C;&#x6309;&#x7167;&#x8981;&#x6C42;&#x5408;&#x6CD5;&#x4F7F;&#x7528;&#x5730;&#x56FE;&#x3002;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x5728;&#x7EBF;&#x5730;&#x56FE;&#x670D;&#x52A1;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x54CD;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#xFF0C;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x5728;&#x5546;&#x7528;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x670D;&#x52A1;&#x5546;&#x90FD;&#x6709;&#x8BE6;&#x7EC6;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x5728;&#x6B64;&#x4E0D;&#x7D2F;&#x8FF0;&#x3002;</p>
+<h1 id="google&#x5730;&#x56FE;&#x52A0;&#x8F7D;">google&#x5730;&#x56FE;&#x52A0;&#x8F7D;</h1>
+<p>&#x6709;&#x8BB8;&#x591A;&#x4EBA;&#x90FD;&#x5728;&#x95EE;google&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5730;&#x56FE;url&#x662F;&#x52A0;&#x5BC6;&#x7684;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x6790;url&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x52A0;&#x8F7D;&#xFF1A;</p>
+<p><div id="googleMap" style="width: 100%"></div></p>
+<script>
+    // google地图层
+    var googleMapLayer = new ol.layer.Tile({
+        source: new ol.source.XYZ({
+            url:'http://www.google.cn/maps/vt/pb=!1m4!1m3!1i{z}!2i{x}!3i{y}!2m3!1e0!2sm!3i345013117!3m8!2szh-CN!3scn!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0'
+        })
+    });
+
+    // 创建地图
+  var map = new ol.Map({
+        layers: [
+            googleMapLayer
+        ],
+        view: new ol.View({
+            // 设置成都为地图中心
+            center: [104.06, 30.67],
+            projection: 'EPSG:4326',
+            zoom: 10
+        }),
+        target: 'googleMap'
+  });
+</script>
+
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;googleMap&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">// google&#x5730;&#x56FE;&#x5C42;</span>
+    <span class="hljs-keyword">var</span> googleMapLayer = <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: <span class="hljs-keyword">new</span> ol.source.XYZ({
+            url:<span class="hljs-string">&apos;http://www.google.cn/maps/vt/pb=!1m4!1m3!1i{z}!2i{x}!3i{y}!2m3!1e0!2sm!3i345013117!3m8!2szh-CN!3scn!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0&apos;</span>
+        })
+    });
+
+    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x5730;&#x56FE;</span>
+  <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+            googleMapLayer
+        ],
+        view: <span class="hljs-keyword">new</span> ol.View({
+            <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6210;&#x90FD;&#x4E3A;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;</span>
+            center: [<span class="hljs-number">104.06</span>, <span class="hljs-number">30.67</span>],
+            projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+            zoom: <span class="hljs-number">10</span>
+        }),
+        target: <span class="hljs-string">&apos;googleMap&apos;</span>
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x5173;&#x4E8E;&#x901A;&#x7528;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x7684;&#x79D8;&#x7C4D;&#x5C31;&#x4ECB;&#x7ECD;&#x5B8C;&#x6BD5;&#xFF0C;&#x5E0C;&#x671B;&#x5927;&#x5BB6;&#x90FD;&#x638C;&#x63E1;&#x4E86;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../ch05/05-02.html" class="navigation navigation-prev " aria-label="Previous page: 最简单的加载在线地图"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../ch06/index.html" class="navigation navigation-next " aria-label="Next page: LOD与分辨率"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?598c9c941360724a65331e7d9a66c9b6';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    </body>
+    
+</html>

@@ -41,7 +41,7 @@
         
     
     
-    <link rel="next" href="../ch06/index.html" />
+    <link rel="next" href="../ch05/05-01.html" />
     
     
     <link rel="prev" href="../ch04/04-08.html" />
@@ -57,7 +57,7 @@
         data-chapter-title="Source和Layer"
         data-filepath="ch05/index.md"
         data-basepath=".."
-        data-revision="Sun Mar 20 2016 09:19:43 GMT+0800 (CST)"
+        data-revision="Fri Apr 15 2016 20:19:51 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -441,59 +441,62 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" >
+        <li class="chapter " data-level="5.1" data-path="ch05/05-01.html">
             
-            <span><b>5.1.</b> 加载瓦片地图</span>
+                
+                    <a href="../ch05/05-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        加载瓦片地图
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1.1" >
+        <li class="chapter " data-level="5.1.1" data-path="ch05/05-02.html">
             
-            <span><b>5.1.1.</b> 加载OpenStreetMap</span>
+                
+                    <a href="../ch05/05-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.1.</b>
+                        
+                        最简单的加载在线地图
+                    </a>
             
             
         </li>
     
-        <li class="chapter " data-level="5.1.2" >
+        <li class="chapter " data-level="5.1.2" data-path="ch05/05-03.html">
             
-            <span><b>5.1.2.</b> 加载BingMap</span>
+                
+                    <a href="../ch05/05-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.2.</b>
+                        
+                        万能瓦片地图加载秘籍
+                    </a>
             
             
         </li>
     
         <li class="chapter " data-level="5.1.3" >
             
-            <span><b>5.1.3.</b> 加载高德地图</span>
+            <span><b>5.1.3.</b> 加载WMS服务地图</span>
             
             
         </li>
     
         <li class="chapter " data-level="5.1.4" >
             
-            <span><b>5.1.4.</b> 加载天地图</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.1.5" >
-            
-            <span><b>5.1.5.</b> 加载google地图</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.1.6" >
-            
-            <span><b>5.1.6.</b> 加载WMS服务地图</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.1.7" >
-            
-            <span><b>5.1.7.</b> 加载离线瓦片地图</span>
+            <span><b>5.1.4.</b> 加载离线瓦片地图</span>
             
             
         </li>
@@ -870,7 +873,8 @@
 <p><code>ol.source.Image</code>&#x867D;&#x7136;&#x6709;&#x51E0;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x4F46;&#x5927;&#x591A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x7275;&#x6D89;&#x5230;&#x8FC7;&#x591A;&#x7684;&#x534F;&#x8BAE;&#x548C;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4F9B;&#x5546;&#x3002;&#x800C;<code>ol.source.Vector</code>&#x5C31;&#x66F4;&#x52A0;&#x7684;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x4F46;&#x6709;&#x65F6;&#x5019;&#x5176;&#x552F;&#x4E00;&#x7684;&#x5B50;&#x7C7B;<code>ol.source.Cluster</code>&#x5728;&#x5904;&#x7406;&#x5927;&#x91CF;&#x7684;<code>Feature</code>&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x3002;</p>
 <p>&#x5728;&#x5927;&#x6982;&#x4E86;&#x89E3;&#x4E86;&#x6574;&#x4E2A;<code>Source</code>&#x4E4B;&#x540E;&#xFF0C;&#x7D27;&#x63A5;&#x7740;&#x8BE5;&#x4ECB;&#x7ECD;&#x5B83;&#x7684;&#x642D;&#x6863;<code>Layer</code>&#x4E86;&#xFF0C;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x5148;&#x4ECE;OpenLayers 3&#x73B0;&#x6709;&#x7684;<code>Layer</code>&#x7C7B;&#x56FE;&#x5927;&#x81F4;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#xFF1A;
 <img src="../img/ol_layer_Base.png" alt="ol.layer.Base&#x7C7B;&#x56FE;"></p>
-<p>&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x4E86;&#x89E3;&#x548C;&#x4F7F;&#x7528;&#xFF0C;&#x56FE;&#x4E2D;&#x6807;&#x6CE8;&#x4E86;&#x6BCF;&#x4E00;&#x4E2A;<code>Layer</code>&#x5BF9;&#x5E94;&#x7684;<code>Source</code>&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x4E86;&#x89E3;&#x548C;&#x4F7F;&#x7528;&#xFF0C;&#x56FE;&#x4E2D;&#x6807;&#x6CE8;&#x4E86;&#x6BCF;&#x4E00;&#x4E2A;<code>Layer</code>&#x5BF9;&#x5E94;&#x7684;<code>Source</code>&#x3002;&#x901A;&#x8FC7;&#x4E0A;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>Layer</code>&#x76F8;&#x5BF9;&#x4E8E;<code>Source</code>&#x800C;&#x8A00;&#xFF0C;&#x771F;&#x662F;&#x592A;&#x7B80;&#x5355;&#x4E86;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x521D;&#x5B66;&#x8005;&#x800C;&#x8A00;&#xFF0C;&#x5982;&#x4F55;&#x9009;&#x62E9;&#x548C;&#x5E94;&#x7528;&#x4E0D;&#x540C;&#x7684;<code>Source</code>&#x548C;<code>Layer</code>&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x8FF7;&#x60D1;&#x548C;&#x56F0;&#x96BE;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x672C;&#x7AE0;&#x5C06;&#x56F4;&#x7ED5;&#x7740;<code>Source</code>&#x548C;<code>Layer</code>&#x5C55;&#x5F00;&#xFF0C;&#x4E3A;&#x5927;&#x5BB6;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
 
                     
                     </section>
@@ -884,7 +888,7 @@
         <a href="../ch04/04-08.html" class="navigation navigation-prev " aria-label="Previous page: 自适配区域"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch06/index.html" class="navigation navigation-next " aria-label="Next page: LOD与分辨率"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch05/05-01.html" class="navigation navigation-next " aria-label="Next page: 加载瓦片地图"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

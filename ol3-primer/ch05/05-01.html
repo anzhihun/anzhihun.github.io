@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>动态交换地图 | OpenLayers 3 Primer</title>
+        <title>加载瓦片地图 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -41,10 +41,10 @@
         
     
     
-    <link rel="next" href="../ch04/index.html" />
+    <link rel="next" href="../ch05/05-02.html" />
     
     
-    <link rel="prev" href="../ch03/03-08.html" />
+    <link rel="prev" href="../ch05/index.html" />
     
 
         
@@ -53,9 +53,9 @@
         
         
     <div class="book"
-        data-level="3.5.4"
-        data-chapter-title="动态交换地图"
-        data-filepath="ch03/03-09.md"
+        data-level="5.1"
+        data-chapter-title="加载瓦片地图"
+        data-filepath="ch05/05-01.md"
         data-basepath=".."
         data-revision="Fri Apr 15 2016 20:19:51 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -253,7 +253,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.5.4" data-path="ch03/03-09.html">
+        <li class="chapter " data-level="3.5.4" data-path="ch03/03-09.html">
             
                 
                     <a href="../ch03/03-09.html">
@@ -441,7 +441,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" data-path="ch05/05-01.html">
+        <li class="chapter active" data-level="5.1" data-path="ch05/05-01.html">
             
                 
                     <a href="../ch05/05-01.html">
@@ -853,89 +853,8 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x52A8;&#x6001;&#x4EA4;&#x6362;&#x5730;&#x56FE;">&#x52A8;&#x6001;&#x4EA4;&#x6362;&#x5730;&#x56FE;</h1>
-<p>&#x5728;&#x521B;&#x5EFA;&#x5730;&#x56FE;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x56FE;&#x5BB9;&#x5668;&#xFF0C;&#x5176;&#x5B9E;&#x5728;&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x5730;&#x56FE;&#x5BB9;&#x5668;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x8BA9;&#x5730;&#x56FE;&#x4E0D;&#x65AD;&#x7684;&#x53D8;&#x6362;&#x4F4D;&#x7F6E;&#xFF0C;&#x6BD4;&#x5982;&#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x5730;&#x56FE;&#xFF1A;</p>
-<head>                  
-    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
-</head>
-
-<p></p><p>&#x5730;&#x56FE;1</p><p></p>
-<p><div id="map1" style="width: 100%"></div></p>
-<p></p><p>&#x5730;&#x56FE;2</p><p></p>
-<p><div id="map2" style="width: 100%"></div></p>
-<p><input type="button" onClick="swapMap();" value="&#x8C03;&#x6362;&#x5730;&#x56FE;"></p>
-<script>
-    // 创建第一个地图
-  var map1 = new ol.Map({
-        layers: [
-            new ol.layer.Tile({source: new ol.source.OSM()})
-        ],
-        view: new ol.View({
-            center: [0, 0],
-            zoom: 2
-        }),
-        target: 'map1'
-  });
-
-    // 创建第二个地图
-    var map2 = new ol.Map({
-        layers: [
-            new ol.layer.Tile({source: new ol.source.OSM()})
-        ],
-        view: new ol.View({
-            center: [0, 0],
-            zoom: 2
-        }),
-        target: 'map2'
-  });
-
-    function swapMap() {
-        // 改变两个地图的容器
-        map1.setTarget('map2');
-        map2.setTarget('map1');
-    }
-</script>
-
-<p>&#x4E3A;&#x4E86;&#x8BA9;&#x4E24;&#x4E2A;&#x5730;&#x56FE;&#x6709;&#x6240;&#x5DEE;&#x522B;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5148;&#x653E;&#x5927;&#x7B2C;&#x4E00;&#x4E2A;&#x5730;&#x56FE;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;<strong>&#x8C03;&#x6362;&#x5730;&#x56FE;</strong>&#x6309;&#x94AE;&#xFF0C;&#x770B;&#x4E00;&#x4E0B;&#x6548;&#x679C;&#x3002;&#x8981;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x5176;&#x5B9E;&#x53EA;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>setTarget</code>&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>&#x5730;&#x56FE;1<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map1&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>&#x5730;&#x56FE;2<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map2&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;button&quot;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">&quot;swapMap();&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&#x8C03;&#x6362;&#x5730;&#x56FE;&quot;</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
-    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x7B2C;&#x4E00;&#x4E2A;&#x5730;&#x56FE;</span>
-  <span class="hljs-keyword">var</span> map1 = <span class="hljs-keyword">new</span> ol.Map({
-        layers: [
-            <span class="hljs-keyword">new</span> ol.layer.Tile({source: <span class="hljs-keyword">new</span> ol.source.OSM()})
-        ],
-        view: <span class="hljs-keyword">new</span> ol.View({
-            center: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
-            zoom: <span class="hljs-number">2</span>
-        }),
-        target: <span class="hljs-string">&apos;map1&apos;</span>
-  });
-
-    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x7B2C;&#x4E8C;&#x4E2A;&#x5730;&#x56FE;</span>
-    <span class="hljs-keyword">var</span> map2 = <span class="hljs-keyword">new</span> ol.Map({
-        layers: [
-            <span class="hljs-keyword">new</span> ol.layer.Tile({source: <span class="hljs-keyword">new</span> ol.source.OSM()})
-        ],
-        view: <span class="hljs-keyword">new</span> ol.View({
-            center: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
-            zoom: <span class="hljs-number">2</span>
-        }),
-        target: <span class="hljs-string">&apos;map2&apos;</span>
-  });
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swapMap</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-comment">// &#x6539;&#x53D8;&#x4E24;&#x4E2A;&#x5730;&#x56FE;&#x7684;&#x5BB9;&#x5668;</span>
-        map1.setTarget(<span class="hljs-string">&apos;map2&apos;</span>);
-        map2.setTarget(<span class="hljs-string">&apos;map1&apos;</span>);
-    }
-</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-</code></pre>
-<p>&#x5176;&#x5B9E;&#x5F88;&#x591A;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x591A;&#x7559;&#x610F;&#x4E00;&#x4E0B;API&#x6587;&#x6863;&#x91CC;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E86;&#x89E3;&#x529F;&#x80FD;&#xFF0C;&#x5C31;&#x53EF;&#x80FD;&#x5B9E;&#x73B0;&#x610F;&#x60F3;&#x4E0D;&#x5230;&#x6548;&#x679C;&#x3002;</p>
+                        <h1 id="&#x52A0;&#x8F7D;&#x74E6;&#x7247;&#x5730;&#x56FE;">&#x52A0;&#x8F7D;&#x74E6;&#x7247;&#x5730;&#x56FE;</h1>
+<p>&#x74E6;&#x7247;&#x5730;&#x56FE;&#x6E90;&#x4E8E;&#x4E00;&#x79CD;&#x5927;&#x5730;&#x56FE;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x9488;&#x5BF9;&#x4E00;&#x6574;&#x5757;&#x975E;&#x5E38;&#x5927;&#x7684;&#x5730;&#x56FE;&#x8FDB;&#x884C;&#x5207;&#x7247;&#xFF0C;&#x5206;&#x6210;&#x5F88;&#x591A;&#x76F8;&#x540C;&#x5927;&#x5C0F;&#x7684;&#x5C0F;&#x5757;&#x5730;&#x56FE;&#xFF0C;&#x5728;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x518D;&#x4E00;&#x5757;&#x4E00;&#x5757;&#x5C0F;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#xFF0C;&#x62FC;&#x63A5;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x4ECE;&#x800C;&#x8FD8;&#x539F;&#x6210;&#x4E00;&#x6574;&#x5757;&#x5927;&#x7684;&#x5730;&#x56FE;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x4F18;&#x70B9;&#x5728;&#x4E8E;&#xFF0C;&#x7528;&#x6237;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x95F4;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x53EF;&#x89C1;&#x89C6;&#x56FE;&#x5185;&#xFF0C;&#x53EA;&#x80FD;&#x770B;&#x5230;&#x5730;&#x56FE;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5168;&#x90E8;&#x3002;&#x5982;&#x679C;&#x4E00;&#x6B21;&#x52A0;&#x8F7D;&#x6574;&#x4E2A;&#x5927;&#x5730;&#x56FE;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x52A0;&#x8F7D;&#x5F88;&#x6162;&#xFF0C;&#x4E14;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;&#x8FD9;&#x5BF9;&#x4E8E;&#x5728;&#x7EBF;&#x670D;&#x52A1;&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x975E;&#x5E38;&#x81F4;&#x547D;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x5728;&#x7EBF;&#x7F51;&#x9875;&#x5730;&#x56FE;&#x670D;&#x52A1;&#xFF0C;&#x90FD;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x3002;&#x81EA;&#x7136;&#x52A0;&#x8F7D;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x6210;&#x4E86;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E5F;&#x662F;&#x5FC5;&#x987B;&#x8981;&#x638C;&#x63E1;&#x7684;&#xFF0C;&#x4E3A;&#x6B64;&#x672C;&#x8282;&#x5C06;&#x91CD;&#x70B9;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x9009;&#x62E9;&#x548C;&#x52A0;&#x8F7D;&#x74E6;&#x7247;&#x5730;&#x56FE;&#xFF0C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#xFF0C;&#x90FD;&#x4F1A;&#x7ED3;&#x5408;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x4F8B;&#x6765;&#x8BB2;&#x89E3;&#x3002;</p>
 
                     
                     </section>
@@ -946,10 +865,10 @@
         </div>
 
         
-        <a href="../ch03/03-08.html" class="navigation navigation-prev " aria-label="Previous page: 地图联动"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch05/index.html" class="navigation navigation-prev " aria-label="Previous page: Source和Layer"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch04/index.html" class="navigation navigation-next " aria-label="Next page: View"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch05/05-02.html" class="navigation navigation-next " aria-label="Next page: 最简单的加载在线地图"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
