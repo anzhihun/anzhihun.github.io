@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>限制地图缩放级别 | OpenLayers 3 Primer</title>
+        <title>另类设置svg图标 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -45,10 +45,10 @@
         
     
     
-    <link rel="next" href="../ch04/04-08.html" />
+    <link rel="next" href="../ch08/index.html" />
     
     
-    <link rel="prev" href="../ch04/04-06.html" />
+    <link rel="prev" href="../ch07/07-03-02.html" />
     
 
         
@@ -57,9 +57,9 @@
         
         
     <div class="book"
-        data-level="4.5.2"
-        data-chapter-title="限制地图缩放级别"
-        data-filepath="ch04/04-07.md"
+        data-level="7.3.3"
+        data-chapter-title="另类设置svg图标"
+        data-filepath="ch07/07-03-03.md"
         data-basepath=".."
         data-revision="Thu Apr 21 2016 18:12:00 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -389,7 +389,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.5.2" data-path="ch04/04-07.html">
+        <li class="chapter " data-level="4.5.2" data-path="ch04/04-07.html">
             
                 
                     <a href="../ch04/04-07.html">
@@ -709,7 +709,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3.3" data-path="ch07/07-03-03.html">
+        <li class="chapter active" data-level="7.3.3" data-path="ch07/07-03-03.html">
             
                 
                     <a href="../ch07/07-03-03.html">
@@ -986,54 +986,100 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x9650;&#x5236;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x7EA7;&#x522B;">&#x9650;&#x5236;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x7EA7;&#x522B;</h1>
-<p>&#x6709;&#x65F6;&#x65E0;&#x9650;&#x5236;&#x5730;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x7F29;&#x5C0F;&#x6216;&#x8005;&#x653E;&#x5927;&#x5730;&#x56FE;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x660E;&#x667A;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x5728;&#x5730;&#x56FE;&#x4E0A;&#x7684;<code>feature</code>&#x3001;&#x6807;&#x6CE8;&#x3001;&#x56FE;&#x5F62;&#x7B49;&#x90FD;&#x4F1A;&#x53D8;&#x7684;&#x4E0D;&#x4FBF;&#x4E8E;&#x67E5;&#x770B;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x9002;&#x4E2D;&#x7684;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x7EA7;&#x522B;&#x662F;&#x88AB;&#x5927;&#x591A;&#x6570;&#x573A;&#x666F;&#x6240;&#x9700;&#x8981;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x6F14;&#x793A;&#x5730;&#x56FE;&#x4F60;&#x53EA;&#x80FD;&#x5728;10&#x5230;14&#x7EA7;&#x8FDB;&#x884C;&#x7F29;&#x653E;&#x3002;</p>
+                        <h1 id="&#x53E6;&#x7C7B;&#x8BBE;&#x7F6E;svg&#x56FE;&#x6807;">&#x53E6;&#x7C7B;&#x8BBE;&#x7F6E;svg&#x56FE;&#x6807;</h1>
+<p>&#x56FE;&#x6807;&#x9664;&#x4E86;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBE;&#x7F6E;png&#x7684;&#x6587;&#x4EF6;url&#x4E4B;&#x5916;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;svg&#x7684;&#x6587;&#x4EF6;url&#xFF0C;&#x4F46;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x552F;&#x4E00;&#x7684;&#x52A0;&#x8F7D;svg&#x56FE;&#x6807;&#x7684;&#x65B9;&#x5F0F;&#x3002; OpenLayers 3&#x63D0;&#x4F9B;&#x4E86;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x56FE;&#x50CF;&#x5BF9;&#x8C61;&#x6765;&#x8BBE;&#x7F6E;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5BF9;&#x5E94;&#x4E8E;<code>ol.style.Icon</code>&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x7684;<code>img</code>&#x53C2;&#x6570;&#x3002; &#x5982;&#x4E0B;&#xFF1A;</p>
 <p><head>                  
     <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
 </head></p>
 <p><div id="map" style="width: 100%"></div></p>
-<script>
-  new ol.Map({
-        layers: [
-            new ol.layer.Tile({source: new ol.source.OSM()})
-        ],
-        view: new ol.View({
-            // 设置成都为地图中心
-            center: [104.06, 30.67],
-            projection: 'EPSG:4326',
-            zoom: 10,
-            minZoom: 10,
-            maxZoom: 14
-        }),
-        target: 'map'
+<script type="text/javascript">
+  var layer = new ol.layer.Vector({
+    source: new ol.source.Vector()
+  })
+  var map = new ol.Map({
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      }), 
+      layer
+    ],
+    target: 'map',
+    view: new ol.View({
+      projection: 'EPSG:4326',
+      center: [104, 30],
+      zoom: 10
+    })
   });
+
+  var anchor = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+
+  // 构建svg的Image对象
+  var svg = '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">'+    
+'<path fill="#156BB1" d="M22.906,10.438c0,4.367-6.281,14.312-7.906,17.031c-1.719-2.75-7.906-12.665-7.906-17.031S10.634,2.531,15,2.531S22.906,6.071,22.906,10.438z"/>'+
+'<circle fill="#FFFFFF" cx="15" cy="10.677" r="3.291"/></svg>';
+
+    var mysvg = new Image();
+    mysvg.src = 'data:image/svg+xml,' + escape(svg);
+
+  anchor.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      img: mysvg,    // 设置Image对象
+      imgSize: [30, 30]    // 及图标大小
+//          src: 'http://www.williambuck.com/portals/0/Skins/WilliamBuck2014/images/location-icon.svg',
+//          size: [30, 30]
+    })
+  }));
+  layer.getSource().addFeature(anchor);
 </script>
 
-<p>&#x7F29;&#x653E;&#x8BD5;&#x8BD5;&#x4FBF;&#x77E5;&#xFF0C;&#x5730;&#x56FE;&#x73B0;&#x5728;&#x4E0D;&#x80FD;&#x65E0;&#x9650;&#x7F29;&#x5C0F;&#x653E;&#x5927;&#x4E86;&#xFF0C;&#x4EE3;&#x7801;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x7684;&#x7B80;&#x5355;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
-      <span class="hljs-keyword">new</span> ol.Map({
-            layers: [
-                <span class="hljs-keyword">new</span> ol.layer.Tile({source: <span class="hljs-keyword">new</span> ol.source.OSM()})
-            ],
-            view: <span class="hljs-keyword">new</span> ol.View({
-                <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6210;&#x90FD;&#x4E3A;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;</span>
-                center: [<span class="hljs-number">104.06</span>, <span class="hljs-number">30.67</span>],
-                projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
-                zoom: <span class="hljs-number">10</span>,
-                <span class="hljs-comment">// &#x9650;&#x5236;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x6700;&#x5927;&#x7EA7;&#x522B;&#x4E3A;14&#xFF0C;&#x6700;&#x5C0F;&#x7EA7;&#x522B;&#x4E3A;10</span>
-                minZoom: <span class="hljs-number">10</span>,
-                maxZoom: <span class="hljs-number">14</span>
-            }),
-            target: <span class="hljs-string">&apos;map&apos;</span>
-      });
-    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<p>&#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">var</span> layer = <span class="hljs-keyword">new</span> ol.layer.Vector({
+    source: <span class="hljs-keyword">new</span> ol.source.Vector()
+  })
+  <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+    layers: [
+      <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: <span class="hljs-keyword">new</span> ol.source.OSM()
+      }), 
+      layer
+    ],
+    target: <span class="hljs-string">&apos;map&apos;</span>,
+    view: <span class="hljs-keyword">new</span> ol.View({
+      projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+      center: [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>],
+      zoom: <span class="hljs-number">10</span>
+    })
+  });
+
+  <span class="hljs-keyword">var</span> anchor = <span class="hljs-keyword">new</span> ol.Feature({
+    geometry: <span class="hljs-keyword">new</span> ol.geom.Point([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>])
+  });
+
+  <span class="hljs-comment">// &#x6784;&#x5EFA;svg&#x7684;Image&#x5BF9;&#x8C61;</span>
+  <span class="hljs-keyword">var</span> svg = <span class="hljs-string">&apos;&lt;svg version=&quot;1.1&quot; id=&quot;Layer_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot; width=&quot;30px&quot; height=&quot;30px&quot; viewBox=&quot;0 0 30 30&quot; enable-background=&quot;new 0 0 30 30&quot; xml:space=&quot;preserve&quot;&gt;&apos;</span>+    
+<span class="hljs-string">&apos;&lt;path fill=&quot;#156BB1&quot; d=&quot;M22.906,10.438c0,4.367-6.281,14.312-7.906,17.031c-1.719-2.75-7.906-12.665-7.906-17.031S10.634,2.531,15,2.531S22.906,6.071,22.906,10.438z&quot;/&gt;&apos;</span>+
+<span class="hljs-string">&apos;&lt;circle fill=&quot;#FFFFFF&quot; cx=&quot;15&quot; cy=&quot;10.677&quot; r=&quot;3.291&quot;/&gt;&lt;/svg&gt;&apos;</span>;
+
+    <span class="hljs-keyword">var</span> mysvg = <span class="hljs-keyword">new</span> Image();
+    mysvg.src = <span class="hljs-string">&apos;data:image/svg+xml,&apos;</span> + <span class="hljs-built_in">escape</span>(svg);
+
+  anchor.setStyle(<span class="hljs-keyword">new</span> ol.style.Style({
+    image: <span class="hljs-keyword">new</span> ol.style.Icon({
+      img: mysvg,    <span class="hljs-comment">// &#x8BBE;&#x7F6E;Image&#x5BF9;&#x8C61;</span>
+      imgSize: [<span class="hljs-number">30</span>, <span class="hljs-number">30</span>]    <span class="hljs-comment">// &#x53CA;&#x56FE;&#x6807;&#x5927;&#x5C0F;</span>
+<span class="hljs-comment">//          src: &apos;http://www.williambuck.com/portals/0/Skins/WilliamBuck2014/images/location-icon.svg&apos;,</span>
+<span class="hljs-comment">//          size: [30, 30]</span>
+    })
+  }));
+  layer.getSource().addFeature(anchor);
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
-<p>&#x5F88;&#x591A;&#x521D;&#x5B66;&#x8005;&#x95EE;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5176;&#x5B9E;&#x4ED4;&#x7EC6;&#x9605;&#x8BFB;&#x4E00;&#x4E0B;API&#x6587;&#x6863;&#x5C31;&#x4F1A;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x7F16;&#x7801;&#xFF0C;&#x4EE5;&#x81F3;&#x4E8E;&#x5F88;&#x591A;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x7684;&#x5176;&#x4ED6;&#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x613F;&#x610F;&#x56DE;&#x7B54;&#x8FD9;&#x4E48;&#x57FA;&#x7840;&#x7684;&#x529F;&#x80FD;&#x3002;&#x5982;&#x679C;&#x53EA;&#x662F;&#x663E;&#x793A;&#x6700;&#x5C0F;&#x7EA7;&#x522B;&#x5219;&#x53EA;&#x7528;&#x8BBE;&#x7F6E;<code>minZoom</code>&#x7684;&#x503C;&#x5373;&#x53EF;&#xFF0C;&#x53CD;&#x4E4B;&#x53EA;&#x8BBE;&#x7F6E;<code>maxZoom</code>&#x7684;&#x503C;&#x3002;</p>
-<p>&#x9664;&#x4E86;&#x4F7F;&#x7528;<code>minZoom</code>&#x548C;<code>maxZoom</code>&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>minResolution</code>&#x548C;<code>maxResolution</code>&#xFF0C;&#x5176;&#x5177;&#x4F53;&#x539F;&#x7406;&#x548C;&#x4F7F;&#x7528;&#xFF0C;&#x5728;&#x5206;&#x8FA8;&#x7387;&#x5C0F;&#x8282;&#x4F1A;&#x6709;&#x4ECB;&#x7ECD;&#x3002;&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x8005;&#x800C;&#x8A00;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;<code>minZoom</code>&#x548C;<code>maxZoom</code>&#xFF0C;&#x7B80;&#x5355;&#x76F4;&#x63A5;&#x3002;</p>
+<p>&#x524D;&#x534A;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x90FD;&#x4E00;&#x6837;&#xFF0C;&#x6700;&#x540E;&#x8BBE;&#x7F6E;&#x6837;&#x5F0F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x6CE8;&#x91CA;&#x6765;&#x7406;&#x89E3;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6784;&#x5EFA;<code>Image</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BBE;&#x7F6E;<code>src</code>&#x662F;&#x5173;&#x952E;&#x3002;</p>
 
                     
                     </section>
@@ -1044,10 +1090,10 @@
         </div>
 
         
-        <a href="../ch04/04-06.html" class="navigation navigation-prev " aria-label="Previous page: 限制地图范围"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch07/07-03-02.html" class="navigation navigation-prev " aria-label="Previous page: 根据层级放大缩小图标"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch04/04-08.html" class="navigation navigation-next " aria-label="Next page: 自适配区域"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch08/index.html" class="navigation navigation-next " aria-label="Next page: 事件"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

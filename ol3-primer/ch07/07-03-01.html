@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>限制地图缩放级别 | OpenLayers 3 Primer</title>
+        <title>设置图标位置 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -45,10 +45,10 @@
         
     
     
-    <link rel="next" href="../ch04/04-08.html" />
+    <link rel="next" href="../ch07/07-03-02.html" />
     
     
-    <link rel="prev" href="../ch04/04-06.html" />
+    <link rel="prev" href="../ch07/07-03.html" />
     
 
         
@@ -57,9 +57,9 @@
         
         
     <div class="book"
-        data-level="4.5.2"
-        data-chapter-title="限制地图缩放级别"
-        data-filepath="ch04/04-07.md"
+        data-level="7.3.1"
+        data-chapter-title="设置图标位置"
+        data-filepath="ch07/07-03-01.md"
         data-basepath=".."
         data-revision="Thu Apr 21 2016 18:12:00 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -389,7 +389,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.5.2" data-path="ch04/04-07.html">
+        <li class="chapter " data-level="4.5.2" data-path="ch04/04-07.html">
             
                 
                     <a href="../ch04/04-07.html">
@@ -679,7 +679,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="7.3.1" data-path="ch07/07-03-01.html">
+        <li class="chapter active" data-level="7.3.1" data-path="ch07/07-03-01.html">
             
                 
                     <a href="../ch07/07-03-01.html">
@@ -986,54 +986,112 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x9650;&#x5236;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x7EA7;&#x522B;">&#x9650;&#x5236;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x7EA7;&#x522B;</h1>
-<p>&#x6709;&#x65F6;&#x65E0;&#x9650;&#x5236;&#x5730;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x7F29;&#x5C0F;&#x6216;&#x8005;&#x653E;&#x5927;&#x5730;&#x56FE;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x660E;&#x667A;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x5728;&#x5730;&#x56FE;&#x4E0A;&#x7684;<code>feature</code>&#x3001;&#x6807;&#x6CE8;&#x3001;&#x56FE;&#x5F62;&#x7B49;&#x90FD;&#x4F1A;&#x53D8;&#x7684;&#x4E0D;&#x4FBF;&#x4E8E;&#x67E5;&#x770B;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x9002;&#x4E2D;&#x7684;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x7EA7;&#x522B;&#x662F;&#x88AB;&#x5927;&#x591A;&#x6570;&#x573A;&#x666F;&#x6240;&#x9700;&#x8981;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x6F14;&#x793A;&#x5730;&#x56FE;&#x4F60;&#x53EA;&#x80FD;&#x5728;10&#x5230;14&#x7EA7;&#x8FDB;&#x884C;&#x7F29;&#x653E;&#x3002;</p>
+                        <h1 id="&#x8BBE;&#x7F6E;&#x56FE;&#x6807;&#x4F4D;&#x7F6E;">&#x8BBE;&#x7F6E;&#x56FE;&#x6807;&#x4F4D;&#x7F6E;</h1>
+<p>&#x5982;&#x679C;&#x50CF;&#x4E4B;&#x524D;&#x90A3;&#x6837;&#x8BBE;&#x7F6E;&#x56FE;&#x6807;&#xFF0C;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#x8BBE;&#x7F6E;&#xFF0C;&#x90A3;&#x4E48;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x56FE;&#x6807;&#x7684;&#x4E2D;&#x5FC3;&#x70B9;&#x5BF9;&#x5E94;&#x4E8E;&#x5730;&#x56FE;&#x4F4D;&#x7F6E;&#x3002;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x5730;&#x56FE;&#x663E;&#x793A;&#x4E86;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E2D;&#x5FC3;&#x90A3;&#x4E2A;&#x7EA2;&#x70B9;&#x6240;&#x5904;&#x4F4D;&#x7F6E;&#x5C31;&#x662F;[104, 30]&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x4E2A;&#x70B9;&#x5BF9;&#x5E94;&#x4E8E;&#x56FE;&#x6807;&#x7684;&#x4E2D;&#x5FC3;&#x4F4D;&#x7F6E;&#xFF1A; </p>
 <p><head>                  
     <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
 </head></p>
-<p><div id="map" style="width: 100%"></div></p>
-<script>
-  new ol.Map({
-        layers: [
-            new ol.layer.Tile({source: new ol.source.OSM()})
-        ],
-        view: new ol.View({
-            // 设置成都为地图中心
-            center: [104.06, 30.67],
-            projection: 'EPSG:4326',
-            zoom: 10,
-            minZoom: 10,
-            maxZoom: 14
-        }),
-        target: 'map'
+<p><div id="map2" style="width: 100%"></div></p>
+<script type="text/javascript">
+  var layer2 = new ol.layer.Vector({
+    source: new ol.source.Vector()
+  })
+  var map2 = new ol.Map({
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      }), 
+      layer2
+    ],
+    target: 'map2',
+    view: new ol.View({
+      projection: 'EPSG:4326',
+      center: [104, 30],
+      zoom: 10
+    })
   });
+
+  var anchor2 = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+  anchor2.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '../img/anchor.png'
+    })
+  }));
+  layer2.getSource().addFeature(anchor2);
+
+  var refFeature = new ol.Feature({
+      geometry: new ol.geom.Point([104, 30])
+  })
+  refFeature.setStyle(new ol.style.Style({
+      image: new ol.style.Circle({
+          radius: 2,
+          fill: new ol.style.Fill({
+              color: 'red'
+          })
+      })
+  }));
+
+  layer2.getSource().addFeature(refFeature);
 </script>
 
-<p>&#x7F29;&#x653E;&#x8BD5;&#x8BD5;&#x4FBF;&#x77E5;&#xFF0C;&#x5730;&#x56FE;&#x73B0;&#x5728;&#x4E0D;&#x80FD;&#x65E0;&#x9650;&#x7F29;&#x5C0F;&#x653E;&#x5927;&#x4E86;&#xFF0C;&#x4EE3;&#x7801;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x7684;&#x7B80;&#x5355;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
-      <span class="hljs-keyword">new</span> ol.Map({
-            layers: [
-                <span class="hljs-keyword">new</span> ol.layer.Tile({source: <span class="hljs-keyword">new</span> ol.source.OSM()})
-            ],
-            view: <span class="hljs-keyword">new</span> ol.View({
-                <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6210;&#x90FD;&#x4E3A;&#x5730;&#x56FE;&#x4E2D;&#x5FC3;</span>
-                center: [<span class="hljs-number">104.06</span>, <span class="hljs-number">30.67</span>],
-                projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
-                zoom: <span class="hljs-number">10</span>,
-                <span class="hljs-comment">// &#x9650;&#x5236;&#x5730;&#x56FE;&#x7F29;&#x653E;&#x6700;&#x5927;&#x7EA7;&#x522B;&#x4E3A;14&#xFF0C;&#x6700;&#x5C0F;&#x7EA7;&#x522B;&#x4E3A;10</span>
-                minZoom: <span class="hljs-number">10</span>,
-                maxZoom: <span class="hljs-number">14</span>
-            }),
-            target: <span class="hljs-string">&apos;map&apos;</span>
-      });
-    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<p>&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x60F3;&#x8FD9;&#x6837;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x951A;&#x70B9;&#x56FE;&#x6807;&#x4E0B;&#x65B9;&#x7684;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x5730;&#x56FE;&#x4F4D;&#x7F6E;&#x3002; &#x6BD4;&#x5982;&#x8FD9;&#x6837;&#xFF1A;</p>
+<p><div id="map3" style="width: 100%"></div></p>
+<script type="text/javascript">
+  var layer3 = new ol.layer.Vector({
+    source: new ol.source.Vector()
+  })
+  var map3 = new ol.Map({
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      }), 
+      layer3
+    ],
+    target: 'map3',
+    view: new ol.View({
+      projection: 'EPSG:4326',
+      center: [104, 30],
+      zoom: 10
+    })
+  });
+
+  var anchor3 = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+  anchor3.setStyle(new ol.style.Style({
+    image: new ol.style.Icon({
+      src: '../img/anchor.png',
+      anchor: [0.5, 1]
+    })
+  }));
+  layer3.getSource().addFeature(anchor3);
+
+  var refFeature3 = new ol.Feature({
+      geometry: new ol.geom.Point([104, 30])
+  })
+  refFeature3.setStyle(new ol.style.Style({
+      image: new ol.style.Circle({
+          radius: 2,
+          fill: new ol.style.Fill({
+              color: 'red'
+          })
+      })
+  }));
+
+  layer3.getSource().addFeature(refFeature3);
+</script>
+
+<p>&#x8981;&#x505A;&#x5230;&#x8FD9;&#x4E2A;&#x6548;&#x679C;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x628A;&#x8BBE;&#x7F6E;&#x6837;&#x5F0F;&#x7684;&#x4EE3;&#x7801;&#x52A0;&#x4E0A;<code>anchor</code>&#x7684;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<pre><code class="lang-javascript">image: <span class="hljs-keyword">new</span> ol.style.Icon({
+  src: <span class="hljs-string">&apos;../img/anchor.png&apos;</span>,
+  anchor: [<span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>]    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x56FE;&#x6807;&#x4F4D;&#x7F6E;</span>
+})
 </code></pre>
-<p>&#x5F88;&#x591A;&#x521D;&#x5B66;&#x8005;&#x95EE;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5176;&#x5B9E;&#x4ED4;&#x7EC6;&#x9605;&#x8BFB;&#x4E00;&#x4E0B;API&#x6587;&#x6863;&#x5C31;&#x4F1A;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x7F16;&#x7801;&#xFF0C;&#x4EE5;&#x81F3;&#x4E8E;&#x5F88;&#x591A;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x7684;&#x5176;&#x4ED6;&#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x613F;&#x610F;&#x56DE;&#x7B54;&#x8FD9;&#x4E48;&#x57FA;&#x7840;&#x7684;&#x529F;&#x80FD;&#x3002;&#x5982;&#x679C;&#x53EA;&#x662F;&#x663E;&#x793A;&#x6700;&#x5C0F;&#x7EA7;&#x522B;&#x5219;&#x53EA;&#x7528;&#x8BBE;&#x7F6E;<code>minZoom</code>&#x7684;&#x503C;&#x5373;&#x53EF;&#xFF0C;&#x53CD;&#x4E4B;&#x53EA;&#x8BBE;&#x7F6E;<code>maxZoom</code>&#x7684;&#x503C;&#x3002;</p>
-<p>&#x9664;&#x4E86;&#x4F7F;&#x7528;<code>minZoom</code>&#x548C;<code>maxZoom</code>&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>minResolution</code>&#x548C;<code>maxResolution</code>&#xFF0C;&#x5176;&#x5177;&#x4F53;&#x539F;&#x7406;&#x548C;&#x4F7F;&#x7528;&#xFF0C;&#x5728;&#x5206;&#x8FA8;&#x7387;&#x5C0F;&#x8282;&#x4F1A;&#x6709;&#x4ECB;&#x7ECD;&#x3002;&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x8005;&#x800C;&#x8A00;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;<code>minZoom</code>&#x548C;<code>maxZoom</code>&#xFF0C;&#x7B80;&#x5355;&#x76F4;&#x63A5;&#x3002;</p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x662F;[0.5, 1]&#x8FD9;&#x79CD;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4EC0;&#x4E48;&#xFF1F; &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F4D;&#x7F6E;&#x5750;&#x6807;&#x662F;&#x6309;&#x7167;&#x6BD4;&#x4F8B;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x8303;&#x56F4;&#x4ECE;0&#x5230;1&#xFF0C;x&#x8F74;&#x4E0A;0&#x8868;&#x793A;&#x6700;&#x5DE6;&#x8FB9;&#xFF0C;1&#x8868;&#x793A;&#x6700;&#x53F3;&#x8FB9;&#xFF0C;y&#x8F74;&#x4E0A;0&#x8868;&#x793A;&#x6700;&#x4E0A;&#x8FB9;&#xFF0C;1&#x8868;&#x793A;&#x6700;&#x4E0B;&#x8FB9;&#x3002; &#x5982;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF0C;x&#x8BBE;&#x7F6E;&#x4E3A;0.5&#x53EF;&#x4EE5;&#x8BA9;&#x56FE;&#x7247;&#x5728;x&#x65B9;&#x5411;&#x4E0A;&#x5C45;&#x4E2D;&#xFF0C;y&#x8BBE;&#x7F6E;&#x4E3A;1&#x53EF;&#x4EE5;&#x8BA9;&#x56FE;&#x7247;&#x5728;y&#x65B9;&#x5411;&#x4E0A;&#x79FB;&#x52A8;&#x5230;&#x6700;&#x5E95;&#x7AEF;&#x3002; &#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x7ED9;&#x4E88;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#xFF0C;&#x8BD5;&#x8BD5;[0, 0]&#x4F1A;&#x8BA9;&#x56FE;&#x6807;&#x5904;&#x4E8E;&#x4EC0;&#x4E48;&#x4F4D;&#x7F6E;&#xFF1F;</p>
+<p>&#x9664;&#x4E86;&#x6309;&#x7167;&#x6BD4;&#x4F8B;&#x8FDB;&#x884C;&#x79FB;&#x52A8;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x50CF;&#x7D20;&#x6765;&#x8BA1;&#x7B97;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F46;&#x5FC5;&#x987B;&#x663E;&#x793A;&#x8BBE;&#x7F6E;<code>anchorXUnits</code>&#x6216;    <code>anchorYUnits</code>&#x4E3A;<code>pixels</code>&#x3002; &#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x9700;&#x8981;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x5355;&#x4F4D;&#x6765;&#x8BBE;&#x7F6E;&#x3002;</p>
 
                     
                     </section>
@@ -1044,10 +1102,10 @@
         </div>
 
         
-        <a href="../ch04/04-06.html" class="navigation navigation-prev " aria-label="Previous page: 限制地图范围"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch07/07-03.html" class="navigation navigation-prev " aria-label="Previous page: style及应用"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch04/04-08.html" class="navigation navigation-next " aria-label="Next page: 自适配区域"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch07/07-03-02.html" class="navigation navigation-next " aria-label="Next page: 根据层级放大缩小图标"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
