@@ -25,6 +25,10 @@
         
     
         
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
         <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
         
     
@@ -41,7 +45,7 @@
         
     
     
-    <link rel="next" href="../ch07/index.html" />
+    <link rel="next" href="../ch06/06-01.html" />
     
     
     <link rel="prev" href="../ch05/05-03.html" />
@@ -57,7 +61,7 @@
         data-chapter-title="LOD与分辨率"
         data-filepath="ch06/index.md"
         data-basepath=".."
-        data-revision="Fri Apr 15 2016 20:19:51 GMT+0800 (CST)"
+        data-revision="Thu Apr 21 2016 13:04:01 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -548,30 +552,62 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="6.1" >
+        <li class="chapter " data-level="6.1" data-path="ch06/06-01.html">
             
-            <span><b>6.1.</b> LOD原理</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.2" >
-            
-            <span><b>6.2.</b> 瓦片计算</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.3" >
-            
-            <span><b>6.3.</b> 分辨率</span>
+                
+                    <a href="../ch06/06-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        LOD原理
+                    </a>
             
             
         </li>
     
-        <li class="chapter " data-level="6.4" >
+        <li class="chapter " data-level="6.2" data-path="ch06/06-02.html">
             
-            <span><b>6.4.</b> 自定义瓦片地图及加载</span>
+                
+                    <a href="../ch06/06-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        瓦片计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="ch06/06-03.html">
+            
+                
+                    <a href="../ch06/06-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        分辨率
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="ch06/06-04.html">
+            
+                
+                    <a href="../ch06/06-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        自定义瓦片地图及加载
+                    </a>
             
             
         </li>
@@ -815,7 +851,15 @@
     
         <li class="chapter " data-level="12" data-path="ch12/index.html">
             
-            <span><b>12.</b> 常见问题</span>
+                
+                    <a href="../ch12/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        常见问题
+                    </a>
             
             
         </li>
@@ -854,6 +898,7 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="lod&#x4E0E;&#x5206;&#x8FA8;&#x7387;">LOD&#x4E0E;&#x5206;&#x8FA8;&#x7387;</h1>
+<p>LOD&#x662F;Levels of Detail&#x7684;&#x7B80;&#x5199;&#xFF0C;&#x7528;&#x4E8E;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x6E32;&#x67D3;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x7528;&#x4E8E;&#x964D;&#x4F4E;&#x975E;&#x91CD;&#x8981;&#x7684;&#x7EC6;&#x8282;&#x5EA6;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x9AD8;&#x6E32;&#x67D3;&#x6548;&#x7387;&#xFF0C;&#x5728;&#x7535;&#x5B50;&#x6E38;&#x620F;&#x4E2D;&#x7ECF;&#x5E38;&#x8FD0;&#x7528;&#xFF0C;&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x663E;&#x793A;&#x5168;&#x7403;&#x5730;&#x56FE;&#x7684;<code>GIS</code>&#x7CFB;&#x7EDF;&#x800C;&#x8A00;&#xFF0C;&#x66F4;&#x9700;&#x8981;&#x5E94;&#x7528;&#x8FD9;&#x9879;&#x6280;&#x672F;&#x3002;&#x5728;<a href="../ch05/05-03.html">&#x4E07;&#x80FD;&#x74E6;&#x7247;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x79D8;&#x7C4D;</a>&#x4E2D;&#xFF0C;&#x6709;&#x7B80;&#x5355;&#x7684;&#x8BF4;&#x660E;&#x3002; &#x5728;&#x4E0D;&#x540C;&#x7684;&#x7EC6;&#x8282;&#x5C42;&#x6B21;&#x4E0B;&#xFF0C;&#x81EA;&#x7136;&#x5206;&#x8FA8;&#x7387;&#x5C31;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x8FD9;&#x4E24;&#x8005;&#x662F;&#x7D27;&#x5BC6;&#x7ED3;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x7684;&#x3002; &#x5BF9;&#x4E8E;&#x56FE;&#x5F62;&#x663E;&#x793A;&#x7CFB;&#x7EDF;&#x800C;&#x8A00;&#xFF0C;&#x5206;&#x8FA8;&#x7387;&#x4F5C;&#x4E3A;&#x5C4F;&#x5E55;&#x5750;&#x6807;&#x548C;&#x4E16;&#x754C;&#x5750;&#x6807;&#x4E4B;&#x95F4;&#x8BA1;&#x7B97;&#x7684;&#x7EBD;&#x5E26;&#xFF0C;&#x5176;&#x4F5C;&#x7528;&#x662F;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x3002; &#x672C;&#x7AE0;&#x8282;&#x5C06;&#x4EE5;&#x5B9E;&#x4F8B;&#x7684;&#x65B9;&#x5F0F;&#x6DF1;&#x5165;&#x6D45;&#x51FA;&#x7684;&#x8BB2;&#x89E3;&#x8FD9;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x53CA;&#x5728;OpenLayers 3&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x3002;</p>
 
                     
                     </section>
@@ -867,7 +912,7 @@
         <a href="../ch05/05-03.html" class="navigation navigation-prev " aria-label="Previous page: 万能瓦片地图加载秘籍"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch07/index.html" class="navigation navigation-next " aria-label="Next page: 图标及提示信息"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch06/06-01.html" class="navigation navigation-next " aria-label="Next page: LOD原理"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -909,7 +954,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"katex":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>
