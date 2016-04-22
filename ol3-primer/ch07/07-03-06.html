@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>动画 | OpenLayers 3 Primer</title>
+        <title>动态改变图标 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -45,10 +45,10 @@
         
     
     
-    <link rel="next" href="../ch12/index.html" />
+    <link rel="next" href="../ch08/index.html" />
     
     
-    <link rel="prev" href="../ch10/index.html" />
+    <link rel="prev" href="../ch07/07-03-05.html" />
     
 
         
@@ -57,9 +57,9 @@
         
         
     <div class="book"
-        data-level="11"
-        data-chapter-title="动画"
-        data-filepath="ch11/index.md"
+        data-level="7.3.6"
+        data-chapter-title="动态改变图标"
+        data-filepath="ch07/07-03-06.md"
         data-basepath=".."
         data-revision="Fri Apr 22 2016 13:36:53 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -754,7 +754,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3.6" data-path="ch07/07-03-06.html">
+        <li class="chapter active" data-level="7.3.6" data-path="ch07/07-03-06.html">
             
                 
                     <a href="../ch07/07-03-06.html">
@@ -934,7 +934,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="11" data-path="ch11/index.html">
+        <li class="chapter " data-level="11" data-path="ch11/index.html">
             
                 
                     <a href="../ch11/index.html">
@@ -1024,7 +1024,134 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x52A8;&#x753B;">&#x52A8;&#x753B;</h1>
+                        <h1 id="&#x52A8;&#x6001;&#x6539;&#x53D8;&#x56FE;&#x6807;">&#x52A8;&#x6001;&#x6539;&#x53D8;&#x56FE;&#x6807;</h1>
+<p>&#x5728;&#x5B9E;&#x9645;&#x4E1A;&#x52A1;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x73AF;&#x5883;&#x6761;&#x4EF6;&#xFF0C;&#x52A8;&#x6001;&#x7684;&#x4FEE;&#x6539;&#x56FE;&#x6807;&#x6837;&#x5F0F;&#xFF0C;&#x4EE5;&#x53CD;&#x9988;&#x6570;&#x636E;&#x53D8;&#x5316;&#x3002; &#x6BD4;&#x5982;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF0C;&#x70B9;&#x51FB;&#x4E94;&#x661F;&#xFF0C;&#x4E94;&#x661F;&#x56FE;&#x6807;&#x4F1A;&#x7528;&#x7EA2;&#x8272;&#x586B;&#x5145;&#xFF1A;</p>
+<p><head>                  
+    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
+</head></p>
+<p><div id="map" style="width: 100%"></div></p>
+<script type="text/javascript">
+  var layer = new ol.layer.Vector({
+    source: new ol.source.Vector()
+  })
+  var map = new ol.Map({
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      }), 
+      layer
+    ],
+    target: 'map',
+    view: new ol.View({
+      projection: 'EPSG:4326',
+      center: [104, 30],
+      zoom: 10
+    })
+  });
+
+    var star = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+  star.setStyle(new ol.style.Style({
+    image: new ol.style.RegularShape({
+      points: 5,
+      radius1: 20,
+      radius2: 10,
+      stroke: new ol.style.Stroke({
+          color: 'red',
+          size: 2
+      })
+    })
+  }));
+
+  layer.getSource().addFeature(star);
+
+  map.on('click', function(event){
+      var feature = map.forEachFeatureAtPixel(event.pixel, function(feature){
+          return feature;
+      });
+      if (feature) {
+          var style = feature.getStyle().getImage();
+          feature.setStyle(new ol.style.Style({
+            image: new ol.style.RegularShape({
+              points: 5,
+                  radius1: 20,
+                  radius2: 10,
+                  stroke: style.getStroke(),
+                  fill: new ol.style.Fill({
+                      color: 'red'
+                  })
+            })
+          }));
+      }
+  });
+
+</script>
+
+<p>&#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="actionscript">
+  <span class="hljs-keyword">var</span> layer = <span class="hljs-keyword">new</span> ol.layer.Vector({
+    source: <span class="hljs-keyword">new</span> ol.source.Vector()
+  })
+  <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+    layers: [
+      <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: <span class="hljs-keyword">new</span> ol.source.OSM()
+      }), 
+      layer
+    ],
+    target: <span class="hljs-string">&apos;map&apos;</span>,
+    view: <span class="hljs-keyword">new</span> ol.View({
+      projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+      center: [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>],
+      zoom: <span class="hljs-number">10</span>
+    })
+  });
+
+  <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7A7A;&#x5FC3;&#x7684;&#x4E94;&#x661F;</span>
+    <span class="hljs-keyword">var</span> star = <span class="hljs-keyword">new</span> ol.Feature({
+    geometry: <span class="hljs-keyword">new</span> ol.geom.Point([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>])
+  });
+  star.setStyle(<span class="hljs-keyword">new</span> ol.style.Style({
+    image: <span class="hljs-keyword">new</span> ol.style.RegularShape({
+      points: <span class="hljs-number">5</span>,
+      radius1: <span class="hljs-number">20</span>,
+      radius2: <span class="hljs-number">10</span>,
+      stroke: <span class="hljs-keyword">new</span> ol.style.Stroke({
+          color: <span class="hljs-string">&apos;red&apos;</span>,
+          size: <span class="hljs-number">2</span>
+      })
+    })
+  }));
+
+  layer.getSource().addFeature(star);
+
+  <span class="hljs-comment">// &#x76D1;&#x542C;&#x5730;&#x56FE;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</span>
+  map.on(<span class="hljs-string">&apos;click&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span></span>{
+      <span class="hljs-keyword">var</span> feature = map.forEachFeatureAtPixel(event.pixel, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(feature)</span></span>{
+          <span class="hljs-keyword">return</span> feature;
+      });
+      <span class="hljs-keyword">if</span> (feature) {
+          <span class="hljs-comment">// &#x5C06;&#x7A7A;&#x5FC3;&#x4E94;&#x661F;&#x4E3A;&#x7EA2;&#x8272;&#x5B9E;&#x5FC3;&#x4E94;&#x661F;</span>
+          <span class="hljs-keyword">var</span> style = feature.getStyle().getImage();
+          feature.setStyle(<span class="hljs-keyword">new</span> ol.style.Style({
+            image: <span class="hljs-keyword">new</span> ol.style.RegularShape({
+              points: <span class="hljs-number">5</span>,
+                  radius1: <span class="hljs-number">20</span>,
+                  radius2: <span class="hljs-number">10</span>,
+                  stroke: style.getStroke(),
+                  fill: <span class="hljs-keyword">new</span> ol.style.Fill({
+                      color: <span class="hljs-string">&apos;red&apos;</span>
+                  })
+            })
+          }));
+      }
+  });
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
 
                     
                     </section>
@@ -1035,10 +1162,10 @@
         </div>
 
         
-        <a href="../ch10/index.html" class="navigation navigation-prev " aria-label="Previous page: Control"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch07/07-03-05.html" class="navigation navigation-prev " aria-label="Previous page: 用Canvas自绘图标"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch12/index.html" class="navigation navigation-next " aria-label="Next page: 常见问题"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch08/index.html" class="navigation navigation-next " aria-label="Next page: 事件"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

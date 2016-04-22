@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>动画 | OpenLayers 3 Primer</title>
+        <title>用Canvas自绘图标 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -45,10 +45,10 @@
         
     
     
-    <link rel="next" href="../ch12/index.html" />
+    <link rel="next" href="../ch07/07-03-06.html" />
     
     
-    <link rel="prev" href="../ch10/index.html" />
+    <link rel="prev" href="../ch07/07-03-04.html" />
     
 
         
@@ -57,9 +57,9 @@
         
         
     <div class="book"
-        data-level="11"
-        data-chapter-title="动画"
-        data-filepath="ch11/index.md"
+        data-level="7.3.5"
+        data-chapter-title="用Canvas自绘图标"
+        data-filepath="ch07/07-03-05.md"
         data-basepath=".."
         data-revision="Fri Apr 22 2016 13:36:53 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -739,7 +739,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3.5" data-path="ch07/07-03-05.html">
+        <li class="chapter active" data-level="7.3.5" data-path="ch07/07-03-05.html">
             
                 
                     <a href="../ch07/07-03-05.html">
@@ -934,7 +934,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="11" data-path="ch11/index.html">
+        <li class="chapter " data-level="11" data-path="ch11/index.html">
             
                 
                     <a href="../ch11/index.html">
@@ -1024,7 +1024,123 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x52A8;&#x753B;">&#x52A8;&#x753B;</h1>
+                        <h1 id="&#x7528;canvas&#x81EA;&#x7ED8;&#x56FE;&#x6807;">&#x7528;Canvas&#x81EA;&#x7ED8;&#x56FE;&#x6807;</h1>
+<p>&#x9664;&#x4E86;&#x89C4;&#x5219;&#x7684;&#x51E0;&#x4F55;&#x4F53;&#x4E4B;&#x5916;&#xFF0C;&#x5F80;&#x5F80;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x4E0D;&#x89C4;&#x5219;&#x7684;&#x51E0;&#x4F55;&#x4F53;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;svg&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;<code>canvas</code>&#x81EA;&#x5DF1;&#x6765;&#x7ED8;&#x5236;&#xFF0C;&#x6BD4;&#x5982;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x56FE;&#x6807;&#xFF1A;</p>
+<p><head>                  
+    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
+</head></p>
+<p><div id="map" style="width: 100%"></div></p>
+<script type="text/javascript">
+  var layer = new ol.layer.Vector({
+    source: new ol.source.Vector()
+  })
+  var map = new ol.Map({
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      }), 
+      layer
+    ],
+    target: 'map',
+    view: new ol.View({
+      projection: 'EPSG:4326',
+      center: [104, 30],
+      zoom: 10
+    })
+  });
+
+  // 使用canvas绘制一个不规则几何图形
+    var canvas =document.createElement('canvas');
+    canvas.width = 20;
+  canvas.height = 20;
+    var context = canvas.getContext("2d");
+    context.strokeStyle = "red";  
+  context.lineWidth = 1;  
+  context.beginPath();   
+  context.moveTo(0, 0);
+  context.lineTo(20, 10);
+  context.lineTo(0, 20);
+  context.lineTo(10, 10);
+  context.lineTo(0, 0);  
+  context.stroke();
+
+  // 把绘制了的canvas设置到style里面
+    var style = new ol.style.Style({
+        image: new ol.style.Icon({
+          img: canvas,
+          imgSize: [canvas.width, canvas.height],
+          rotation: 90 * Math.PI / 180
+        })
+    });
+
+    // 创建一个Feature
+  var shape = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+
+  // 应用具有不规则几何图形的样式到Feature
+  shape.setStyle(style);
+  layer.getSource().addFeature(shape);
+</script>
+
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">var</span> layer = <span class="hljs-keyword">new</span> ol.layer.Vector({
+    source: <span class="hljs-keyword">new</span> ol.source.Vector()
+  })
+  <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+    layers: [
+      <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: <span class="hljs-keyword">new</span> ol.source.OSM()
+      }), 
+      layer
+    ],
+    target: <span class="hljs-string">&apos;map&apos;</span>,
+    view: <span class="hljs-keyword">new</span> ol.View({
+      projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+      center: [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>],
+      zoom: <span class="hljs-number">10</span>
+    })
+  });
+
+  <span class="hljs-comment">// &#x4F7F;&#x7528;canvas&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x4E0D;&#x89C4;&#x5219;&#x51E0;&#x4F55;&#x56FE;&#x5F62;</span>
+    <span class="hljs-keyword">var</span> canvas =<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;canvas&apos;</span>);
+    canvas.width = <span class="hljs-number">20</span>;
+  canvas.height = <span class="hljs-number">20</span>;
+    <span class="hljs-keyword">var</span> context = canvas.getContext(<span class="hljs-string">&quot;2d&quot;</span>);
+    context.strokeStyle = <span class="hljs-string">&quot;red&quot;</span>;  
+  context.lineWidth = <span class="hljs-number">1</span>;  
+  context.beginPath();   
+  context.moveTo(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+  context.lineTo(<span class="hljs-number">20</span>, <span class="hljs-number">10</span>);
+  context.lineTo(<span class="hljs-number">0</span>, <span class="hljs-number">20</span>);
+  context.lineTo(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+  context.lineTo(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);  
+  context.stroke();
+
+  <span class="hljs-comment">// &#x628A;&#x7ED8;&#x5236;&#x4E86;&#x7684;canvas&#x8BBE;&#x7F6E;&#x5230;style&#x91CC;&#x9762;</span>
+    <span class="hljs-keyword">var</span> style = <span class="hljs-keyword">new</span> ol.style.Style({
+        image: <span class="hljs-keyword">new</span> ol.style.Icon({
+          img: canvas,
+          imgSize: [canvas.width, canvas.height],
+          rotation: <span class="hljs-number">90</span> * <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">180</span>
+        })
+    });
+
+    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;Feature</span>
+  <span class="hljs-keyword">var</span> shape = <span class="hljs-keyword">new</span> ol.Feature({
+    geometry: <span class="hljs-keyword">new</span> ol.geom.Point([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>])
+  });
+
+  <span class="hljs-comment">// &#x5E94;&#x7528;&#x5177;&#x6709;&#x4E0D;&#x89C4;&#x5219;&#x51E0;&#x4F55;&#x56FE;&#x5F62;&#x7684;&#x6837;&#x5F0F;&#x5230;Feature</span>
+  shape.setStyle(style);
+  layer.getSource().addFeature(shape);
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x548C;svg&#x7684;&#x90A3;&#x4E2A;&#x4F8B;&#x5B50;&#x4E00;&#x6837;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;<code>ol.style.Icon</code>&#x6837;&#x5F0F;&#x7684;<code>img</code>&#x5C5E;&#x6027;&#x6765;&#x8BBE;&#x7F6E;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5FC5;&#x987B;&#x8BBE;&#x7F6E;<code>imgSize</code>&#x5C5E;&#x6027;&#xFF0C;&#x56E0;&#x4E3A;&#x4EC5;&#x4EC5;&#x901A;&#x8FC7;<code>img</code>&#x8BBE;&#x7F6E;&#x7684;&#x56FE;&#x50CF;&#x5BF9;&#x8C61;&#xFF0C;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x5BBD;&#x9AD8;&#x3002; &#x540C;&#x65F6;&#xFF0C;&#x5B98;&#x7F51;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x7684;&#x4F8B;&#x5B50;<a href="http://openlayers.org/en/v3.15.1/examples/earthquake-custom-symbol.html" target="_blank">earthquake-custom-symbol</a>&#xFF0C;&#x53EA;&#x662F;&#x4F7F;&#x7528;OpenLayers3 &#x5185;&#x90E8;&#x63D0;&#x4F9B;&#x7684;&#x5C01;&#x88C5;&#x5E93;&#x6765;&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x5230;<code>canvas</code>&#x4E0A;&#xFF0C;&#x539F;&#x7406;&#x4E00;&#x6837;&#x3002;</p>
+<p>&#x6709;&#x4E86;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4E4B;&#x540E;&#xFF0C;&#x76F8;&#x4FE1;&#x505A;&#x4EFB;&#x4F55;&#x56FE;&#x6807;&#x90FD;&#x4E0D;&#x4F1A;&#x9047;&#x5230;&#x96BE;&#x9898;&#x4E86;&#x3002;</p>
 
                     
                     </section>
@@ -1035,10 +1151,10 @@
         </div>
 
         
-        <a href="../ch10/index.html" class="navigation navigation-prev " aria-label="Previous page: Control"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch07/07-03-04.html" class="navigation navigation-prev " aria-label="Previous page: 规则几何体图标"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch12/index.html" class="navigation navigation-next " aria-label="Next page: 常见问题"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch07/07-03-06.html" class="navigation navigation-next " aria-label="Next page: 动态改变图标"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
