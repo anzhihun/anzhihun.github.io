@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>要素选取之取消选中 | OpenLayers 3 Primer</title>
+        <title>Feature选取之取消选中 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -45,7 +45,7 @@
         
     
     
-    <link rel="next" href="../ch10/index.html" />
+    <link rel="next" href="../ch09/09-06.html" />
     
     
     <link rel="prev" href="../ch09/09-04.html" />
@@ -58,10 +58,10 @@
         
     <div class="book"
         data-level="9.5"
-        data-chapter-title="要素选取之取消选中"
+        data-chapter-title="Feature选取之取消选中"
         data-filepath="ch09/09-05.md"
         data-basepath=".."
-        data-revision="Mon Apr 25 2016 17:55:08 GMT+0800 (中国标准时间)"
+        data-revision="Tue Apr 26 2016 15:31:40 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -975,7 +975,7 @@
                         
                             <b>9.3.</b>
                         
-                        要素选取之选中样式
+                        Feature选取之选中样式
                     </a>
             
             
@@ -990,7 +990,7 @@
                         
                             <b>9.4.</b>
                         
-                        要素选取之条件过滤
+                        Feature选取之条件过滤
                     </a>
             
             
@@ -1005,15 +1005,45 @@
                         
                             <b>9.5.</b>
                         
-                        要素选取之取消选中
+                        Feature选取之取消选中
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="9.6" >
+        <li class="chapter " data-level="9.6" data-path="ch09/09-06.html">
             
-            <span><b>9.6.</b> 自定义绘图</span>
+                
+                    <a href="../ch09/09-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        绘制一条线
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="ch09/09-07.html">
+            
+                
+                    <a href="../ch09/09-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        绘图进阶
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="ch09/09-08.html">
+            
+            <span><b>9.8.</b> 总结</span>
             
             
         </li>
@@ -1155,7 +1185,133 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x8981;&#x7D20;&#x9009;&#x53D6;&#x4E4B;&#x53D6;&#x6D88;&#x9009;&#x4E2D;">&#x8981;&#x7D20;&#x9009;&#x53D6;&#x4E4B;&#x53D6;&#x6D88;&#x9009;&#x4E2D;</h1>
+                        <h1 id="feature&#x9009;&#x53D6;&#x4E4B;&#x53D6;&#x6D88;&#x9009;&#x4E2D;">Feature&#x9009;&#x53D6;&#x4E4B;&#x53D6;&#x6D88;&#x9009;&#x4E2D;</h1>
+<p> &#x53D6;&#x6D88;&#x9009;&#x4E2D;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C; &#x4E00;&#x79CD;&#x662F;&#x5728;&#x754C;&#x9762;&#x4E0A;&#x4EE5;&#x4EA4;&#x4E92;&#x7684;&#x65B9;&#x5F0F;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x7528;&#x4EE3;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x5206;&#x522B;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;</p>
+<h2 id="&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x53D6;&#x6D88;&#x9009;&#x4E2D;">&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x53D6;&#x6D88;&#x9009;&#x4E2D;</h2>
+<p>&#x5982;&#x679C;&#x662F;&#x91C7;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x7684;&#x65B9;&#x5F0F;&#x9009;&#x53D6;<code>feature</code>&#xFF0C;&#x5373;&#x4F7F;&#x7528;&#x9F20;&#x6807;&#x5DE6;&#x952E;&#x5355;&#x51FB;<code>feature</code>&#x5C31;&#x53EF;&#x9009;&#x53D6;&#x3002;&#x90A3;&#x4E48;&#x8FD9;&#x79CD;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x4E0B;&#xFF0C;&#x8981;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#xFF0C;&#x5219;&#x53EA;&#x9700;&#x8981;&#x540C;&#x6837;&#x4F7F;&#x7528;&#x9F20;&#x6807;&#x5DE6;&#x952E;&#xFF0C;&#x5728;&#x5730;&#x56FE;&#x5176;&#x4ED6;&#x5730;&#x65B9;&#x5355;&#x51FB;&#x4E00;&#x4E0B;&#xFF0C;&#x5C31;&#x53EF;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#x3002; &#x53EF;&#x8DF3;&#x5230;<a href="09-03.html">&#x8981;&#x7D20;&#x9009;&#x53D6;&#x4E4B;&#x9009;&#x4E2D;&#x6837;&#x5F0F;</a>&#xFF0C;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x5730;&#x56FE;&#x4E0A;&#x8BD5;&#x8BD5;&#x3002; </p>
+<p>&#x5982;&#x679C;&#x91C7;&#x7528;&#x7684;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x65B9;&#x5F0F;&#x9009;&#x53D6;<code>feature</code>&#xFF0C;&#x90A3;&#x4E48;&#x8981;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#xFF0C;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x8FD8;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x53EA;&#x8981;&#x76EE;&#x6807;&#x4E0D;&#x518D;&#x662F;&#x5DF2;&#x9009;&#x4E2D;&#x7684;<code>feature</code>&#x5C31;&#x884C;&#xFF0C;&#x5C31;&#x80FD;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#x3002; &#x6BD4;&#x5982;<a href="09-04.html">&#x8981;&#x7D20;&#x9009;&#x53D6;&#x4E4B;&#x6761;&#x4EF6;&#x8FC7;&#x6EE4;</a>&#x4E2D;&#xFF0C;&#x91C7;&#x7528;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x9F20;&#x6807;&#x79FB;&#x5165;<code>feature</code>&#x5C31;&#x53EF;&#x9009;&#x4E2D;&#xFF0C;&#x8981;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x628A;&#x9F20;&#x6807;&#x79FB;&#x51FA;<code>feature</code>&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="&#x4EE3;&#x7801;&#x65B9;&#x5F0F;&#x53D6;&#x6D88;&#x9009;&#x4E2D;">&#x4EE3;&#x7801;&#x65B9;&#x5F0F;&#x53D6;&#x6D88;&#x9009;&#x4E2D;</h2>
+<p>&#x70B9;&#x51FB;&#x5730;&#x56FE;&#x4E0B;&#x65B9;&#x7684;&#x201C;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C31;&#x53EF;&#x89E6;&#x53D1;&#x4EE3;&#x7801;&#xFF0C;&#x53D6;&#x6D88;<code>circle</code>&#x7684;&#x9009;&#x4E2D;&#x72B6;&#x6001;&#xFF1A;</p>
+<p><head>                  
+    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
+</head></p>
+<p><div id="map" style="width: 100%"></div></p>
+<p><input type="button" value="&#x53D6;&#x6D88;&#x9009;&#x4E2D;" onclick="unselectFeature();"></p>
+<script type="text/javascript">
+    var layer = new ol.layer.Vector({
+        source: new ol.source.Vector(),
+        style: new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 10,
+                fill: new ol.style.Fill({
+                    color: 'red'
+                })
+            })
+        })
+    });
+    var map = new ol.Map({
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          }), 
+          layer
+        ],
+        target: 'map',
+        view: new ol.View({
+          center: ol.proj.transform(
+              [104, 30], 'EPSG:4326', 'EPSG:3857'),
+          zoom: 10
+        })
+    });
+
+    // 在地图上添加一个圆
+    var circle = new ol.Feature({
+        geometry: new ol.geom.Point(ol.proj.transform(
+              [104, 30], 'EPSG:4326', 'EPSG:3857'))
+    })
+    layer.getSource().addFeature(circle);
+
+    // 添加一个用于选择Feature的交互方式
+    var clickSelect = new ol.interaction.Select({
+        style: new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 10,
+                fill: new ol.style.Fill({
+                    color: 'blue'
+                })
+            })
+        })
+    });
+    map.addInteraction(clickSelect);
+
+    // 取消选中
+    function unselectFeature() {
+        clickSelect.getFeatures().clear();
+        // 下面这样也是可以取消选中的，根据情况选择
+        // map.removeInteraction(clickSelect);
+    }
+</script>
+
+<p>&#x524D;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x90FD;&#x4E00;&#x6837;&#xFF0C;&#x5173;&#x952E;&#x5728;&#x6700;&#x540E;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;button&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&quot;</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">&quot;unselectFeature();&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">input</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="actionscript">
+    <span class="hljs-keyword">var</span> layer = <span class="hljs-keyword">new</span> ol.layer.Vector({
+        source: <span class="hljs-keyword">new</span> ol.source.Vector(),
+        style: <span class="hljs-keyword">new</span> ol.style.Style({
+            image: <span class="hljs-keyword">new</span> ol.style.Circle({
+                radius: <span class="hljs-number">10</span>,
+                fill: <span class="hljs-keyword">new</span> ol.style.Fill({
+                    color: <span class="hljs-string">&apos;red&apos;</span>
+                })
+            })
+        })
+    });
+    <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+          <span class="hljs-keyword">new</span> ol.layer.Tile({
+            source: <span class="hljs-keyword">new</span> ol.source.OSM()
+          }), 
+          layer
+        ],
+        target: <span class="hljs-string">&apos;map&apos;</span>,
+        view: <span class="hljs-keyword">new</span> ol.View({
+          center: ol.proj.transform(
+              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>),
+          zoom: <span class="hljs-number">10</span>
+        })
+    });
+
+    <span class="hljs-comment">// &#x5728;&#x5730;&#x56FE;&#x4E0A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5706;</span>
+    <span class="hljs-keyword">var</span> circle = <span class="hljs-keyword">new</span> ol.Feature({
+        geometry: <span class="hljs-keyword">new</span> ol.geom.Point(ol.proj.transform(
+              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>))
+    })
+    layer.getSource().addFeature(circle);
+
+    <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x9009;&#x62E9;Feature&#x7684;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;</span>
+    <span class="hljs-keyword">var</span> clickSelect = <span class="hljs-keyword">new</span> ol.interaction.Select({
+        style: <span class="hljs-keyword">new</span> ol.style.Style({
+            image: <span class="hljs-keyword">new</span> ol.style.Circle({
+                radius: <span class="hljs-number">10</span>,
+                fill: <span class="hljs-keyword">new</span> ol.style.Fill({
+                    color: <span class="hljs-string">&apos;blue&apos;</span>
+                })
+            })
+        })
+    });
+    map.addInteraction(clickSelect);
+
+    <span class="hljs-comment">// &#x53D6;&#x6D88;&#x9009;&#x4E2D;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unselectFeature</span><span class="hljs-params">()</span> </span>{
+        clickSelect.getFeatures().clear();
+        <span class="hljs-comment">// &#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x53D6;&#x6D88;&#x9009;&#x4E2D;&#x7684;&#xFF0C;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x9009;&#x62E9;</span>
+        <span class="hljs-comment">// map.removeInteraction(clickSelect);</span>
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x5730;&#x56FE;&#x4E0A;&#x5143;&#x7D20;&#x7684;&#x9009;&#x53D6;&#x76F8;&#x5173;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x90FD;&#x4ECB;&#x7ECD;&#x5B8C;&#x6BD5;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x9010;&#x4E2A;&#x638C;&#x63E1;&#x5E76;&#x878D;&#x4F1A;&#x8D2F;&#x901A;&#x4E8E;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x3002;</p>
 
                     
                     </section>
@@ -1166,10 +1322,10 @@
         </div>
 
         
-        <a href="../ch09/09-04.html" class="navigation navigation-prev " aria-label="Previous page: 要素选取之条件过滤"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch09/09-04.html" class="navigation navigation-prev " aria-label="Previous page: Feature选取之条件过滤"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch10/index.html" class="navigation navigation-next " aria-label="Next page: Control"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch09/09-06.html" class="navigation navigation-next " aria-label="Next page: 绘制一条线"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

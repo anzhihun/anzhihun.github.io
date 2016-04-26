@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>一个简单的地图 | OpenLayers 3 Primer</title>
+        <title>绘制一条线 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -45,10 +45,10 @@
         
     
     
-    <link rel="next" href="../ch03/index.html" />
+    <link rel="next" href="../ch09/09-07.html" />
     
     
-    <link rel="prev" href="../ch01/index.html" />
+    <link rel="prev" href="../ch09/09-05.html" />
     
 
         
@@ -57,9 +57,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="一个简单的地图"
-        data-filepath="ch02/index.md"
+        data-level="9.6"
+        data-chapter-title="绘制一条线"
+        data-filepath="ch09/09-06.md"
         data-basepath=".."
         data-revision="Tue Apr 26 2016 15:31:40 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -105,7 +105,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="ch02/index.html">
+        <li class="chapter " data-level="2" data-path="ch02/index.html">
             
                 
                     <a href="../ch02/index.html">
@@ -1011,7 +1011,7 @@
             
         </li>
     
-        <li class="chapter " data-level="9.6" data-path="ch09/09-06.html">
+        <li class="chapter active" data-level="9.6" data-path="ch09/09-06.html">
             
                 
                     <a href="../ch09/09-06.html">
@@ -1185,66 +1185,127 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5730;&#x56FE;">&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5730;&#x56FE;</h1>
-<p>&#x4ECB;&#x7ECD;&#x4E86;&#x90A3;&#x4E48;&#x591A;&#xFF0C;&#x672C;&#x8282;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x76F4;&#x63A5;&#x8FDB;&#x5165;&#x4E3B;&#x9898;&#xFF0C;&#x4F53;&#x9A8C;&#x4E00;&#x4E0B;&#x4F7F;&#x7528;OpenLayers 3&#x505A;&#x5730;&#x56FE;&#x7684;&#x96BE;&#x5EA6;&#xFF0C;&#x53CA;&#x5730;&#x56FE;&#x7684;&#x5916;&#x89C2;&#x548C;&#x529F;&#x80FD;&#xFF1A;</p>
-<head>
+                        <h1 id="&#x7ED8;&#x56FE;">&#x7ED8;&#x56FE;</h1>
+<p>&#x9664;&#x4E86;&#x5185;&#x7F6E;&#x4E86;&#x7528;&#x4E8E;&#x9009;&#x53D6;<code>feature</code>&#x7684;&#x7C7B;&#x4E4B;&#x5916;&#xFF0C;OpenLayers 3&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x7528;&#x6237;&#x7ED8;&#x56FE;&#x7684;&#x7C7B;<code>ol.interaction.Draw</code>&#xFF0C;&#x652F;&#x6301;&#x7ED8;&#x5236;&#x70B9;&#xFF0C;&#x7EBF;&#xFF0C;&#x591A;&#x8FB9;&#x5F62;&#xFF0C;&#x5706;&#x7B49;&#x7ED8;&#x5236;&#x3002; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x4E00;&#x6761;&#x7EBF;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x7528;&#x9F20;&#x6807;&#x5DE6;&#x952E;&#x5355;&#x51FB;&#x5730;&#x56FE;&#xFF0C;&#x5730;&#x56FE;&#x4E0A;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x5F85;&#x7ED8;&#x5236;&#x7EBF;&#x7684;&#x8D77;&#x70B9;&#xFF0C;&#x968F;&#x540E;&#x79FB;&#x52A8;&#x9F20;&#x6807;&#xFF0C;&#x5C31;&#x770B;&#x5230;&#x4E86;&#x7EBF;&#xFF0C;&#x518D;&#x5355;&#x51FB;&#x5730;&#x56FE;&#xFF0C;&#x5C31;&#x5728;&#x8FD9;&#x4E2A;&#x7EBF;&#x4E0A;&#x6DFB;&#x52A0;&#x4E86;&#x70B9;&#xFF0C;&#x4F9D;&#x6B21;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x591A;&#x4E2A;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5B8C;&#x6210;&#x7EBF;&#x7684;&#x7ED8;&#x5236;&#xFF0C;&#x5728;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x70B9;&#x5904;&#xFF0C;&#x518D;&#x70B9;&#x51FB;&#x4E00;&#x4E0B;&#x9F20;&#x6807;&#x5DE6;&#x952E;&#x5373;&#x53EF;&#x3002;</p>
+<p><head>                  
     <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
-</head>
+</head></p>
+<p><div id="map" style="width: 100%"></div></p>
+<script type="text/javascript">
+    var map = new ol.Map({
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        target: 'map',
+        view: new ol.View({
+          center: ol.proj.transform(
+              [104, 30], 'EPSG:4326', 'EPSG:3857'),
+          zoom: 10
+        })
+    });
 
-<body>
-    <div id="map" style="width: 100%"></div>
-    <script>
-      new ol.Map({
-            layers: [
-                new ol.layer.Tile({source: new ol.source.OSM()})
-            ],
-            view: new ol.View({
-                center: [0, 0],
-                zoom: 2
-            }),
-            target: 'map'
-      });
-    </script>
-</body>
+    map.addInteraction(new ol.interaction.Draw({
+        type: 'LineString'
+    }));
+</script>
 
-<p>&#x8981;&#x663E;&#x793A;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x5730;&#x56FE;&#xFF0C;&#x4EC5;&#x9700;&#x8981;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;html&#x6587;&#x6863;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x7F16;&#x5199;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-doctype">&lt;!Doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">http:</span>//<span class="hljs-attribute">www.w3.org</span>/<span class="hljs-attribute">1999</span>/<span class="hljs-attribute">xhtml</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>                  
-    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">http-equiv</span>=<span class="hljs-value">Content-Type</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">&quot;text/html;charset=utf-8&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">http-equiv</span>=<span class="hljs-value">X-UA-Compatible</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">&quot;IE=edge,chrome=1&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">always</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">referrer</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>OpenLayers 3&#x5730;&#x56FE;&#x793A;&#x4F8B;<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;../ol3.13.1/ol.css&quot;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;../src/ol3.13.1/ol.js&quot;</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">&quot;utf-8&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="actionscript">
+    <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+          <span class="hljs-keyword">new</span> ol.layer.Tile({
+            source: <span class="hljs-keyword">new</span> ol.source.OSM()
+          })
+        ],
+        target: <span class="hljs-string">&apos;map&apos;</span>,
+        view: <span class="hljs-keyword">new</span> ol.View({
+          center: ol.proj.transform(
+              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>),
+          zoom: <span class="hljs-number">10</span>
+        })
+    });
 
-<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%, height: 400px&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
-      <span class="hljs-comment">// &#x521B;&#x5EFA;&#x5730;&#x56FE;</span>
-      <span class="hljs-keyword">new</span> ol.Map({
-            <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5730;&#x56FE;&#x56FE;&#x5C42;</span>
-            layers: [
-              <span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;Open Street Map&#x5730;&#x56FE;&#x6E90;&#x7684;&#x74E6;&#x7247;&#x56FE;&#x5C42;</span>
-              <span class="hljs-keyword">new</span> ol.layer.Tile({source: <span class="hljs-keyword">new</span> ol.source.OSM()})
-            ],
-            <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x663E;&#x793A;&#x5730;&#x56FE;&#x7684;&#x89C6;&#x56FE;</span>
-            view: <span class="hljs-keyword">new</span> ol.View({
-              center: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>],    <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x5730;&#x56FE;&#x663E;&#x793A;&#x4E2D;&#x5FC3;&#x4E8E;&#x7ECF;&#x5EA6;0&#x5EA6;&#xFF0C;&#x7EAC;&#x5EA6;0&#x5EA6;&#x5904;</span>
-              zoom: <span class="hljs-number">2</span>            <span class="hljs-comment">// &#x5E76;&#x4E14;&#x5B9A;&#x4E49;&#x5730;&#x56FE;&#x663E;&#x793A;&#x5C42;&#x7EA7;&#x4E3A;2</span>
-            }),
-            <span class="hljs-comment">// &#x8BA9;id&#x4E3A;map&#x7684;div&#x4F5C;&#x4E3A;&#x5730;&#x56FE;&#x7684;&#x5BB9;&#x5668;</span>
-            target: <span class="hljs-string">&apos;map&apos;</span>    
-        });
-    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+    <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x7ED8;&#x56FE;&#x7684;&#x4EA4;&#x4E92;&#x7C7B;</span>
+    map.addInteraction(<span class="hljs-keyword">new</span> ol.interaction.Draw({
+        type: <span class="hljs-string">&apos;LineString&apos;</span> <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x7ED8;&#x5236;&#x7EBF;</span>
+    }));
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
-<p>&#x8981;&#x60F3;&#x4F7F;&#x7528;OpenLayers 3&#x5F00;&#x53D1;&#x5730;&#x56FE;&#xFF0C;&#x5FC5;&#x7136;&#x9700;&#x8981;&#x5F15;&#x5165;&#x4E86;OpenLayers 3&#x7684;js&#x5E93;&#x6587;&#x4EF6;ol3.js&#x53CA;&#x6837;&#x5F0F;&#x6587;&#x4EF6;ol3.css&#xFF0C;&#x53C2;&#x89C1;&#x4EE3;&#x7801;&#x4E2D;html&#x5934;&#x90E8;&#x3002;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;<a href="https://github.com/openlayers/ol3/releases" target="_blank">github</a>&#x4E0A;&#x4E0B;&#x8F7D;&#x5230;&#x3002;</p>
-<p>&#x7D27;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x5229;&#x7528;OpenLayers 3&#x7684;API&#x521B;&#x5EFA;&#x5730;&#x56FE;&#xFF0C;&#x5BF9;&#x5E94;&#x4E8E;<code>&lt;script&gt;...&lt;/script&gt;</code>&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x5982;&#x4EE3;&#x7801;&#x6240;&#x89C1;&#xFF0C;7&#x884C;&#x4EE3;&#x7801;&#x5C31;&#x641E;&#x5B9A;&#x4E86;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x975E;&#x5E38;&#x7684;&#x7B80;&#x5355;&#xFF1F;&#xFF01;&#x81F3;&#x4E8E;&#x4EE3;&#x7801;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x53EF;&#x4EE5;&#x6682;&#x65F6;&#x53C2;&#x7167;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x6CE8;&#x91CA;&#x6765;&#x7406;&#x89E3;&#x3002;&#x6682;&#x65F6;&#x770B;&#x4E0D;&#x61C2;&#x4E5F;&#x6CA1;&#x6709;&#x5173;&#x7CFB;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C06;&#x8BE6;&#x7EC6;&#x7684;&#x4ECB;&#x7ECD;&#x5B83;&#x4EEC;&#x3002;</p>
+<p>&#x770B;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x7684;&#x7B80;&#x5355;&#x3002; &#x4F46;&#x8C8C;&#x4F3C;&#x8FD8;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x77E5;&#x9053;&#x600E;&#x4E48;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x628A;&#x7ED8;&#x5236;&#x5B8C;&#x7684;&#x7EBF;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF1A;</p>
+<p><div id="map2" style="width: 100%"></div></p>
+<script type="text/javascript">
+    var map2 = new ol.Map({
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        target: 'map2',
+        view: new ol.View({
+          center: ol.proj.transform(
+              [104, 30], 'EPSG:4326', 'EPSG:3857'),
+          zoom: 10
+        })
+    });
+
+    // 添加一个绘制的线使用的layer
+    var lineLayer = new ol.layer.Vector({
+        source: new ol.source.Vector(),
+        style: new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: 'red',
+                size: 1
+            })
+        })
+    })
+    map2.addLayer(lineLayer);
+
+    map2.addInteraction(new ol.interaction.Draw({
+        type: 'LineString',
+        source: lineLayer.getSource()    // 注意设置source，这样绘制好的线，就会添加到这个source里
+    }));
+</script>
+
+<p>&#x6BD4;&#x4E0A;&#x4E00;&#x4E2A;&#x5730;&#x56FE;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x7A0D;&#x5FAE;&#x591A;&#x4E00;&#x70B9;&#xFF0C;&#x5173;&#x952E;&#x7684;&#x4EE3;&#x7801;&#x8FD8;&#x662F;&#x5728;&#x6700;&#x540E;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map2&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="actionscript">
+    <span class="hljs-keyword">var</span> map2 = <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+          <span class="hljs-keyword">new</span> ol.layer.Tile({
+            source: <span class="hljs-keyword">new</span> ol.source.OSM()
+          })
+        ],
+        target: <span class="hljs-string">&apos;map2&apos;</span>,
+        view: <span class="hljs-keyword">new</span> ol.View({
+          center: ol.proj.transform(
+              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>),
+          zoom: <span class="hljs-number">10</span>
+        })
+    });
+
+    <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7ED8;&#x5236;&#x7684;&#x7EBF;&#x4F7F;&#x7528;&#x7684;layer</span>
+    <span class="hljs-keyword">var</span> lineLayer = <span class="hljs-keyword">new</span> ol.layer.Vector({
+        source: <span class="hljs-keyword">new</span> ol.source.Vector(),
+        style: <span class="hljs-keyword">new</span> ol.style.Style({
+            stroke: <span class="hljs-keyword">new</span> ol.style.Stroke({
+                color: <span class="hljs-string">&apos;red&apos;</span>,
+                size: <span class="hljs-number">1</span>
+            })
+        })
+    })
+    map2.addLayer(lineLayer);
+
+    map2.addInteraction(<span class="hljs-keyword">new</span> ol.interaction.Draw({
+        type: <span class="hljs-string">&apos;LineString&apos;</span>,
+        source: lineLayer.getSource()    <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8BBE;&#x7F6E;source&#xFF0C;&#x8FD9;&#x6837;&#x7ED8;&#x5236;&#x597D;&#x7684;&#x7EBF;&#xFF0C;&#x5C31;&#x4F1A;&#x6DFB;&#x52A0;&#x5230;&#x8FD9;&#x4E2A;source&#x91CC;</span>
+    }));
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#x5730;&#x56FE;&#x4E0A;&#x7ED8;&#x5236;&#x4E00;&#x6761;&#x7EBF;&#x7684;&#x5DE5;&#x4F5C;&#x57FA;&#x672C;&#x4E0A;&#x7B97;&#x662F;&#x5B8C;&#x6210;&#x4E86;&#x3002; &#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x4FEE;&#x6539;<code>ol.interaction.Draw</code>&#x7684;&#x6784;&#x9020;&#x53C2;&#x6570;<code>type</code>&#x7684;&#x503C;&#x4E3A;&apos;Point&apos;&#xFF0C;&apos;Polygon&apos;,&#xFF0C;&apos;MultiPoint&apos;&#xFF0C;&apos;MultiLineString&apos;&#xFF0C;&apos;MultiPolygon&apos; &#x6216;&#x8005; &apos;Circle&apos;&#x5C31;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x70B9;&#xFF0C;&#x591A;&#x8FB9;&#x5F62;&#xFF0C;&#x591A;&#x4E2A;&#x70B9;&#xFF0C;&#x591A;&#x6761;&#x7EBF;&#xFF0C;&#x591A;&#x4E2A;&#x591A;&#x8FB9;&#x5F62;&#xFF0C;&#x53CA;&#x5706;&#x3002; &#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x4FEE;&#x6539;&#x9A8C;&#x8BC1;&#x3002;</p>
 
                     
                     </section>
@@ -1255,10 +1316,10 @@
         </div>
 
         
-        <a href="../ch01/index.html" class="navigation navigation-prev " aria-label="Previous page: OpenLayers 3 介绍"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch09/09-05.html" class="navigation navigation-prev " aria-label="Previous page: Feature选取之取消选中"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch03/index.html" class="navigation navigation-next " aria-label="Next page: OpenLayers 3地图"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch09/09-07.html" class="navigation navigation-next " aria-label="Next page: 绘图进阶"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
