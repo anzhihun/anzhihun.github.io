@@ -1,0 +1,1495 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>获取加载后的所有feature | OpenLayers 3 Primer</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../ch05/05-09.html" />
+    
+    
+    <link rel="prev" href="../ch05/05-07.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.4.1"
+        data-chapter-title="获取加载后的所有feature"
+        data-filepath="ch05/05-08.md"
+        data-basepath=".."
+        data-revision="Thu May 05 2016 09:50:21 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="ch01/index.html">
+            
+                
+                    <a href="../ch01/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        OpenLayers 3 介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="ch02/index.html">
+            
+                
+                    <a href="../ch02/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        一个简单的地图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="ch03/index.html">
+            
+                
+                    <a href="../ch03/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        OpenLayers 3地图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="ch03/03-01.html">
+            
+                
+                    <a href="../ch03/03-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        初步解析地图组成
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="ch03/03-02.html">
+            
+                
+                    <a href="../ch03/03-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        地图所有组成部分
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="ch03/03-03.html">
+            
+                
+                    <a href="../ch03/03-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        看懂API
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="ch03/03-04.html">
+            
+                
+                    <a href="../ch03/03-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        结合API文档分析代码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="ch03/03-05.html">
+            
+                
+                    <a href="../ch03/03-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        ol.Map的应用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="ch03/03-06.html">
+            
+                
+                    <a href="../ch03/03-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.1.</b>
+                        
+                        定制地图logo
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="ch03/03-07.html">
+            
+                
+                    <a href="../ch03/03-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.2.</b>
+                        
+                        单页面多地图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="ch03/03-08.html">
+            
+                
+                    <a href="../ch03/03-08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.3.</b>
+                        
+                        地图联动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.4" data-path="ch03/03-09.html">
+            
+                
+                    <a href="../ch03/03-09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.4.</b>
+                        
+                        动态交换地图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="ch04/index.html">
+            
+                
+                    <a href="../ch04/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        View
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="ch04/04-01.html">
+            
+                
+                    <a href="../ch04/04-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        地图导航
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="ch04/04-02.html">
+            
+                
+                    <a href="../ch04/04-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        坐标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="ch04/04-03.html">
+            
+                
+                    <a href="../ch04/04-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        坐标系及投影
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="ch04/04-04.html">
+            
+                
+                    <a href="../ch04/04-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        OpenLayers 3使用的坐标系
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="ch04/04-05.html">
+            
+                
+                    <a href="../ch04/04-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        ol.View的应用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="ch04/04-06.html">
+            
+                
+                    <a href="../ch04/04-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.1.</b>
+                        
+                        限制地图范围
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="ch04/04-07.html">
+            
+                
+                    <a href="../ch04/04-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.2.</b>
+                        
+                        限制地图缩放级别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="ch04/04-08.html">
+            
+                
+                    <a href="../ch04/04-08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.3.</b>
+                        
+                        自适配区域
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="ch05/index.html">
+            
+                
+                    <a href="../ch05/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Source和Layer
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="ch05/05-01.html">
+            
+                
+                    <a href="../ch05/05-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        加载瓦片地图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="ch05/05-02.html">
+            
+                
+                    <a href="../ch05/05-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.1.</b>
+                        
+                        最简单的加载在线地图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="ch05/05-03.html">
+            
+                
+                    <a href="../ch05/05-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.2.</b>
+                        
+                        万能瓦片地图加载秘籍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="ch05/05-04.html">
+            
+                
+                    <a href="../ch05/05-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.3.</b>
+                        
+                        加载离线瓦片地图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="ch05/05-05.html">
+            
+                
+                    <a href="../ch05/05-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        静态地图及应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="ch05/05-06.html">
+            
+                
+                    <a href="../ch05/05-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        加载WMS服务地图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="ch05/05-07.html">
+            
+                
+                    <a href="../ch05/05-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        矢量地图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="5.4.1" data-path="ch05/05-08.html">
+            
+                
+                    <a href="../ch05/05-08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.1.</b>
+                        
+                        获取加载后的所有feature
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="ch05/05-09.html">
+            
+                
+                    <a href="../ch05/05-09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.2.</b>
+                        
+                        坐标转换
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.3" data-path="ch05/05-10.html">
+            
+                
+                    <a href="../ch05/05-10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.3.</b>
+                        
+                        样式设置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="ch05/05-11.html">
+            
+                
+                    <a href="../ch05/05-11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        图层叠加及管理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="ch06/index.html">
+            
+                
+                    <a href="../ch06/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        LOD与分辨率
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="ch06/06-01.html">
+            
+                
+                    <a href="../ch06/06-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        LOD原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="ch06/06-02.html">
+            
+                
+                    <a href="../ch06/06-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        瓦片计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="ch06/06-03.html">
+            
+                
+                    <a href="../ch06/06-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        分辨率
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="ch06/06-04.html">
+            
+                
+                    <a href="../ch06/06-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        自定义瓦片地图及加载
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="ch07/index.html">
+            
+                
+                    <a href="../ch07/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        图标及提示信息
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="ch07/07-01.html">
+            
+                
+                    <a href="../ch07/07-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        应用overlay
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="ch07/07-02.html">
+            
+                
+                    <a href="../ch07/07-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        动画图标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="ch07/07-03.html">
+            
+                
+                    <a href="../ch07/07-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        style及应用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.3.1" data-path="ch07/07-03-01.html">
+            
+                
+                    <a href="../ch07/07-03-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.</b>
+                        
+                        设置图标位置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.2" data-path="ch07/07-03-02.html">
+            
+                
+                    <a href="../ch07/07-03-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.</b>
+                        
+                        根据层级放大缩小图标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.3" data-path="ch07/07-03-03.html">
+            
+                
+                    <a href="../ch07/07-03-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.</b>
+                        
+                        另类设置svg图标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.4" data-path="ch07/07-03-04.html">
+            
+                
+                    <a href="../ch07/07-03-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.4.</b>
+                        
+                        规则几何体图标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.5" data-path="ch07/07-03-05.html">
+            
+                
+                    <a href="../ch07/07-03-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.5.</b>
+                        
+                        用Canvas自绘图标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.6" data-path="ch07/07-03-06.html">
+            
+                
+                    <a href="../ch07/07-03-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.6.</b>
+                        
+                        动态改变图标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.7" data-path="ch07/07-03-07.html">
+            
+                
+                    <a href="../ch07/07-03-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.7.</b>
+                        
+                        文字标注
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="ch07/07-04.html">
+            
+                
+                    <a href="../ch07/07-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        styleFunction应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="ch07/07-05.html">
+            
+                
+                    <a href="../ch07/07-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        大量图标方案
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="ch07/07-06.html">
+            
+                
+                    <a href="../ch07/07-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        提示信息
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="ch08/index.html">
+            
+                
+                    <a href="../ch08/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        事件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="ch08/08-01.html">
+            
+                
+                    <a href="../ch08/08-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        一个简单的事件应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="ch08/08-02.html">
+            
+                
+                    <a href="../ch08/08-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        注销事件响应
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="ch08/08-03.html">
+            
+                
+                    <a href="../ch08/08-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        常用事件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="ch08/08-05.html">
+            
+                
+                    <a href="../ch08/08-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        自定义事件及应用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="ch09/index.html">
+            
+                
+                    <a href="../ch09/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Interaction
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="ch09/09-01.html">
+            
+                
+                    <a href="../ch09/09-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        内置交互方式介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="ch09/09-02.html">
+            
+                
+                    <a href="../ch09/09-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        实现原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="ch09/09-03.html">
+            
+                
+                    <a href="../ch09/09-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        Feature选取之选中样式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="ch09/09-04.html">
+            
+                
+                    <a href="../ch09/09-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        Feature选取之条件过滤
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="ch09/09-05.html">
+            
+                
+                    <a href="../ch09/09-05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        Feature选取之取消选中
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="ch09/09-06.html">
+            
+                
+                    <a href="../ch09/09-06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        绘制一条线
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="ch09/09-07.html">
+            
+                
+                    <a href="../ch09/09-07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        绘图进阶
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="ch09/09-08.html">
+            
+                
+                    <a href="../ch09/09-08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="ch10/index.html">
+            
+                
+                    <a href="../ch10/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Control
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="ch10/10-01.html">
+            
+                
+                    <a href="../ch10/10-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        控件概览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="ch10/10-02.html">
+            
+                
+                    <a href="../ch10/10-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        探究控件原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="ch10/10-03.html">
+            
+                
+                    <a href="../ch10/10-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        控件美颜
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="ch10/10-04.html">
+            
+                
+                    <a href="../ch10/10-04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        自定义控件
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="ch11/index.html">
+            
+                
+                    <a href="../ch11/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        动画
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="ch11/11-01.html">
+            
+                
+                    <a href="../ch11/11-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        动画简单应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="ch11/11-02.html">
+            
+                
+                    <a href="../ch11/11-02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        动画高阶应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="ch11/11-03.html">
+            
+                
+                    <a href="../ch11/11-03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        利用postcompose事件做动画
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="ch12/index.html">
+            
+                
+                    <a href="../ch12/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        常见问题
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >OpenLayers 3 Primer</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x83B7;&#x53D6;&#x52A0;&#x8F7D;&#x540E;&#x7684;&#x6240;&#x6709;feature">&#x83B7;&#x53D6;&#x52A0;&#x8F7D;&#x540E;&#x7684;&#x6240;&#x6709;feature</h1>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x591A;&#x4EBA;&#x4F1A;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x52A0;&#x8F7D;&#x77E2;&#x91CF;&#x5730;&#x56FE;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x77E2;&#x91CF;&#x5730;&#x56FE;&#x505A;&#x4E00;&#x4E9B;&#x7B80;&#x5355;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x5206;&#x6790;&#x7B49;&#x3002; &#x4F46;&#x662F;&#x7ECF;&#x5E38;&#x4F1A;&#x9047;&#x5230;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x52A0;&#x8F7D;&#x540E;&#x7684;<code>feature</code>&#x7684;&#x95EE;&#x9898;&#x3002; &#x539F;&#x56E0;&#x5C31;&#x5728;&#x4E8E;&#x83B7;&#x53D6;&#x7684;&#x65F6;&#x673A;&#x4E0D;&#x5BF9;&#xFF0C;&#x56E0;&#x4E3A;&#x77E2;&#x91CF;&#x5730;&#x56FE;&#x662F;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x7684;&#x3002; &#x4E0B;&#x9762;&#x5C31;&#x770B;&#x4E00;&#x4E0B;&#x6B63;&#x786E;&#x7684;&#x83B7;&#x53D6;&#x6240;&#x6709;<code>feature</code>&#x7684;&#x505A;&#x6CD5;&#x662F;&#x4EC0;&#x4E48;&#xFF1A;</p>
+<p><head>                  
+    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
+</head></p>
+<p><div id="map" style="width: 100%"></div></p>
+<p><div>&#x77E2;&#x91CF;&#x5730;&#x56FE;Feature&#x603B;&#x6570;&#xFF1A; <span id="count"></span></div></p>
+<script type="text/javascript">
+
+    //创建地图
+    var map = new ol.Map({
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({ 
+            center: [-72.980624870461128, 48.161307640513321],
+            zoom: 8,
+            projection: 'EPSG:4326'
+        }),
+        target: 'map'
+    });
+
+    var vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+            url: '../data/geojson/line-samples.geojson', 
+            format: new ol.format.GeoJSON()
+        })
+    });
+
+    var listenerKey = vectorLayer.getSource().on('change', function(){
+        if (vectorLayer.getSource().getState() === 'ready') {
+            document.getElementById('count').innerHTML = vectorLayer.getSource().getFeatures().length;
+            vectorLayer.getSource().unByKey(listenerKey);
+        }
+    });
+
+    map.addLayer(vectorLayer);
+</script>
+
+<p>&#x4ECE;&#x56FE;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5171;&#x6709;9&#x4E2A;<code>feature</code>&#xFF0C; &#x5728;&#x5730;&#x56FE;&#x4E0B;&#x65B9;&#x7684;&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#x4E5F;&#x662F;9&#x3002; &#x4E0B;&#x9762;&#x770B;&#x770B;&#x4EE3;&#x7801;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>&#x77E2;&#x91CF;&#x5730;&#x56FE;Feature&#x603B;&#x6570;&#xFF1A; <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;count&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x5730;&#x56FE;</span>
+    <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
+        layers: [
+            <span class="hljs-keyword">new</span> ol.layer.Tile({
+                source: <span class="hljs-keyword">new</span> ol.source.OSM()
+            })
+        ],
+        view: <span class="hljs-keyword">new</span> ol.View({ 
+            center: [-<span class="hljs-number">72.980624870461128</span>, <span class="hljs-number">48.161307640513321</span>],
+            zoom: <span class="hljs-number">8</span>,
+            projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>
+        }),
+        target: <span class="hljs-string">&apos;map&apos;</span>
+    });
+
+    <span class="hljs-keyword">var</span> vectorLayer = <span class="hljs-keyword">new</span> ol.layer.Vector({
+        source: <span class="hljs-keyword">new</span> ol.source.Vector({
+            url: <span class="hljs-string">&apos;../data/geojson/line-samples.geojson&apos;</span>, 
+            format: <span class="hljs-keyword">new</span> ol.format.GeoJSON()
+        })
+    });
+
+    <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x662F;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x91C7;&#x7528;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5224;&#x5B9A;&#x662F;&#x5426;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;</span>
+    <span class="hljs-keyword">var</span> listenerKey = vectorLayer.getSource().on(<span class="hljs-string">&apos;change&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">if</span> (vectorLayer.getSource().getState() === <span class="hljs-string">&apos;ready&apos;</span>) {    <span class="hljs-comment">// &#x5224;&#x5B9A;&#x662F;&#x5426;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;</span>
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;count&apos;</span>).innerHTML = vectorLayer.getSource().getFeatures().length;
+            vectorLayer.getSource().unByKey(listenerKey); <span class="hljs-comment">// &#x6CE8;&#x9500;&#x76D1;&#x542C;&#x5668;</span>
+        }
+    });
+
+    map.addLayer(vectorLayer);
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x5728;&#x6B64;&#x5904;&#x8C03;&#x7528;vectorLayer.getSource().getFeatures()&#x662F;&#x5B8C;&#x5168;&#x6709;&#x53EF;&#x80FD;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x4EFB;&#x4F55;Feature&#x7684;&#xFF0C;&#x8FD9;&#x662F;&#x5E38;&#x72AF;&#x9519;&#x8BEF;</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x683C;&#x5F0F;&#x7684;&#x77E2;&#x91CF;&#x5730;&#x56FE;&#x52A0;&#x8F7D;&#x4E5F;&#x9700;&#x8981;&#x8FD9;&#x6837;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#xFF0C;&#x624D;&#x80FD;&#x6B63;&#x786E;&#x83B7;&#x53D6;&#x5230;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x7684;&#x6240;&#x6709;<code>feature</code>&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../ch05/05-07.html" class="navigation navigation-prev " aria-label="Previous page: 矢量地图"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../ch05/05-09.html" class="navigation navigation-next " aria-label="Next page: 坐标转换"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"katex":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?598c9c941360724a65331e7d9a66c9b6';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    </body>
+    
+</html>
