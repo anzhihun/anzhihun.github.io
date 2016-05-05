@@ -61,7 +61,7 @@
         data-chapter-title="styleFunction应用"
         data-filepath="ch07/07-04.md"
         data-basepath=".."
-        data-revision="Thu May 05 2016 10:33:26 GMT+0800 (中国标准时间)"
+        data-revision="Thu May 05 2016 18:16:31 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -1351,7 +1351,7 @@
 <p>&#x5F88;&#x591A;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5FFD;&#x7565;<code>styleFunction</code>&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x5F88;&#x660E;&#x663E;&#x7684;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x7684;&#x56FE;&#x6807;&#x6216;&#x8005;&#x6807;&#x7B7E;&#x5E94;&#x7528;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#xFF0C;&#x6BD4;&#x5982;<a href="07-03-02.html">&#x6839;&#x636E;&#x5C42;&#x7EA7;&#x653E;&#x5927;&#x7F29;&#x5C0F;&#x56FE;&#x6807;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x7528;<code>styleFunction</code>&#x6765;&#x5B9E;&#x73B0;&#xFF1A;</p>
 <p><head>                  
     <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../src/ol3.13.1/ol-debug.js" charset="utf-8"></script>
 </head></p>
 <p><div id="map" style="width: 100%"></div></p>
 <script type="text/javascript">
@@ -1376,13 +1376,13 @@
   var anchor = new ol.Feature({
     geometry: new ol.geom.Point([104, 30])
   });
-  anchor.setStyle(function(){
-      return new ol.style.Style({
+  anchor.setStyle(function(resolution){
+      return [new ol.style.Style({
           image: new ol.style.Icon({
             src: '../img/anchor.png',
             scale: map.getView().getZoom() / 10
           })
-        });
+        })];
   });
 
   layer.getSource().addFeature(anchor);
@@ -1413,19 +1413,185 @@
     geometry: <span class="hljs-keyword">new</span> ol.geom.Point([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>])
   });
   <span class="hljs-comment">// &#x5E94;&#x7528;style function&#xFF0C;&#x52A8;&#x6001;&#x7684;&#x83B7;&#x53D6;&#x6837;&#x5F0F;</span>
-  anchor.setStyle(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ol.style.Style({
+  anchor.setStyle(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(resolution)</span></span>{
+      <span class="hljs-keyword">return</span> [<span class="hljs-keyword">new</span> ol.style.Style({
           image: <span class="hljs-keyword">new</span> ol.style.Icon({
             src: <span class="hljs-string">&apos;../img/anchor.png&apos;</span>,
             scale: map.getView().getZoom() / <span class="hljs-number">10</span>
           })
-        });
+        })];
   });
 
   layer.getSource().addFeature(anchor);
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
-<p>&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;&#x524D;&#x9762;&#x540C;&#x6837;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x6837;&#x66F4;&#x52A0;&#x7684;&#x7B80;&#x5355;&#xFF0C; &#x540C;&#x65F6;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x6269;&#x5C55;&#x5F00;&#x6765;&#x7684;&#x5E94;&#x7528;&#x4E5F;&#x4F1A;&#x66F4;&#x52A0;&#x7684;&#x591A;&#x3002; &#x6BD4;&#x5982;&#x52A8;&#x6001;&#x66FF;&#x6362;&#x56FE;&#x6807;&#xFF0C;&#x6216;&#x8005;&#x8BA9;&#x56FE;&#x6807;&#x4E0D;&#x663E;&#x793A;&#x7B49;&#x7B49;&#xFF0C;&#x53EF;&#x81EA;&#x884C;&#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E24;&#x4E2A;&#x9700;&#x6C42;&#xFF0C;&#x4EE5;&#x638C;&#x63E1;&#x6B64;&#x65B9;&#x5F0F;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;&#x524D;&#x9762;&#x540C;&#x6837;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x6837;&#x66F4;&#x52A0;&#x7684;&#x7B80;&#x5355;&#xFF0C; &#x540C;&#x65F6;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x6269;&#x5C55;&#x5F00;&#x6765;&#x7684;&#x5E94;&#x7528;&#x4E5F;&#x4F1A;&#x66F4;&#x52A0;&#x7684;&#x591A;&#x3002; &#x6BD4;&#x5982;&#x52A8;&#x6001;&#x66FF;&#x6362;&#x56FE;&#x6807;&#xFF0C;&#x6216;&#x8005;&#x8BA9;&#x56FE;&#x6807;&#x4E0D;&#x663E;&#x793A;&#x7B49;&#x7B49;&#xFF0C;&#x53EF;&#x81EA;&#x884C;&#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E24;&#x4E2A;&#x9700;&#x6C42;&#xFF0C;&#x4EE5;&#x638C;&#x63E1;&#x6B64;&#x65B9;&#x5F0F;&#x7684;&#x4F7F;&#x7528;&#x3002; </p>
+<p>&#x5728;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x5728;<code>feature</code>&#x4E0A;&#x5E94;&#x7528;&#x4E86;<code>styleFunction</code>&#xFF0C;&#x901A;&#x8FC7;&#x5B98;&#x7F51;API&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5176;&#x7C7B;&#x578B;&#x4E3A;<code>ol.FeatureStyleFunction</code>&#xFF0C;&#x51FD;&#x6570;&#x4EC5;&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;<code>resolution</code>&#xFF0C;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x770B;&#x5230;&#x4E86;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x4F53;&#x5185;<code>this</code>&#x6307;&#x7684;&#x662F;&#x5F53;&#x524D;&#x7684;<code>feature</code>&#xFF0C;&#x6839;&#x636E;&#x6587;&#x6863;&#x8BF4;&#x660E;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8981;&#x8303;&#x56F4;&#x4E00;&#x4E2A;<code>style</code>&#x6570;&#x7EC4;&#x3002; &#x8FD9;&#x4E00;&#x70B9;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x867D;&#x7136;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x4E2D;&#xFF0C;&#x5373;&#x4F7F;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;&#x4E5F;&#x4E0D;&#x4F1A;&#x51FA;&#x9519;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x5E0C;&#x671B;&#x5927;&#x5BB6;&#x80FD;&#x9075;&#x5B88;&#x5B98;&#x7F51;API&#x7684;&#x8BF4;&#x660E;&#x6765;&#x4F7F;&#x7528;&#x8BE5;&#x63A5;&#x53E3;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x9664;&#x4E86;<code>feature</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6837;&#x5F0F;&#x4E4B;&#x5916;&#xFF0C;<code>layer</code>&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6837;&#x5F0F;&#x7684;&#xFF0C;&#x540C;&#x6837;&#x5730;&#x4E5F;&#x652F;&#x6301;<code>styleFunction</code>&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5176;&#x5B9A;&#x4E49;&#x548C;<code>feature</code>&#x7684;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;<code>ol.style.StyleFunction</code>&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5177;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;<code>feature</code>&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;<code>resolution</code>&#xFF0C;&#x540C;&#x6837;&#x5730;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x9700;&#x8981;&#x8FD4;&#x56DE;<code>style</code>&#x6570;&#x7EC4;&#x3002; </p>
+<p><code>styleFunction</code>&#x5728;<code>feature</code>&#x4E0A;&#x5177;&#x6709;&#x5F88;&#x597D;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x90A3;&#x4E48;&#x5E94;&#x7528;&#x5728;<code>layer</code>&#x4E0A;&#xFF0C;&#x540C;&#x6837;&#x5A01;&#x529B;&#x65E0;&#x7A77;&#xFF0C;&#x6BD4;&#x5982;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#xFF1A;</p>
+<p><div id="map2" style="width: 100%"></div></p>
+<script type="text/javascript">
+  var layerStyleFunction = function(feature, resolution) {
+    var type = feature.get('type');
+    var style = null;
+    if (type === 'point') {
+      style = new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 1,
+          fill: new ol.style.Fill({
+            color: 'red'
+          })
+        })
+      });
+    } else if ( type === 'circle') {
+      style = new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 10,
+          stroke: new ol.style.Stroke({
+            color: 'red',
+            size: 1
+          })
+        })
+      });
+    } else {
+      style = new ol.style.Style({
+        image: new ol.style.RegularShape({
+          points: 5,
+          radius: 10,
+          fill: new ol.style.Fill({
+            color: 'blue'
+          })
+        })
+      });
+    }
+
+    return [style];
+  };
+
+  var layer2 = new ol.layer.Vector({
+    source: new ol.source.Vector(),
+    style: layerStyleFunction
+  });
+
+  var map2 = new ol.Map({
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      }), 
+      layer2
+    ],
+    target: 'map2',
+    view: new ol.View({
+      projection: 'EPSG:4326',
+      center: [104, 30],
+      zoom: 10
+    })
+  });
+
+  var rect = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+  layer2.getSource().addFeature(rect);
+
+  var circle = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+  circle.set('type', 'circle');
+  layer2.getSource().addFeature(circle);
+
+  var point = new ol.Feature({
+    geometry: new ol.geom.Point([104, 30])
+  });
+  point.set('type', 'point');
+  layer2.getSource().addFeature(point);
+
+</script>
+
+<p>&#x5728;&#x5730;&#x56FE;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E2D;&#x5FC3;&#x4F4D;&#x7F6E;&#x6709;&#x4E00;&#x4E2A;&#x5706;&#xFF0C;&#x4E00;&#x4E2A;&#x70B9;&#xFF0C;&#x4E00;&#x4E2A;&#x4E94;&#x8FB9;&#x5F62;&#xFF0C;&#x4F46;&#x8FD9;&#x6B21;&#x90FD;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x5728;&#x8FD9;&#x4E9B;<code>feature</code>&#x4E0A;&#x8BBE;&#x7F6E;&#x6837;&#x5F0F;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map2&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="actionscript">
+
+  <span class="hljs-comment">// &#x521B;&#x5EFA;layer&#x4F7F;&#x7528;&#x7684;style function&#xFF0C;&#x6839;&#x636E;feature&#x7684;&#x81EA;&#x5B9A;&#x4E49;type&#xFF0C;&#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;&#x6837;&#x5F0F;</span>
+  <span class="hljs-keyword">var</span> layerStyleFunction = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(feature, resolution)</span> </span>{
+    <span class="hljs-keyword">var</span> type = feature.<span class="hljs-keyword">get</span>(<span class="hljs-string">&apos;type&apos;</span>);
+    <span class="hljs-keyword">var</span> style = <span class="hljs-literal">null</span>;
+    <span class="hljs-comment">// &#x70B9;</span>
+    <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&apos;point&apos;</span>) {
+      style = <span class="hljs-keyword">new</span> ol.style.Style({
+        image: <span class="hljs-keyword">new</span> ol.style.Circle({
+          radius: <span class="hljs-number">1</span>,
+          fill: <span class="hljs-keyword">new</span> ol.style.Fill({
+            color: <span class="hljs-string">&apos;red&apos;</span>
+          })
+        })
+      });
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( type === <span class="hljs-string">&apos;circle&apos;</span>) { <span class="hljs-comment">// &#x5706;&#x5F62;</span>
+      style = <span class="hljs-keyword">new</span> ol.style.Style({
+        image: <span class="hljs-keyword">new</span> ol.style.Circle({
+          radius: <span class="hljs-number">10</span>,
+          stroke: <span class="hljs-keyword">new</span> ol.style.Stroke({
+            color: <span class="hljs-string">&apos;red&apos;</span>,
+            size: <span class="hljs-number">1</span>
+          })
+        })
+      });
+    } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// &#x5176;&#x4ED6;&#x5F62;&#x72B6;</span>
+      style = <span class="hljs-keyword">new</span> ol.style.Style({
+        image: <span class="hljs-keyword">new</span> ol.style.RegularShape({
+          points: <span class="hljs-number">5</span>,
+          radius: <span class="hljs-number">10</span>,
+          fill: <span class="hljs-keyword">new</span> ol.style.Fill({
+            color: <span class="hljs-string">&apos;blue&apos;</span>
+          })
+        })
+      });
+    }
+
+    <span class="hljs-comment">// &#x8FD4;&#x56DE; style &#x6570;&#x7EC4;</span>
+    <span class="hljs-keyword">return</span> [style];
+  };
+
+  <span class="hljs-keyword">var</span> layer2 = <span class="hljs-keyword">new</span> ol.layer.Vector({
+    source: <span class="hljs-keyword">new</span> ol.source.Vector(),
+    style: layerStyleFunction <span class="hljs-comment">// &#x5E94;&#x7528;&#x4E0A;&#x9762;&#x521B;&#x5EFA;&#x7684; style function</span>
+  });
+
+  <span class="hljs-keyword">var</span> map2 = <span class="hljs-keyword">new</span> ol.Map({
+    layers: [
+      <span class="hljs-keyword">new</span> ol.layer.Tile({
+        source: <span class="hljs-keyword">new</span> ol.source.OSM()
+      }), 
+      layer2
+    ],
+    target: <span class="hljs-string">&apos;map2&apos;</span>,
+    view: <span class="hljs-keyword">new</span> ol.View({
+      projection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,
+      center: [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>],
+      zoom: <span class="hljs-number">10</span>
+    })
+  });
+
+  <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x4E09;&#x4E2A;feature&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027; type</span>
+  <span class="hljs-keyword">var</span> rect = <span class="hljs-keyword">new</span> ol.Feature({
+    geometry: <span class="hljs-keyword">new</span> ol.geom.Point([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>])
+  });
+  layer2.getSource().addFeature(rect);
+
+  <span class="hljs-keyword">var</span> circle = <span class="hljs-keyword">new</span> ol.Feature({
+    geometry: <span class="hljs-keyword">new</span> ol.geom.Point([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>])
+  });
+  circle.<span class="hljs-keyword">set</span>(<span class="hljs-string">&apos;type&apos;</span>, <span class="hljs-string">&apos;circle&apos;</span>);
+  layer2.getSource().addFeature(circle);
+
+  <span class="hljs-keyword">var</span> point = <span class="hljs-keyword">new</span> ol.Feature({
+    geometry: <span class="hljs-keyword">new</span> ol.geom.Point([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>])
+  });
+  point.<span class="hljs-keyword">set</span>(<span class="hljs-string">&apos;type&apos;</span>, <span class="hljs-string">&apos;point&apos;</span>);
+  layer2.getSource().addFeature(point);
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x6839;&#x636E;<code>feature</code>&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x6E32;&#x67D3;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E1A;&#x52A1;&#x4E0A;&#x65E0;&#x9650;&#x6269;&#x5C55;&#xFF0C;&#x6BD4;&#x5982;<code>feature</code>&#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x662F;&#x901F;&#x5EA6;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x5927;&#x5C0F;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x65F6;&#x95F4;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x6743;&#x91CD;&#x7B49;&#x7B49;&#x3002; &#x7531;&#x6B64;&#x53EF;&#x89C1;&#xFF0C;&#x53EA;&#x8981;&#x638C;&#x63E1;&#x4E86;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x524D;&#x7AEF;&#x6309;&#x7167;&#x6761;&#x4EF6;&#x6E32;&#x67D3;&#x5C31;&#x4E0D;&#x518D;&#x56F0;&#x96BE;&#x3002;</p>
 
                     
                     </section>
