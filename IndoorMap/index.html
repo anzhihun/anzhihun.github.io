@@ -1,0 +1,126 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>室内多层地图demo</title>
+  <script type="text/javascript" src="3rd/three.js" charset="utf-8"></script>
+  <script type="text/javascript" src="3rd/TrackballControls.js" charset="utf-8"></script>
+  <script type="text/javascript" src="3rd/zepto.min.js" charset="utf-8"></script>
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script type="application/javascript">
+    var camera, scene, renderer, control, font;
+
+    init();
+    render();
+
+    function init() {
+
+      camera = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, -500, 10000);
+      camera.position.z = 1000;
+      camera.position.x = 0;
+      camera.position.y = -5000;
+
+      control = new THREE.TrackballControls(camera);
+
+      scene = new THREE.Scene();
+
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      var loader = new THREE.FontLoader();
+      loader.load('fonts/helvetiker_regular.typeface.js', function (response) {
+        font = response;
+        var text = new THREE.TextGeometry("1F", {
+          font: font,
+          size: 12,
+          height: 1,
+          material: 0,
+          extrudeMaterial: 1
+        });
+        var textMesh = new THREE.Mesh(text, new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          opacity: 0.2
+        }));
+        textMesh.rotation.x = 90 * Math.PI / 180;
+        scene.add(textMesh);
+        
+        var text2 = new THREE.TextGeometry("2F", {
+          font: font,
+          size: 12,
+          height: 1,
+          material: 0,
+          extrudeMaterial: 1
+        });
+        var textMesh2 = new THREE.Mesh(text2, new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          opacity: 0.2
+        }));
+        textMesh2.position.z = 200;
+        textMesh2.rotation.x = 90 * Math.PI / 180;
+        scene.add(textMesh2);
+      });
+
+      var ambientLight = new THREE.AmbientLight(Math.random() * 0x10);
+      scene.add(ambientLight);
+    }
+
+    function render() {
+      requestAnimationFrame(render);
+      control.update();
+      renderer.render(scene, camera);
+    }
+
+    function addCountry(mapData) {
+      mapData = JSON.parse(mapData);
+      var features = mapData.features;
+      var material = new THREE.LineBasicMaterial({
+        color: 0x9700f0,
+        opacity: 0.2
+      });
+
+      var material2 = new THREE.LineBasicMaterial({
+        color: 0x90fff0,
+        opacity: 0.2
+      });
+
+      for (var index = 0; index < features.length; index++) {
+        var feature = features[index];
+        if (feature.geometry.type === 'Polygon') {
+          var coords = feature.geometry.coordinates[0];
+          var geometry = new THREE.Geometry();
+          var geometry2 = new THREE.Geometry();
+          for (var coordIndex = 0; coordIndex < coords.length; coordIndex++) {
+            geometry.vertices.push(new THREE.Vector3(coords[coordIndex][0], coords[coordIndex][1], 0));
+            geometry2.vertices.push(new THREE.Vector3(coords[coordIndex][0], coords[coordIndex][1], 200));
+          }
+          geometry = geometry.scale(10, 10, 1);
+          geometry2 = geometry2.scale(10, 10, 1);
+          var line = new THREE.Line(geometry, material);
+          scene.add(line);
+
+          var line2 = new THREE.Line(geometry2, material2);
+          scene.add(line2);
+        }
+      }
+    }
+
+    $.get('data/countries-110m.geojson', function (data) {
+      addCountry(data);
+    });
+  </script>
+
+</body>
+
+
+
+</html>
