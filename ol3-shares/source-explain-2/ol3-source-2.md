@@ -1,4 +1,4 @@
-title: OpenLayers 3 源码哪些事（下）
+title: OpenLayers 3 源码那些事（下）
 speaker: 扯淡大叔
 url: http://weilin.me/ol3-shares/source-explain-2/index.html
 transition: slide2
@@ -8,7 +8,7 @@ date: 2016年6月1日
 
 [slide]
 
-# OpenLayers 3 源码哪些事（下）
+# OpenLayers 3 源码那些事（下）
 ## Soure & Layer
 
 <br>
