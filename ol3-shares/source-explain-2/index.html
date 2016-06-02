@@ -1,0 +1,422 @@
+<!--
+    Powered By nodePPT - This is probably the best web presentation tool so far!
+    version: 1.4.2
+    site: https://github.com/ksky521/nodePPT
+    date: 2016年6月1日
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OpenLayers 3 源码哪些事（下） - By 扯淡大叔</title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
+<link rel="stylesheet" href="./css/theme.dark.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>OpenLayers 3 源码哪些事（下）</h1>
+<h2>Soure &amp; Layer</h2>
+<p><br></p>
+<h3>演讲者：扯淡大叔</h3>
+<h3>QQ: 11364382</h3>
+<p><br></p>
+<h4>2016-06-01</h4>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h1>Source三大类</h1>
+
+</hgroup><article>
+
+<ul>
+<li>单张图片 <code>ol.source.Image</code></li>
+<li>瓦片图片 <code>ol.source.Tile</code></li>
+<li>矢量图形 <code>ol.source.Vector</code></li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>类图</h1>
+<img src="./images/source-types.png" alt="三大source类结构">
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>单张图片</h1>
+<p>目前相关的类有：</p>
+<ul>
+<li><code>ol.source.ImageArcGISRest</code></li>
+<li><code>ol.source.ImageCanvas</code> &lt;- <code>ol.source.ImageVector</code> <a href="http://openlayers.org/en/latest/examples/image-vector-layer.html" target="_blank">Image Vector Layer</a></li>
+<li><code>ol.source.ImageMapGuide</code></li>
+<li><code>ol.source.ImageStatic</code></li>
+<li><code>ol.source.ImageWMS</code> <a href="http://openlayers.org/en/latest/examples/wms-image.html" target="_blank">Single Image WMS</a></li>
+<li><code>ol.source.Raster</code> <a href="http://openlayers.org/en/latest/examples/raster.html" target="_blank">Raster Source</a></li>
+</ul>
+<p>把他们再细分一下, ArcGIS, WMS, MapGuide, Static可以分为一类。Canvas和Raster可分为另一类。</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<pre><code class="javascript">ol.source.Image.prototype.getImage = function(extent, resolution, pixelRatio, projection) {
+  var sourceProjection = this.getProjection();
+  if (!ol.ENABLE_RASTER_REPROJECTION ||
+      !sourceProjection ||
+      !projection ||
+      ol.proj.equivalent(sourceProjection, projection)) {
+    if (sourceProjection) {
+      projection = sourceProjection;
+    }
+    return this.getImageInternal(extent, resolution, pixelRatio, projection);
+  } else {
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<pre><code class="javascript">if (this.reprojectedImage_) {
+      if (this.reprojectedRevision_ == this.getRevision() &amp;&amp;
+          ol.proj.equivalent(
+              this.reprojectedImage_.getProjection(), projection) &amp;&amp;
+          this.reprojectedImage_.getResolution() == resolution &amp;&amp;
+          this.reprojectedImage_.getPixelRatio() == pixelRatio &amp;&amp;
+          ol.extent.equals(this.reprojectedImage_.getExtent(), extent)) {
+        return this.reprojectedImage_;
+      }
+      this.reprojectedImage_.dispose();
+      this.reprojectedImage_ = null;
+    }
+
+    this.reprojectedImage_ = new ol.reproj.Image(
+        sourceProjection, projection, extent, resolution, pixelRatio,
+        function(extent, resolution, pixelRatio) {
+          return this.getImageInternal(extent, resolution,
+              pixelRatio, sourceProjection);
+        }.bind(this));
+    this.reprojectedRevision_ = this.getRevision();
+
+    return this.reprojectedImage_;
+  }
+};
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>Image Source的核心</h1>
+<h2><code>getImageInternal</code></h2>
+<p>基本流程： 是否已经加载 -&gt; 否则根据范围加载 -&gt; 准备好各种参数 -&gt; 构造请求用的url -&gt; 最后load 
+简单来说，就是对现有服务请求的封装。</p>
+<h1>Canvas和Raster Source的不同</h1>
+<h2>在前端绘制</h2>
+<p><code>ImageCanvas</code>和<code>Raster</code>都是直接在前端用Canvas绘制，相对来说更加复杂，但从代码看，也是比较取巧的。</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p>ImageCanvas:</p>
+<pre><code class="javascript">extent = extent.slice();
+  ol.extent.scaleFromCenter(extent, this.ratio_);
+  var width = ol.extent.getWidth(extent) / resolution;
+  var height = ol.extent.getHeight(extent) / resolution;
+  var size = [width * pixelRatio, height * pixelRatio];
+
+  var canvasElement = this.canvasFunction_(
+      extent, resolution, pixelRatio, size, projection);
+  if (canvasElement) {
+    canvas = new ol.ImageCanvas(extent, resolution, pixelRatio,
+        this.getAttributions(), canvasElement);
+  }
+  this.canvas_ = canvas;
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p>Raster:</p>
+<pre><code class="javascript">var frameState = this.updateFrameState_(currentExtent, resolution, projection);
+
+  var imageCanvas = new ol.ImageCanvas(
+      currentExtent, resolution, 1, this.getAttributions(), canvas,
+      this.composeFrame_.bind(this, frameState));
+
+  this.renderedImageCanvas_ = imageCanvas;
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><code>ol.source.Raster.prototype.composeFrame_</code>:</p>
+<pre><code class="javascript">for (var i = 0; i &lt; len; ++i) {
+    var imageData = ol.source.Raster.getImageData_(
+        this.renderers_[i], frameState, frameState.layerStatesArray[i]);
+    if (imageData) {
+      imageDatas[i] = imageData;
+    } else {
+      // image not yet ready
+      return;
+    }
+  }
+
+  var data = {};
+  this.dispatchEvent(new ol.source.RasterEvent(
+      ol.source.RasterEventType.BEFOREOPERATIONS, frameState, data));
+
+  this.worker_.process(imageDatas, data,
+      this.onWorkerComplete_.bind(this, frameState, callback));
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>瓦片图片</h1>
+<p>相对于单张图片而言，瓦片图片需要更加精细化的控制，方能把多张小图片拼成一张大的图片。从类图可以看到，用到了
+<code>tileGrid</code>,<code>tileCache</code>。 由于在线网页地图图源，基本上都是瓦片，再加上各自为政，从而出现了下面相当多的瓦片图源类：</p>
+<img src="./images/source-tile.png" alt="Source Tile">
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h1>各种<code>ol.source.TileImage</code></h1>
+
+</hgroup><article>
+
+<ul>
+<li><code>ol.source.BingMaps</code>  <a href="https://msdn.microsoft.com/en-us/library/ff428643.aspx" target="_blank">BingMap Dev</a> <a href="http://openlayers.org/en/latest/examples/bing-maps.html" target="_blank">Bing Maps</a></li>
+<li><code>ol.source.TileArcGISRest</code> <a href="http://openlayers.org/en/latest/examples/arcgis-tiled.html" target="_blank">Tiled ArcGIS</a></li>
+<li><code>ol.source.TileJSON</code> <a href="http://openlayers.org/en/latest/examples/tilejson.html" target="_blank">TileJSON</a></li>
+<li><code>ol.source.TileWMS</code> <a href="http://openlayers.org/en/latest/examples/wms-tiled-wrap-180.html" target="_blank">Tiled WMS</a></li>
+<li><code>ol.source.WMTS</code> <a href="http://openlayers.org/en/latest/examples/wmts.html" target="_blank">WMTS</a></li>
+<li><code>ol.source.XYZ</code> <a href="http://openlayers.org/en/latest/examples/xyz.html" target="_blank">XYZ</a></li>
+<li><code>ol.source.Zoomify</code> <a href="http://openlayers.org/en/latest/examples/zoomify.html" target="_blank">Zoomify</a></li>
+</ul>
+<p>以上加载瓦片的流程都是一样的，只是针对各种瓦片的请求进行封装。 <code>getTile</code> -&gt; <code>getTileInternal</code> -&gt; <code>createTile_</code></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1><code>ol.source.VectorTile</code></h1>
+<p><code>getTile</code> -&gt; <code>new ol.VectorTile</code></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>矢量图片  <code>ol.source.Vector</code></h1>
+<p>矢量图存在很多种类型，OpenLayers 3把他们都封装在了<code>format</code>这个概念里面了。</p>
+<pre><code class="javascript">if (options.loader !== undefined) {
+    this.loader_ = options.loader;
+  } else if (this.url_ !== undefined) {
+    goog.asserts.assert(this.format_ !== undefined,
+        &#39;format must be set when url is set&#39;);
+    // create a XHR feature loader for &quot;url&quot; and &quot;format&quot;
+    this.loader_ = ol.featureloader.xhr(this.url_, this.format_);
+  }
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<pre><code class="javascript">ol.featureloader.xhr = function(url, format) {
+  return ol.featureloader.loadFeaturesXhr(url, format,
+      /**
+       * @param {Array.&lt;ol.Feature&gt;} features The loaded features.
+       * @param {ol.proj.Projection} dataProjection Data projection.
+       * @this {ol.source.Vector}
+       */
+      function(features, dataProjection) {
+        this.addFeatures(features);
+      }, /* FIXME handle error */ ol.nullFunction);
+};
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>关键代码：</h1>
+<pre><code class="javascript">xhr.onload = function(event) {
+  if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) {
+    var type = format.getType();
+    /** @type {Document|Node|Object|string|undefined} */
+    var source;
+    if (type == ol.format.FormatType.JSON ||
+        type == ol.format.FormatType.TEXT) {
+      source = xhr.responseText;
+    } else if (type == ol.format.FormatType.XML) {
+      source = xhr.responseXML;
+      if (!source) {
+        source = ol.xml.parse(xhr.responseText);
+      }
+    } else if (type == ol.format.FormatType.ARRAY_BUFFER) {
+      source = /** @type {ArrayBuffer} */ (xhr.response);
+    } else {
+      goog.asserts.fail(&#39;unexpected format type&#39;);
+    }
+    if (source) {
+      success.call(this, format.readFeatures(source,
+          {featureProjection: projection}),
+          format.readProjection(source));
+    } else {
+      goog.asserts.fail(&#39;undefined or null source&#39;);
+    }
+  } else {
+    failure.call(this);
+  }
+}.bind(this);
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>各种format</h1>
+<img src="./images/ol-format.png" alt="formater">
+<p><code>readFeatures</code></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>Layer 同 Source的关系</h1>
+<img src="./images/ol_layer_base.png" alt="layer与source的关系">
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>layer何时需要使用source？</h1>
+<p><code>prepareFrame</code>的时候需要</p>
+<p><code>ol.renderer.canvas.ImageLayer.prototype.prepareFrame</code> </p>
+<pre><code class="javascript">image = imageSource.getImage(
+    renderedExtent, viewResolution, pixelRatio, projection);
+if (image) {
+  var loaded = this.loadImage(image);
+  if (loaded) {
+    this.image_ = image;
+  }
+}
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><code>ol.renderer.canvas.TileLayer.prototype.prepareFrame</code></p>
+<pre><code class="javascript">var tileLayer = this.getLayer();
+var tileSource = tileLayer.getSource();
+...
+var renderables = [];
+var i, ii, currentZ, tileCoordKey, tilesToDraw;
+for (i = 0, ii = zs.length; i &lt; ii; ++i) {
+  currentZ = zs[i];
+  tilesToDraw = tilesToDrawByZ[currentZ];
+  for (tileCoordKey in tilesToDraw) {
+    tile = tilesToDraw[tileCoordKey];
+    if (tile.getState() == ol.TileState.LOADED) {
+      renderables.push(tile);
+    }
+  }
+}
+this.renderedTiles = renderables;
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><code>ol.renderer.canvas.VectorLayer.prototype.prepareFrame</code></p>
+<pre><code class="javascript">var vectorLayer = /** @type {ol.layer.Vector} */ (this.getLayer());
+goog.asserts.assertInstanceof(vectorLayer, ol.layer.Vector,
+    &#39;layer is an instance of ol.layer.Vector&#39;);
+var vectorSource = vectorLayer.getSource();
+...
+vectorSource.loadFeatures(extent, resolution, projection);
+...
+if (vectorLayerRenderOrder) {
+  /** @type {Array.&lt;ol.Feature&gt;} */
+  var features = [];
+  vectorSource.forEachFeatureInExtent(extent,
+      /**
+       * @param {ol.Feature} feature Feature.
+       */
+      function(feature) {
+        features.push(feature);
+      }, this);
+  features.sort(vectorLayerRenderOrder);
+  features.forEach(renderFeature, this);
+} else {
+  vectorSource.forEachFeatureInExtent(extent, renderFeature, this);
+}
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>大体结构</h1>
+<img src="./images/layer-source-struct.png"/>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>打赏</h1>
+<p>打赏费用我将全部投入到webgis 3D引擎众筹项目
+<br>
+<img src="./images/1rmb.jpg" style="width:256px;height:256px;"/><img src="./images/5rmb.jpg" style="width:256px;height:256px;"/><img src="./images/10rmb.jpg" style="width:256px;height:256px;"/>
+<img src="./images/15rmb.jpg" style="width:256px;height:256px;"/></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>谢谢大家！</h1>
+<h3>by 扯淡大叔</h3>
+
+</article></section></slide>
+        
+
+        <!-- <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+                <h2 style="color: white;">Powered By nodePPT v1.4.2</h2>
+            </article>
+        </slide> -->
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = (location.pathname + '#').split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'slide2',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/highlight.pack.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+<script src="./js/demo.js"></script>
+<link rel="stylesheet" href="./css/demo.css">
+
+<!--placeholder-->
+</body>
+</html>
