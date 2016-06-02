@@ -2,7 +2,7 @@ title: OpenLayers 3 源码哪些事（下）
 speaker: 扯淡大叔
 url: http://weilin.me/ol3-shares/source-explain-2/index.html
 transition: slide2
-theme: dark
+theme: blue
 files: /js/demo.js,/css/demo.css
 date: 2016年6月1日
 
