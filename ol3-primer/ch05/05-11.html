@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-donate/plugin.css">
+        
+    
+        
         <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
         
     
@@ -61,7 +65,7 @@
         data-chapter-title="图层叠加及管理"
         data-filepath="ch05/05-11.md"
         data-basepath=".."
-        data-revision="Thu May 05 2016 18:16:31 GMT+0800 (中国标准时间)"
+        data-revision="Fri Jun 03 2016 15:13:43 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -1381,7 +1385,7 @@
             source: new ol.source.Vector()
         });
 
-      new ol.Map({
+      var map = new ol.Map({
             layers: [osmLayer, pointLayer, circleLayer],
             view: new ol.View({
                 center: [0, 0],
@@ -1578,7 +1582,7 @@
 
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
-<p>&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x65B9;&#x6CD5;<code>setVisible</code>&#x548C;<code>setZIndex</code>&#x6765;&#x63A7;&#x5236;&#x56FE;&#x5C42;&#xFF0C;&#x6EE1;&#x8DB3;80%&#x7684;&#x8FD9;&#x79CD;&#x9700;&#x6C42;&#x3002;</p>
+<p>&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x65B9;&#x6CD5;<code>setVisible</code>&#x548C;<code>setZIndex</code>&#x6765;&#x63A7;&#x5236;&#x56FE;&#x5C42;&#xFF0C;&#x6EE1;&#x8DB3;80%&#x7684;&#x8FD9;&#x79CD;&#x9700;&#x6C42;&#x3002; &#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x5927;&#x5BB6;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5F88;&#x65E9;&#x4E4B;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x7BA1;&#x7406;&#xFF0C;&#x5373;&#x5220;&#x9664;/&#x6DFB;&#x52A0;&#x56FE;&#x5C42;&#xFF0C;&#x53C2;&#x89C1;<a href="05-02.html">&#x6700;&#x7B80;&#x5355;&#x7684;&#x52A0;&#x8F7D;&#x5728;&#x7EBF;&#x5730;&#x56FE;</a>&#x3002;</p>
 
                     
                     </section>
@@ -1613,6 +1617,10 @@
     
 
     
+    <script src="../gitbook/plugins/gitbook-plugin-donate/plugin.js"></script>
+    
+
+    
     <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
     
 
@@ -1634,7 +1642,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"katex":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"donate":{"alipay":"/img/5rmb.jpg","button":"打赏","alipayText":"支付宝打赏","title":"","wechat":"","wechatText":"微信打赏"},"katex":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>

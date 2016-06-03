@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-donate/plugin.css">
+        
+    
+        
         <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
         
     
@@ -61,7 +65,7 @@
         data-chapter-title="OpenLayers 3 介绍"
         data-filepath="ch01/index.md"
         data-basepath=".."
-        data-revision="Thu May 05 2016 18:16:31 GMT+0800 (中国标准时间)"
+        data-revision="Fri Jun 03 2016 15:13:43 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -1348,9 +1352,9 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="openlayers-3-&#x4ECB;&#x7ECD;">OpenLayers 3 &#x4ECB;&#x7ECD;</h1>
-<p>OpenLayers 3&#x7B80;&#x79F0;ol3&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7684;Web GIS&#x5F15;&#x64CE;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;JavaScript&#x3001;&#x6700;&#x65B0;&#x7684;HTML5&#x6280;&#x672F;&#x53CA;CSS&#x6280;&#x672F;&#xFF0C;&#x652F;&#x6301;dom&#xFF0C;canvas&#x548C;webgl&#x4E09;&#x79CD;&#x6E32;&#x67D3;&#x65B9;&#x5F0F;&#x3002;&#x9664;&#x4E86;&#x652F;&#x6301;&#x7F51;&#x9875;&#x7AEF;&#xFF0C;&#x8FD8;&#x652F;&#x6301;&#x79FB;&#x52A8;&#x7AEF;&#xFF08;&#x76EE;&#x524D;&#x79FB;&#x52A8;&#x7AEF;&#x8FD8;&#x4E0D;&#x6210;&#x719F;&#xFF0C;&#x6709;&#x5F85;&#x8FDB;&#x4E00;&#x6B65;&#x5B8C;&#x5584;&#xFF09;&#x3002;&#x5728;&#x5730;&#x56FE;&#x6570;&#x636E;&#x6E90;&#x65B9;&#x9762;&#xFF0C;&#x652F;&#x6301;&#x5404;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#xFF0C;&#x65E2;&#x652F;&#x6301;&#x5728;&#x7EBF;&#x7684;&#xFF0C;&#x4E5F;&#x652F;&#x6301;&#x79BB;&#x7EBF;&#x7684;&#x3002;&#x6BD4;&#x5982;OSM, Bing, MapBox, Stamen, MapQuest&#x7B49;&#x7B49;&#xFF1B;&#x8FD8;&#x652F;&#x6301;&#x5404;&#x79CD;&#x77E2;&#x91CF;&#x5730;&#x56FE;&#xFF0C;&#x6BD4;&#x5982;GeoJSON&#xFF0C;TopoJSON&#xFF0C;KML&#xFF0C;GML&#x7B49;&#x7B49;&#x3002;&#x968F;&#x7740;OpenLayers 3&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x53D1;&#x5C55;&#xFF0C;&#x5C06;&#x652F;&#x6301;&#x66F4;&#x591A;&#x7684;&#x5730;&#x56FE;&#x7C7B;&#x578B;&#x3002;</p>
+<p>OpenLayers 3&#x7B80;&#x79F0;ol3&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7684;Web GIS&#x5F15;&#x64CE;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;JavaScript&#x3001;&#x6700;&#x65B0;&#x7684;HTML5&#x6280;&#x672F;&#x53CA;CSS&#x6280;&#x672F;&#xFF0C;&#x652F;&#x6301;<code>dom</code>&#xFF0C;<code>canvas</code>&#x548C;<code>webgl</code>&#x4E09;&#x79CD;&#x6E32;&#x67D3;&#x65B9;&#x5F0F;&#x3002;&#x9664;&#x4E86;&#x652F;&#x6301;&#x7F51;&#x9875;&#x7AEF;&#xFF0C;&#x8FD8;&#x652F;&#x6301;&#x79FB;&#x52A8;&#x7AEF;&#xFF08;&#x76EE;&#x524D;&#x79FB;&#x52A8;&#x7AEF;&#x8FD8;&#x4E0D;&#x6210;&#x719F;&#xFF0C;&#x6709;&#x5F85;&#x8FDB;&#x4E00;&#x6B65;&#x5B8C;&#x5584;&#xFF09;&#x3002;&#x5728;&#x5730;&#x56FE;&#x6570;&#x636E;&#x6E90;&#x65B9;&#x9762;&#xFF0C;&#x652F;&#x6301;&#x5404;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x74E6;&#x7247;&#x5730;&#x56FE;&#xFF0C;&#x65E2;&#x652F;&#x6301;&#x5728;&#x7EBF;&#x7684;&#xFF0C;&#x4E5F;&#x652F;&#x6301;&#x79BB;&#x7EBF;&#x7684;&#x3002;&#x6BD4;&#x5982;OSM, Bing, MapBox, Stamen, MapQuest&#x7B49;&#x7B49;&#xFF1B;&#x8FD8;&#x652F;&#x6301;&#x5404;&#x79CD;&#x77E2;&#x91CF;&#x5730;&#x56FE;&#xFF0C;&#x6BD4;&#x5982;GeoJSON&#xFF0C;TopoJSON&#xFF0C;KML&#xFF0C;GML&#x7B49;&#x7B49;&#x3002;&#x968F;&#x7740;OpenLayers 3&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x53D1;&#x5C55;&#xFF0C;&#x5C06;&#x652F;&#x6301;&#x66F4;&#x591A;&#x7684;&#x5730;&#x56FE;&#x7C7B;&#x578B;&#x3002;</p>
 <h2 id="&#x4E0D;&#x517C;&#x5BB9;openlayers-2">&#x4E0D;&#x517C;&#x5BB9;OpenLayers 2</h2>
-<p>&#x5728;OpenLayers 3&#x4E4B;&#x524D;&#xFF0C;&#x8FD8;&#x6709;OpenLayers 2&#xFF0C;&#x867D;&#x7136;&#x4ECE;&#x540D;&#x5B57;&#x4E0A;&#x770B;&#x662F;&#x4E00;&#x4E2A;&#x5347;&#x7EA7;&#x7248;&#x672C;&#xFF0C;&#x4F46;OpenLayers 3&#x5B8C;&#x5168;&#x662F;&#x91CD;&#x65B0;&#x8BBE;&#x8BA1;&#xFF0C;&#x91C7;&#x7528;&#x5168;&#x65B0;&#x7684;&#x67B6;&#x6784;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x53CA;API&#x90FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x529F;&#x80FD;&#x4E0A;&#x5B8C;&#x5168;&#x5B9E;&#x73B0;OpenLayers 2&#x5DF2;&#x6709;&#x7684;&#x529F;&#x80FD;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x4F7F;&#x7528;OpenLayers 3&#x4E0D;&#x5FC5;&#x5148;&#x5B66;&#x4E60;OpenLayers 2&#x3002;&#x4F46;&#x4F7F;&#x7528;&#x8FC7;OpenLayers 2&#xFF0C;&#x5E76;&#x4E0D;&#x7B49;&#x4E8E;&#x76F4;&#x63A5;&#x5C31;&#x4F1A;&#x7528;OpenLayers 3&#xFF0C;&#x4ECD;&#x7136;&#x9700;&#x8981;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5B66;&#x4E60;&#x5B83;&#x3002;</p>
+<p>&#x5728;OpenLayers 3&#x4E4B;&#x524D;&#xFF0C;&#x8FD8;&#x6709;OpenLayers 2&#xFF0C;&#x867D;&#x7136;&#x4ECE;&#x540D;&#x5B57;&#x4E0A;&#x770B;&#x662F;&#x4E00;&#x4E2A;&#x5347;&#x7EA7;&#x7248;&#x672C;&#xFF0C;&#x4F46;OpenLayers 3&#x5B8C;&#x5168;&#x662F;&#x91CD;&#x65B0;&#x8BBE;&#x8BA1;&#xFF0C;&#x91C7;&#x7528;&#x5168;&#x65B0;&#x7684;&#x67B6;&#x6784;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x53CA;API&#x90FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x529F;&#x80FD;&#x4E0A;&#x5B8C;&#x5168;&#x5B9E;&#x73B0;OpenLayers 2&#x5DF2;&#x6709;&#x7684;&#x529F;&#x80FD;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x4F7F;&#x7528;OpenLayers 3&#x4E0D;&#x5FC5;&#x5148;&#x5B66;&#x4E60;OpenLayers 2&#x3002;&#x4F46;&#x4F7F;&#x7528;&#x8FC7;OpenLayers 2&#xFF0C;&#x5E76;&#x4E0D;&#x7B49;&#x4E8E;&#x76F4;&#x63A5;&#x5C31;&#x4F1A;&#x7528;OpenLayers 3&#xFF0C;&#x4ECD;&#x7136;&#x9700;&#x8981;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5B66;&#x4E60;&#x3002;</p>
 <h2 id="&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;">&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;</h2>
 <p>&#x7531;&#x4E8E;OpenLayers 3&#x4F7F;&#x7528;&#x4E86;HTML5&#x6280;&#x672F;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x5404;&#x79CD;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x7248;&#x672C;&#x6709;&#x6240;&#x8981;&#x6C42;&#x3002;IE&#x6D4F;&#x89C8;&#x5668;&#x6700;&#x4F4E;&#x4E5F;&#x9700;&#x8981;IE9&#x624D;&#x884C;&#xFF0C;&#x4EE5;&#x4E0B;&#x7684;IE&#x6D4F;&#x89C8;&#x5668;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528;OpenLayers 2&#x3002;&#x5176;&#x4ED6;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x6700;&#x4F4E;&#x7248;&#x672C;&#x8981;&#x6C42;&#x4E3A;Firefox 3.5&#xFF0C;Chrome 3.0&#xFF0C;Safari 3.0&#xFF0C;Opera 10.5&#x3002;&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;<code>webgl</code>&#x6E32;&#x67D3;&#x65B9;&#x5F0F;&#xFF0C;&#x5219;&#x53C8;&#x9700;&#x8981;&#x53C2;&#x8003;&#x5404;&#x5927;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x652F;&#x6301;&#x7A0B;&#x5EA6;&#x8FDB;&#x884C;&#x9009;&#x62E9;&#x3002;</p>
 <h2 id="&#x4EE3;&#x7801;&#x89C4;&#x8303;">&#x4EE3;&#x7801;&#x89C4;&#x8303;</h2>
@@ -1396,6 +1400,10 @@
     
 
     
+    <script src="../gitbook/plugins/gitbook-plugin-donate/plugin.js"></script>
+    
+
+    
     <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
     
 
@@ -1417,7 +1425,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"katex":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"donate":{"alipay":"/img/5rmb.jpg","button":"打赏","alipayText":"支付宝打赏","title":"","wechat":"","wechatText":"微信打赏"},"katex":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>
