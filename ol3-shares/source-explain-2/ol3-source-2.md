@@ -9,7 +9,7 @@ date: 2016年6月1日
 [slide]
 
 # OpenLayers 3 源码那些事（下）
-## Soure & Layer
+## Source & Layer
 
 <br>
 ### 演讲者：扯淡大叔
