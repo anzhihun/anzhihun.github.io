@@ -10,6 +10,12 @@ a:link {
     color: blue;
 }
 
+a.append {
+  font-size: 12pt;
+  color:#ff0000; 
+  margin-left: 20px;
+}
+
 li {
     margin-top: 0.5em;
 }
