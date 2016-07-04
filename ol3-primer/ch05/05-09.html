@@ -65,7 +65,7 @@
         data-chapter-title="坐标转换"
         data-filepath="ch05/05-09.md"
         data-basepath=".."
-        data-revision="Sun Jun 12 2016 11:20:59 GMT+0800 (中国标准时间)"
+        data-revision="Mon Jul 04 2016 10:23:23 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -1420,8 +1420,8 @@
         <span class="hljs-keyword">var</span> layer = <span class="hljs-keyword">new</span> ol.layer.Vector({
             source: <span class="hljs-keyword">new</span> ol.source.Vector({
                 features: (<span class="hljs-keyword">new</span> ol.format.GeoJSON()).readFeatures(src, {     <span class="hljs-comment">// &#x7528;readFeatures&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5750;&#x6807;&#x7CFB;</span>
-                    dataProjection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,    <span class="hljs-comment">// &#x8BBE;&#x5B9A;&#x5730;&#x56FE;&#x6570;&#x636E;&#x7684;&#x5750;&#x6807;&#x7CFB;</span>
-                    featureProjection: <span class="hljs-string">&apos;EPSG:3857&apos;</span> <span class="hljs-comment">// &#x8BBE;&#x5B9A;&#x521B;&#x5EFA;Feature&#x7528;&#x7684;&#x5750;&#x6807;&#x7CFB;</span>
+                    dataProjection: <span class="hljs-string">&apos;EPSG:4326&apos;</span>,    <span class="hljs-comment">// &#x8BBE;&#x5B9A;JSON&#x6570;&#x636E;&#x4F7F;&#x7528;&#x7684;&#x5750;&#x6807;&#x7CFB;</span>
+                    featureProjection: <span class="hljs-string">&apos;EPSG:3857&apos;</span> <span class="hljs-comment">// &#x8BBE;&#x5B9A;&#x5F53;&#x524D;&#x5730;&#x56FE;&#x4F7F;&#x7528;&#x7684;feature&#x7684;&#x5750;&#x6807;&#x7CFB;</span>
                 })
             })
         });
