@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>动画高阶应用 | OpenLayers 3 Primer</title>
+        <title>常见问题 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -49,10 +49,8 @@
         
     
     
-    <link rel="next" href="../ch11/11-03.html" />
     
-    
-    <link rel="prev" href="../ch11/11-01.html" />
+    <link rel="prev" href="../ch12/12-01.html" />
     
 
         
@@ -61,9 +59,9 @@
         
         
     <div class="book"
-        data-level="11.2"
-        data-chapter-title="动画高阶应用"
-        data-filepath="ch11/11-02.md"
+        data-level="13"
+        data-chapter-title="常见问题"
+        data-filepath="ch13/index.md"
         data-basepath=".."
         data-revision="Tue Aug 23 2016 11:01:49 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -1283,7 +1281,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="11.2" data-path="ch11/11-02.html">
+        <li class="chapter " data-level="11.2" data-path="ch11/11-02.html">
             
                 
                     <a href="../ch11/11-02.html">
@@ -1354,7 +1352,7 @@
             
         </li>
     
-        <li class="chapter " data-level="13" data-path="ch13/index.html">
+        <li class="chapter active" data-level="13" data-path="ch13/index.html">
             
                 
                     <a href="../ch13/index.html">
@@ -1402,203 +1400,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x52A8;&#x753B;&#x9AD8;&#x9636;&#x5E94;&#x7528;">&#x52A8;&#x753B;&#x9AD8;&#x9636;&#x5E94;&#x7528;</h1>
-<p>&#x867D;&#x7136;&#x5185;&#x7F6E;&#x52A8;&#x753B;&#x5E76;&#x4E0D;&#x591A;&#xFF0C;&#x4F46;&#x662F;&#x7EC6;&#x5FC3;&#x7684;&#x540C;&#x5B66;&#x5DF2;&#x7ECF;&#x53D1;&#x73B0;&#x4E86;&#x5185;&#x7F6E;&#x52A8;&#x753B;&#x6709;&#x4E2A;&#x53C2;&#x6570;<code>easing</code>&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x53EF;&#x4EE5;&#x8BA9;&#x5F00;&#x53D1;&#x8005;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x5B9E;&#x73B0;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x7684;&#x6269;&#x5C55;&#x3002; &#x5176;&#x5B9E;&#x5DF2;&#x7ECF;&#x5185;&#x7F6E;&#x4E86;&#x4E00;&#x4E9B;&#x76F8;&#x5173;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;<code>ol.easing</code>&#x91CC;&#x9762;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5305;&#x62EC;&#xFF1A;</p>
+                        <h1 id="&#x5E38;&#x89C1;&#x95EE;&#x9898;">&#x5E38;&#x89C1;&#x95EE;&#x9898;</h1>
 <ul>
-<li><code>ol.easing.easeIn</code>: &#x52A0;&#x901F;</li>
-<li><code>ol.easing.easeOut</code>: &#x51CF;&#x901F;</li>
-<li><code>ol.easing.inAndOut</code>: &#x5148;&#x52A0;&#x901F;&#x518D;&#x51CF;&#x901F;</li>
-<li><code>ol.easing.linear</code>: &#x5300;&#x901F;</li>
-<li><code>ol.easing.upAndDown</code>: &#x548C;inAndOut&#x7C7B;&#x4F3C;</li>
+<li><p>Q: ol3&#x652F;&#x6301;gif&#x5417;&#xFF1F;</p>
+<p>A: ol.style.Icon&#x5E76;&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;ol.Overlay&#x6765;&#x52A0;&#x8F7D;dom&#x7684;&#x65B9;&#x5F0F;&#x652F;&#x6301;&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x5728;&#x4E00;&#x4E2A;&#x5730;&#x56FE;&#x4E2D;&#x5982;&#x679C;&#x5B58;&#x5728;&#x51E0;&#x5343;&#x4E2A;overlay&#xFF0C;&#x5C06;&#x5F71;&#x54CD;&#x6548;&#x7387;&#x3002;</p>
+</li>
 </ul>
-<p>&#x5728;&#x524D;&#x9762;&#x7684;&#x5730;&#x56FE;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#xFF0C;&#x8BA9;&#x5927;&#x5BB6;&#x4F53;&#x9A8C;&#x4E00;&#x4E0B;&#x4E0D;&#x540C;&#x7684;&#x52A8;&#x753B;&#x7684;&#x6548;&#x679C;&#xFF1A;</p>
-<p><head>                  
-    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
-</head></p>
-<p><div id="map" style="width: 100%"></div></p>
-<p><select id="easing-type">
-    <option>easeIn</option>
-    <option>easeOut</option>
-    <option>inAndOut</option>
-    <option>linear</option>
-    <option>upAndDown</option>
-</select></p>
-<p><input type="button" value="&#x56DE;&#x5230;&#x539F;&#x70B9;" onclick="backWithAnim();"></p>
-<script type="text/javascript">
-    var map = new ol.Map({
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        target: 'map',
-        view: new ol.View({
-          center: ol.proj.transform(
-              [104, 30], 'EPSG:4326', 'EPSG:3857'),
-          zoom: 10
-        })
-    });
-
-    function backNoAnim() {
-    map.getView().setCenter(ol.proj.transform([104, 30], 'EPSG:4326', 'EPSG:3857'));
-    }
-
-    function getEasing() {
-        var typeSelect = document.getElementById('easing-type');
-        var easing = typeSelect.options[typeSelect.selectedIndex].text;
-        if (easing === 'easeIn') {
-            return ol.easing.easeIn;
-        } else if (easing === 'easeOut') {
-            return ol.easing.easeOut;
-        } else if (easing === 'inAndOut') {
-            return ol.easing.inAndOut;
-        } else if (easing === 'linear') {
-            return ol.easing.linear;
-        } else if (easing === 'upAndDown') {
-            return ol.easing.upAndDown;
-        } 
-    }
-
-    function backWithAnim() {
-        var pan = ol.animation.pan({
-      duration: 2000,
-      source: map.getView().getCenter(),
-      easing: getEasing()
-    });
-    map.beforeRender(pan);
-    map.getView().setCenter(ol.proj.transform([104, 30], 'EPSG:4326', 'EPSG:3857'));
-    }
-
-</script>
-
-<p>&#x5C1D;&#x8BD5;&#x5B8C;&#x6240;&#x6709;&#x7684;&#x52A8;&#x753B;&#x65B9;&#x5F0F;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;&#x5176;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-comment">&lt;!--&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x9009;&#x62E9;&#x9879;--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">select</span> <span class="hljs-attribute">id</span> = &quot;<span class="hljs-attribute">easing-type</span>&quot;&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>easeIn<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>easeOut<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>inAndOut<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>linear<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>upAndDown<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">select</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;button&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&#x56DE;&#x5230;&#x539F;&#x70B9;&quot;</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">&quot;backWithAnim()&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">input</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
-        layers: [
-          <span class="hljs-keyword">new</span> ol.layer.Tile({
-            source: <span class="hljs-keyword">new</span> ol.source.OSM()
-          })
-        ],
-        target: <span class="hljs-string">&apos;map&apos;</span>,
-        view: <span class="hljs-keyword">new</span> ol.View({
-          center: ol.proj.transform(
-              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>),
-          zoom: <span class="hljs-number">10</span>
-        })
-    });
-
-    <span class="hljs-comment">// &#x6839;&#x636E;&#x9009;&#x62E9;&#x9879;&#xFF0C;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x4F9B;&#x4E0B;&#x9762;&#x7684;backWithAnim&#x51FD;&#x6570;&#x4F7F;&#x7528;</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getEasing</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> typeSelect = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;easing-type&apos;</span>);
-        <span class="hljs-keyword">var</span> easing = typeSelect.options[typeSelect.selectedIndex].text;
-        <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;easeIn&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.easeIn;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;easeOut&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.easeOut;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;inAndOut&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.inAndOut;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;linear&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.linear;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;upAndDown&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.upAndDown;
-        } 
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">backWithAnim</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> pan = ol.animation.pan({
-      duration: <span class="hljs-number">2000</span>,
-      source: map.getView().getCenter(),
-      easing: getEasing()    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5BF9;&#x5E94;&#x9009;&#x62E9;&#x7684;&#x52A8;&#x753B;</span>
-    });
-    map.beforeRender(pan);
-    map.getView().setCenter(ol.proj.transform([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>));
-    }
-
-</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-</code></pre>
-<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x51FD;&#x6570;&#xFF0C;&#x901A;&#x8FC7;&#x5B98;&#x7F51;API&#x6587;&#x6863;&#x53EF;&#x77E5;&#xFF0C;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;<code>t</code>&#xFF0C;&#x8303;&#x56F4;&#x5728;0-1&#x4E4B;&#x95F4;&#xFF0C;&#x7136;&#x540E;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;0-1&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x3002; &#x7ED3;&#x5408;&#x52A8;&#x753B;&#x4E1A;&#x52A1;&#x6765;&#x770B;&#xFF0C;&#x867D;&#x7136;&#x5B98;&#x7F51;&#x6CA1;&#x6709;&#x8BF4;&#x660E;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x731C;&#x6D4B;&#x5B83;&#x5C31;&#x662F;&#x65F6;&#x95F4;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x5E94;&#x8BE5;&#x76EE;&#x6807;&#x8FBE;&#x6210;&#x6BD4;&#x3002; &#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;sin&#x66F2;&#x7EBF;&#x5F0F;&#x7684;&#x52A8;&#x753B;&#xFF1A;</p>
-<p><div id="map2" style="width: 100%"></div></p>
-<p><input type="button" value="&#x56DE;&#x5230;&#x539F;&#x70B9;" onclick="backWithAnim2();"></p>
-<script type="text/javascript">
-    var map2 = new ol.Map({
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        target: 'map2',
-        view: new ol.View({
-          center: ol.proj.transform(
-              [104, 30], 'EPSG:4326', 'EPSG:3857'),
-          zoom: 10
-        })
-    });
-
-    // sin曲线动画
-    function sin(t) {
-        // 使用sin曲线公式
-        return Math.sin(t * Math.PI / 2);
-    }
-
-    function backWithAnim2() {
-        var pan = ol.animation.pan({
-      duration: 2000,
-      source: map2.getView().getCenter(),
-      easing: sin
-    });
-    map2.beforeRender(pan);
-    map2.getView().setCenter(ol.proj.transform([104, 30], 'EPSG:4326', 'EPSG:3857'));
-    }
-
-</script>
-
-<p>&#x901F;&#x5EA6;&#x4E00;&#x5F00;&#x59CB;&#x4F1A;&#x5FEB;&#x4E00;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x6162;&#x4E0B;&#x6765;&#xFF0C; &#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map2&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;button&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&#x56DE;&#x5230;&#x539F;&#x70B9;&quot;</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">&quot;backWithAnim2();&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">input</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> map2 = <span class="hljs-keyword">new</span> ol.Map({
-        layers: [
-          <span class="hljs-keyword">new</span> ol.layer.Tile({
-            source: <span class="hljs-keyword">new</span> ol.source.OSM()
-          })
-        ],
-        target: <span class="hljs-string">&apos;map2&apos;</span>,
-        view: <span class="hljs-keyword">new</span> ol.View({
-          center: ol.proj.transform(
-              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>),
-          zoom: <span class="hljs-number">10</span>
-        })
-    });
-
-    <span class="hljs-comment">// sin&#x66F2;&#x7EBF;&#x52A8;&#x753B;</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sin</span>(<span class="hljs-params">t</span>) </span>{
-        <span class="hljs-comment">// &#x4F7F;&#x7528;sin&#x66F2;&#x7EBF;&#x516C;&#x5F0F;</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.sin(t * <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">2</span>);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">backWithAnim2</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> pan = ol.animation.pan({
-      duration: <span class="hljs-number">2000</span>,
-      source: map2.getView().getCenter(),
-      easing: sin <span class="hljs-comment">// &#x5E94;&#x7528;sin&#x66F2;&#x7EBF;&#x52A8;&#x753B;</span>
-    });
-    map2.beforeRender(pan);
-    map2.getView().setCenter(ol.proj.transform([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>));
-    }
-
-</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-</code></pre>
 
                     
                     </section>
@@ -1609,10 +1416,8 @@
         </div>
 
         
-        <a href="../ch11/11-01.html" class="navigation navigation-prev " aria-label="Previous page: 动画简单应用"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch12/12-01.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 通过wfs增删改查要素"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../ch11/11-03.html" class="navigation navigation-next " aria-label="Next page: 利用postcompose事件做动画"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

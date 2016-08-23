@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>动画高阶应用 | OpenLayers 3 Primer</title>
+        <title>瓦片加载的源码浅析与小结 | OpenLayers 3 Primer</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -49,10 +49,10 @@
         
     
     
-    <link rel="next" href="../ch11/11-03.html" />
+    <link rel="next" href="../ch05/05-05.html" />
     
     
-    <link rel="prev" href="../ch11/11-01.html" />
+    <link rel="prev" href="../ch05/05-04.html" />
     
 
         
@@ -61,9 +61,9 @@
         
         
     <div class="book"
-        data-level="11.2"
-        data-chapter-title="动画高阶应用"
-        data-filepath="ch11/11-02.md"
+        data-level="5.1.4"
+        data-chapter-title="瓦片加载的源码浅析与小结"
+        data-filepath="ch05/05-12.md"
         data-basepath=".."
         data-revision="Tue Aug 23 2016 11:01:49 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -510,7 +510,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.1.4" data-path="ch05/05-12.html">
+        <li class="chapter active" data-level="5.1.4" data-path="ch05/05-12.html">
             
                 
                     <a href="../ch05/05-12.html">
@@ -1283,7 +1283,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="11.2" data-path="ch11/11-02.html">
+        <li class="chapter " data-level="11.2" data-path="ch11/11-02.html">
             
                 
                     <a href="../ch11/11-02.html">
@@ -1402,204 +1402,214 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x52A8;&#x753B;&#x9AD8;&#x9636;&#x5E94;&#x7528;">&#x52A8;&#x753B;&#x9AD8;&#x9636;&#x5E94;&#x7528;</h1>
-<p>&#x867D;&#x7136;&#x5185;&#x7F6E;&#x52A8;&#x753B;&#x5E76;&#x4E0D;&#x591A;&#xFF0C;&#x4F46;&#x662F;&#x7EC6;&#x5FC3;&#x7684;&#x540C;&#x5B66;&#x5DF2;&#x7ECF;&#x53D1;&#x73B0;&#x4E86;&#x5185;&#x7F6E;&#x52A8;&#x753B;&#x6709;&#x4E2A;&#x53C2;&#x6570;<code>easing</code>&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x53EF;&#x4EE5;&#x8BA9;&#x5F00;&#x53D1;&#x8005;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x5B9E;&#x73B0;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x7684;&#x6269;&#x5C55;&#x3002; &#x5176;&#x5B9E;&#x5DF2;&#x7ECF;&#x5185;&#x7F6E;&#x4E86;&#x4E00;&#x4E9B;&#x76F8;&#x5173;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;<code>ol.easing</code>&#x91CC;&#x9762;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5305;&#x62EC;&#xFF1A;</p>
-<ul>
-<li><code>ol.easing.easeIn</code>: &#x52A0;&#x901F;</li>
-<li><code>ol.easing.easeOut</code>: &#x51CF;&#x901F;</li>
-<li><code>ol.easing.inAndOut</code>: &#x5148;&#x52A0;&#x901F;&#x518D;&#x51CF;&#x901F;</li>
-<li><code>ol.easing.linear</code>: &#x5300;&#x901F;</li>
-<li><code>ol.easing.upAndDown</code>: &#x548C;inAndOut&#x7C7B;&#x4F3C;</li>
-</ul>
-<p>&#x5728;&#x524D;&#x9762;&#x7684;&#x5730;&#x56FE;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#xFF0C;&#x8BA9;&#x5927;&#x5BB6;&#x4F53;&#x9A8C;&#x4E00;&#x4E0B;&#x4E0D;&#x540C;&#x7684;&#x52A8;&#x753B;&#x7684;&#x6548;&#x679C;&#xFF1A;</p>
-<p><head>                  
-    <link href="../src/ol3.13.1/ol.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../src/ol3.13.1/ol.js" charset="utf-8"></script>
-</head></p>
-<p><div id="map" style="width: 100%"></div></p>
-<p><select id="easing-type">
-    <option>easeIn</option>
-    <option>easeOut</option>
-    <option>inAndOut</option>
-    <option>linear</option>
-    <option>upAndDown</option>
-</select></p>
-<p><input type="button" value="&#x56DE;&#x5230;&#x539F;&#x70B9;" onclick="backWithAnim();"></p>
-<script type="text/javascript">
-    var map = new ol.Map({
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        target: 'map',
-        view: new ol.View({
-          center: ol.proj.transform(
-              [104, 30], 'EPSG:4326', 'EPSG:3857'),
-          zoom: 10
-        })
-    });
+                        <h1 id="openlayers3&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x7684;&#x6E90;&#x7801;&#x6D45;&#x6790;&#x4E0E;&#x5C0F;&#x7ED3;">openlayers3&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x7684;&#x6E90;&#x7801;&#x6D45;&#x6790;&#x4E0E;&#x5C0F;&#x7ED3;</h1>
+<p><strong>--&#x611F;&#x8C22;&#x4F5C;&#x8005;&#xFF1A;&#x8001;&#x7FBD;&#xFF08;QQ&#xFF1A;274103592<a href="mailto:michael.zy@163.com" target="_blank">michael.zy@163.com</a>&#xFF09;&#xFF01; &#x4ED6;&#x7684;&#x7B80;&#x4E66;<a href="http://www.jianshu.com/users/261606a3714c/latest_articles" target="_blank">&#x8001;&#x7FBD;</a></strong></p>
+<h2 id="&#x4E00;&#x3001;&#x7C7B;&#x56FE;&#x4E0E;&#x903B;&#x8F91;">&#x4E00;&#x3001;&#x7C7B;&#x56FE;&#x4E0E;&#x903B;&#x8F91;</h2>
+<p><img src="http://upload-images.jianshu.io/upload_images/2137628-da315a4e3e904e6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ol-tilerender.png"></p>
+<p>&#x4E0A;&#x56FE;&#x4E2D;&#x5217;&#x4E86;&#x5173;&#x4E8E;&#x74E6;&#x7247;&#x56FE;&#x5C42;&#x52A0;&#x8F7D;&#x76F8;&#x5173;&#x7684;&#x91CD;&#x8981;&#x65B9;&#x6CD5;&#x3002;</p>
+<ol>
+<li>Map&#x5BF9;&#x8C61;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x6839;&#x636E;options.renderer&#x521B;&#x5EFA;ol.renderer.Map&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;ol.renderer.canvas.Map&#xFF1B;</li>
+<li>ol.render.canvas.Map&#x5B9E;&#x73B0;&#x4E86;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;createLayerRenderer&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5DE5;&#x5382;&#xFF0C;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x5C42;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;ol.renderer.Layer&#x3002;&#x5176;&#x4E2D;ol.layer.Tile&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;ol.renderer.canvas.TileLayer&#xFF1B;</li>
+<li>ol.renderer.canvas.TileLayer.prepareFrame&#x8C03;&#x7528;source&#x5BF9;&#x5E94;&#x7684;
+TileGrid.getTileRangeForExtentAndResolution&#x83B7;&#x53D6;&#x53EF;&#x89C6;&#x8303;&#x56F4;&#x5185;&#x7684;&#x74E6;&#x7247;&#x8303;&#x56F4;&#xFF0C;&#x5E76;&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x52A0;&#x8F7D;&#x74E6;&#x7247;&#xFF1B;</li>
+<li>TileGrid&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x5C31;&#x8BA1;&#x7B97;&#x51FA;&#x4E86;&#x5BF9;&#x5E94;layer&#x7684;&#x6240;&#x6709;&#x74E6;&#x7247;&#x8303;&#x56F4;&#xFF1A;<ol>
+<li>calculateTileRanges<em>-&#x300B;&#x5FAA;&#x73AF;&#x904D;&#x5386;resolutions</em>&#xFF0C;&#x8C03;&#x7528;
+getTileRangeForExtentAndZ&#xFF0C;&#x6839;&#x636E;extent&#x8BA1;&#x7B97;&#x74E6;&#x7247;&#x8303;&#x56F4;&#xFF1B;</li>
+<li>getTileRangeForExtentAndResolution&#x8BA1;&#x7B97;&#x74E6;&#x7247;&#x7684;&#x8303;&#x56F4;&#xFF1A;</li>
+</ol>
+</li>
+</ol>
+<pre><code>  ol.tilegrid.TileGrid.prototype.getTileRangeForExtentAndResolution = function(
+    extent, resolution, opt_tileRange) {
+    var tileCoord = ol.tilegrid.TileGrid.tmpTileCoord_;
+    // &#x6839;&#x636E;extent&#x7684;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x8BA1;&#x7B97;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF1B;
+    this.getTileCoordForXYAndResolution_(
+      extent[0], extent[1], resolution, false, tileCoord);
+    var minX = tileCoord[1];
+    var minY = tileCoord[2];
+      // &#x6839;&#x636E;extent&#x7684;&#x53F3;&#x4E0A;&#x89D2;&#x7684;&#x8BA1;&#x7B97;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF1B;
+     this.getTileCoordForXYAndResolution_(
+        extent[2], extent[3], resolution, true, tileCoord);
+    // &#x5F97;&#x5230;&#x67D0;&#x4E2A;resolution&#x7EA7;&#x522B;&#x4E0B;&#x7684;&#x74E6;&#x7247;&#x8303;&#x56F4;&#xFF08;&#x5DE6;&#x4E0B;&#x89D2;&#x74E6;&#x7247;&#x5750;&#x6807; - &#x53F3;&#x4E0A;&#x89D2;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF09;
+    return ol.TileRange.createOrUpdate(
+      minX, tileCoord[1], minY, tileCoord[2], opt_tileRange);
+   };
 
-    function backNoAnim() {
-    map.getView().setCenter(ol.proj.transform([104, 30], 'EPSG:4326', 'EPSG:3857'));
+  // &#x6839;&#x636E;extent&#x5DE6;&#x4E0B;&#x89D2;&#x53CA;&#x53F3;&#x4E0A;&#x89D2;&#x7684;&#x5750;&#x6807;-origin&#x540E;&#x5F97;&#x5230;&#x5730;&#x56FE;&#x7684;&#x957F;&#x5BBD; / resolution&#x5F97;&#x5230;&#x50CF;&#x7D20;&#x503C;&#xFF1B;
+  // &#x7136;&#x540E; / tileSize &#x5F97;&#x5230;&#x9700;&#x8981;&#x591A;&#x5C11;&#x5F20;&#x74E6;&#x7247;&#xFF1B;
+  // &#x5F53;&#x8BA1;&#x7B97;extent&#x53F3;&#x4E0A;&#x89D2;&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#x65F6;&#xFF0C;&#x56E0;&#x4E3A;&#x74E6;&#x7247;&#x5750;&#x6807;&#x662F;&#x4ECE;0&#x5F00;&#x59CB;&#x8BA1;&#x7B97;&#xFF0C;&#x5F53;&#x74E6;&#x7247;&#x6570;&#x91CF;&#x4E3A;&#x4F8B;&#x5982;1.5&#x6B64;&#x7C7B;&#x5C0F;&#x6570;&#x65F6;&#xFF0C;
+  // &#x5E94;&#x8BE5;&#x662F;2&#x5F20;&#x74E6;&#x7247;&#xFF0C;&#x4ECE;0&#x5F00;&#x59CB;&#x8BA1;&#x7B97;&#xFF0C;&#x90A3;&#x4E48;XY&#x5C31;&#x5E94;&#x8BE5;&#x5411;&#x4E0B;&#x53D6;&#x6574;&#xFF0C;&#x53D6;1&#xFF1B;0&#xFF0C;1&#x4E24;&#x5F20;&#x74E6;&#x7247;&#xFF1B;
+  ol.tilegrid.TileGrid.prototype.getTileCoordForXYAndResolution_ = function(
+    x, y, resolution, reverseIntersectionPolicy, opt_tileCoord) {
+    var z = this.getZForResolution(resolution);
+    var scale = resolution / this.getResolution(z);
+    var origin = this.getOrigin(z);
+    var tileSize = ol.size.toSize(this.getTileSize(z), this.tmpSize_);
+
+    var adjustX = reverseIntersectionPolicy ? 0.5 : 0;
+    var adjustY = reverseIntersectionPolicy ? 0 : 0.5;
+    var xFromOrigin = Math.floor((x - origin[0]) / resolution + adjustX);
+    var yFromOrigin = Math.floor((y - origin[1]) / resolution + adjustY);
+    var tileCoordX = scale * xFromOrigin / tileSize[0];
+    var tileCoordY = scale * yFromOrigin / tileSize[1];
+
+    if (reverseIntersectionPolicy) {
+      tileCoordX = Math.ceil(tileCoordX) - 1;
+      tileCoordY = Math.ceil(tileCoordY) - 1;
+    } else {
+      tileCoordX = Math.floor(tileCoordX);
+      tileCoordY = Math.floor(tileCoordY);
     }
 
-    function getEasing() {
-        var typeSelect = document.getElementById('easing-type');
-        var easing = typeSelect.options[typeSelect.selectedIndex].text;
-        if (easing === 'easeIn') {
-            return ol.easing.easeIn;
-        } else if (easing === 'easeOut') {
-            return ol.easing.easeOut;
-        } else if (easing === 'inAndOut') {
-            return ol.easing.inAndOut;
-        } else if (easing === 'linear') {
-            return ol.easing.linear;
-        } else if (easing === 'upAndDown') {
-            return ol.easing.upAndDown;
-        } 
+    return ol.tilecoord.createOrUpdate(z, tileCoordX, tileCoordY, opt_tileCoord);
+  };
+</code></pre><h2 id="&#x4E8C;&#x3001;&#x5404;&#x79CD;&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x7684;&#x5C0F;&#x7ED3;">&#x4E8C;&#x3001;&#x5404;&#x79CD;&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x7684;&#x5C0F;&#x7ED3;</h2>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x5206;&#x6790;&#x540E;&#xFF0C;&#x5E94;&#x8BE5;&#x80FD;&#x8F83;&#x597D;&#x7684;&#x7406;&#x89E3;&#x74E6;&#x7247;&#x7684;&#x5750;&#x6807;&#x662F;&#x5982;&#x4F55;&#x8BA1;&#x7B97;&#x7684;&#xFF0C;&#x5F53;&#x5E94;&#x7528;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x65F6;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5FC3;&#x5E94;&#x624B;&#x3002;&#x4EE5;&#x4E0B;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x7EE7;&#x7EED;&#x8BF4;&#x660E;&#x74E6;&#x7247;&#x8BA1;&#x7B97;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<h3 id="1&#x3001;tms&#x74E6;&#x7247;&#x52A0;&#x8F7D;">1&#x3001;TMS&#x74E6;&#x7247;&#x52A0;&#x8F7D;</h3>
+<p>&#x5148;&#x770B;&#x770B;TMS&#x74E6;&#x7247;&#x7684;&#x89C4;&#x5219;&#xFF0C;origin&#x5728;&#x5DE6;&#x4E0B;&#x89D2;&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x4ECE;&#x4E0B;&#x5F80;&#x4E0A;&#x9012;&#x589E;&#xFF08;&#x5148;&#x8BA1;&#x7B97;&#x5DE6;&#x4E0B;&#x89D2;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x53F3;&#x4E0A;&#x89D2;&#xFF09;&#x3002;
+<img src="http://upload-images.jianshu.io/upload_images/2137628-c759b54b0c7871ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TMS&#x74E6;&#x7247;&#x89C4;&#x5219;
+"></p>
+<p>&#x800C;TileGrid&#x8BBE;&#x7F6E;origin&#x4E3A;ol.extent.getBottomLeft(extent)&#x540E;&#xFF0C;&#x89C4;&#x5219;&#x4E5F;&#x662F;&#x4ECE;&#x5DE6;&#x4E0B;&#x89D2;&#x5230;&#x53F3;&#x4E0A;&#x89D2;&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x4ECE;&#x4E0B;&#x5F80;&#x4E0A;&#x9012;&#x589E;&#xFF0C;&#x4E0E;TMS&#x89C4;&#x5219;&#x662F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x4E0E;&#x53C2;&#x8003;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;       </p>
+<pre><code>  var resolutions = [];
+  var tileSize = 256;
+  var extent = [12665080.52765571, 2550703.6338763316, 12725465.780000998, 2601457.820657688]; //&#x6DF1;&#x5733;&#x5730;&#x533A;
+  var projection = new ol.proj.get(&quot;EPSG:3857&quot;);
+  var projectionExtent = projection.getExtent();
+
+  for (var i = 0; i &lt; 19; i++) {
+    resolutions[i] = Math.pow(2, 18 - i);
+  }            
+
+  var tilegrid = new ol.tilegrid.TileGrid({
+    origin: ol.extent.getBottomLeft(projectionExtent),
+    resolutions: resolutions,
+    extent: projectionExtent,//extent,
+    tileSize: [256, 256],
+  });         
+
+  var map = new ol.Map({
+    target: &quot;map&quot;,
+    layers: [
+      // &#x8C03;&#x8BD5;&#x74E6;&#x7247;
+      new ol.layer.Tile({
+        source: new ol.source.TileDebug({
+          projection: projection,
+          tileGrid: tilegrid,
+          tileSize: [256, 256],
+          extent :  projectionExtent,
+          wrapX: false
+        }),
+      })
+    ],
+    view: new ol.View({
+      projection: projection,
+      center: [12697184.079535482, 2563239.3065151004],//&#x6DF1;&#x5733;
+      resolutions: resolutions,
+    }),
+  });
+  map.getView().setZoom(1);
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/2137628-802f1c49917ee558.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x793A;&#x610F;&#x56FE;"></p>
+<p>&#x5047;&#x5982;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x60F3;&#x53EA;&#x663E;&#x793A;&#x6DF1;&#x5733;&#x5730;&#x533A;&#x7684;&#x74E6;&#x7247;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x74E6;&#x7247;&#x4E0D;&#x663E;&#x793A;&#xFF0C;&#x8FD9;&#x79CD;&#x573A;&#x666F;&#x662F;&#x5F88;&#x666E;&#x904D;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x4EE3;&#x7801;&#x8C03;&#x6574;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  var tilegrid = new ol.tilegrid.TileGrid({
+    origin: ol.extent.getBottomLeft(projectionExtent),  //origin&#x4F4D;&#x7F6E;&#x4E0D;&#x80FD;&#x53D8;&#xFF01;&#xFF01;&#xFF01;&#xFF01;&#xFF01;&#xFF01;
+    resolutions: resolutions,
+    extent:  extent,//projectionExtent //&#x8BBE;&#x7F6E;extent&#x4E3A;&#x6DF1;&#x5733;&#x7247;&#x533A;&#x7684;extent&#xFF1B;
+    tileSize: [256, 256],
+  });
+
+  // ..................
+
+  // &#x8C03;&#x8BD5;&#x74E6;&#x7247;
+  new ol.layer.Tile({
+    source: new ol.source.TileDebug({
+      projection: projection,
+      tileGrid: tilegrid,
+      extent: extent,//projectionExtent //&#x8BBE;&#x7F6E;extent&#x4E3A;&#x6DF1;&#x5733;&#x7247;&#x533A;&#x7684;extent&#xFF1B;
+      wrapX: false
+    }),
+  })
+</code></pre><h3 id="2&#x3001;wmts&#x74E6;&#x7247;&#x52A0;&#x8F7D;">2&#x3001;WMTS&#x74E6;&#x7247;&#x52A0;&#x8F7D;</h3>
+<p>WMTS&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF0C;origin&#x5728;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x662F;&#x4ECE;&#x4E0A;&#x5F80;&#x4E0B;&#x9012;&#x589E;&#xFF08;&#x5148;&#x8BA1;&#x7B97;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x53F3;&#x4E0B;&#x89D2;&#xFF09;</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2137628-6e85d2549036f932.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WMTS&#x89C4;&#x5219;"></p>
+<p>&#x90A3;&#x4E48;&#x5C06;tileGrid&#x8BBE;&#x7F6E;origin&#x4E3A;ol.extent.getTopLeft(projectionExtent), &#x4F46;&#x662F;TileGrid&#x59CB;&#x7EC8;&#x90FD;&#x662F;&#x5148;&#x8BA1;&#x7B97;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x53F3;&#x4E0A;&#x89D2;&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF0C;&#x56E0;&#x6B64;Y&#x8F74;&#x662F;&#x76F8;&#x53CD;&#x7684;&#x3002;&#x90A3;&#x4E48;&#x4FEE;&#x6539;Y&#x8F74;&#x5750;&#x6807;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x503C;&#xFF1A;</p>
+<pre><code>  var tilegrid = new ol.tilegrid.TileGrid({
+    origin: ol.extent.getTopLeft(projectionExtent),  // WMTS Origin&#x5728;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;origin&#x4F4D;&#x7F6E;&#x4E0D;&#x80FD;&#x53D8;&#xFF1B;
+    resolutions: resolutions,
+    extent: extent,
+    tileSize: [256, 256],
+  });
+
+  // &#x5176;&#x4F59;&#x4EE3;&#x7801;&#x7565;.....
+  new ol.layer.Tile({
+    source: new ol.source.TileImage({
+      projection: projection,
+      tileGrid: tilegrid(),
+      tileUrlFunction: function (tileCoord, pixelRatio, proj) {
+        if (!tileCoord) {
+          return &quot;&quot;;
+        }
+        var z = tileCoord[0];
+        var x = tileCoord[1];
+        var y = -tileCoord[2] - 1; // y&#x8F74;&#x53D6;&#x53CD;&#xFF0C;-1&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x4ECE;0&#x5F00;&#x59CB;&#x8BA1;&#x6570;&#xFF1B;
+
+        return &apos;&apos;; // &#x81EA;&#x884C;&#x8BBE;&#x7F6E;URL &#xFF0C;&#x8BF7;&#x6CE8;&#x610F; WMTS&#x4E2D;&#x7528;TileRow&#x6807;&#x8BC6;Y&#xFF0C;&#x7528;TileCol&#x8868;&#x793A;X&#xFF1B;
+      }
+    }),
+  })
+</code></pre><h3 id="3&#x3001;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;">3&#x3001;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;</h3>
+<p>&#x767E;&#x5EA6;&#x74E6;&#x7247;&#x7247;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;Origin&#x5728;[0,0]&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x4ECE;&#x4E0B;&#x5F80;&#x4E0A;&#x9012;&#x589E;&#xFF08;&#x4ECE;&#x5DE6;&#x4E0B;&#x89D2;&#x5230;&#x53F3;&#x4E0A;&#x89D2;&#xFF09;&#x3002;</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2137628-8791a117b3243f5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>&#x4ECE;&#x767E;&#x5EA6;&#x7684;&#x74E6;&#x7247;&#x89C4;&#x5219;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x4E0E;TileGrid&#x7684;&#x89C4;&#x5219;&#x662F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#xFF0C;&#x5C06;origin&#x8BBE;&#x7F6E;&#x4E3A;[0,0]&#x5373;&#x53EF;&#x3002;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  var tilegrid = new ol.tilegrid.TileGrid({
+    origin: [0, 0],
+    resolutions: resolutions,
+    extent: extent,//projectionExtent,
+    tileSize: [256, 256],
+  });
+
+ var tilesource = new ol.source.TileImage({
+    projection: projection,
+    tileGrid: tilegrid,
+    tileUrlFunction: function (xyz, obj1, obj2) {
+      if (!xyz) {
+        return &quot;&quot;;
+      }
+      var z = xyz[0]+ 11; // &#x4ECE;&#x7B2C;11&#x7EA7;&#x5F00;&#x59CB;&#x52A0;&#x8F7D;&#xFF1B;&#x6DF1;&#x5733;&#x5730;&#x533A;&#xFF1B;
+      var x = xyz[1];
+      var y = xyz[2];
+      if (x &lt; 0) {
+        x = &quot;M&quot; + (-x);
+      }
+      if (y &lt; 0) {
+        y = &quot;M&quot; + (-y);
+      }                    
+      return &quot;http://online3.map.bdimg.com/tile/?qt=tile&amp;x=&quot; + x + &quot;&amp;y=&quot; + y + &quot;&amp;z=&quot; + z + &quot;&amp;styles=pl&amp;udt=20141119&amp;scaler=1&quot;;                   
     }
+  });
+</code></pre><h3 id="4&#x3001;&#x817E;&#x8BAF;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;">4&#x3001;&#x817E;&#x8BAF;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;</h3>
+<p>&#x817E;&#x8BAF;&#x5730;&#x56FE;&#x5B8C;&#x5168;&#x9075;&#x5B88;TMS&#x89C4;&#x5219;&#xFF0C;&#x5730;&#x56FE;&#x6295;&#x5F71;&#x5750;&#x6807;&#x7CFB;&#x91C7;&#x7528;Web Mercator&#x6295;&#x5F71;&#xFF0C;&#x6700;&#x5C0F;&#x7F29;&#x653E;&#x7EA7;&#x522B;&#x4E3A;&#x7B2C;4&#x7EA7;&#x3002;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  // QQ&#x5730;&#x56FE;&#x5B8C;&#x5168;&#x9075;&#x5B88;TMS&#x89C4;&#x5219;;
+  var tileGrid = new ol.tilegrid.TileGrid({
+    resolutions: resolutions3857,
+    tileSize: [256, 256],
+    extent: projection3857Extent,
+    origin: ol.extent.getBottomLeft(projection3857Extent), // Origin&#x5DE6;&#x4E0B;&#x89D2;
+  });
 
-    function backWithAnim() {
-        var pan = ol.animation.pan({
-      duration: 2000,
-      source: map.getView().getCenter(),
-      easing: getEasing()
-    });
-    map.beforeRender(pan);
-    map.getView().setCenter(ol.proj.transform([104, 30], 'EPSG:4326', 'EPSG:3857'));
-    }
-
-</script>
-
-<p>&#x5C1D;&#x8BD5;&#x5B8C;&#x6240;&#x6709;&#x7684;&#x52A8;&#x753B;&#x65B9;&#x5F0F;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;&#x5176;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-comment">&lt;!--&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x9009;&#x62E9;&#x9879;--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">select</span> <span class="hljs-attribute">id</span> = &quot;<span class="hljs-attribute">easing-type</span>&quot;&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>easeIn<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>easeOut<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>inAndOut<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>linear<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>upAndDown<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">select</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;button&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&#x56DE;&#x5230;&#x539F;&#x70B9;&quot;</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">&quot;backWithAnim()&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">input</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> ol.Map({
-        layers: [
-          <span class="hljs-keyword">new</span> ol.layer.Tile({
-            source: <span class="hljs-keyword">new</span> ol.source.OSM()
-          })
-        ],
-        target: <span class="hljs-string">&apos;map&apos;</span>,
-        view: <span class="hljs-keyword">new</span> ol.View({
-          center: ol.proj.transform(
-              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>),
-          zoom: <span class="hljs-number">10</span>
-        })
-    });
-
-    <span class="hljs-comment">// &#x6839;&#x636E;&#x9009;&#x62E9;&#x9879;&#xFF0C;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x4F9B;&#x4E0B;&#x9762;&#x7684;backWithAnim&#x51FD;&#x6570;&#x4F7F;&#x7528;</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getEasing</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> typeSelect = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;easing-type&apos;</span>);
-        <span class="hljs-keyword">var</span> easing = typeSelect.options[typeSelect.selectedIndex].text;
-        <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;easeIn&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.easeIn;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;easeOut&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.easeOut;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;inAndOut&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.inAndOut;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;linear&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.linear;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (easing === <span class="hljs-string">&apos;upAndDown&apos;</span>) {
-            <span class="hljs-keyword">return</span> ol.easing.upAndDown;
-        } 
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">backWithAnim</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> pan = ol.animation.pan({
-      duration: <span class="hljs-number">2000</span>,
-      source: map.getView().getCenter(),
-      easing: getEasing()    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5BF9;&#x5E94;&#x9009;&#x62E9;&#x7684;&#x52A8;&#x753B;</span>
-    });
-    map.beforeRender(pan);
-    map.getView().setCenter(ol.proj.transform([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>));
-    }
-
-</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  var tilesource = new ol.source.TileImage({
+    tileUrlFunction: function (xyz, obj1, obj2) {
+      if (!xyz) {
+        return &quot;&quot;;
+      }
+      var z = xyz[0];
+      var x = xyz[1];
+      var y = xyz[2];
+      return &quot;http://rt1.map.gtimg.com/realtimerender?z=&quot; + z + &quot;&amp;x=&quot; + x + &quot;&amp;y=&quot; + y + &quot;&amp;type=vector&amp;style=0&amp;v=1.1.2&quot;
+    },
+    projection: projection3857,
+    tileGrid : tileGrid
+  });
 </code></pre>
-<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x51FD;&#x6570;&#xFF0C;&#x901A;&#x8FC7;&#x5B98;&#x7F51;API&#x6587;&#x6863;&#x53EF;&#x77E5;&#xFF0C;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;<code>t</code>&#xFF0C;&#x8303;&#x56F4;&#x5728;0-1&#x4E4B;&#x95F4;&#xFF0C;&#x7136;&#x540E;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;0-1&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x3002; &#x7ED3;&#x5408;&#x52A8;&#x753B;&#x4E1A;&#x52A1;&#x6765;&#x770B;&#xFF0C;&#x867D;&#x7136;&#x5B98;&#x7F51;&#x6CA1;&#x6709;&#x8BF4;&#x660E;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x731C;&#x6D4B;&#x5B83;&#x5C31;&#x662F;&#x65F6;&#x95F4;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x5E94;&#x8BE5;&#x76EE;&#x6807;&#x8FBE;&#x6210;&#x6BD4;&#x3002; &#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;sin&#x66F2;&#x7EBF;&#x5F0F;&#x7684;&#x52A8;&#x753B;&#xFF1A;</p>
-<p><div id="map2" style="width: 100%"></div></p>
-<p><input type="button" value="&#x56DE;&#x5230;&#x539F;&#x70B9;" onclick="backWithAnim2();"></p>
-<script type="text/javascript">
-    var map2 = new ol.Map({
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        target: 'map2',
-        view: new ol.View({
-          center: ol.proj.transform(
-              [104, 30], 'EPSG:4326', 'EPSG:3857'),
-          zoom: 10
-        })
-    });
-
-    // sin曲线动画
-    function sin(t) {
-        // 使用sin曲线公式
-        return Math.sin(t * Math.PI / 2);
-    }
-
-    function backWithAnim2() {
-        var pan = ol.animation.pan({
-      duration: 2000,
-      source: map2.getView().getCenter(),
-      easing: sin
-    });
-    map2.beforeRender(pan);
-    map2.getView().setCenter(ol.proj.transform([104, 30], 'EPSG:4326', 'EPSG:3857'));
-    }
-
-</script>
-
-<p>&#x901F;&#x5EA6;&#x4E00;&#x5F00;&#x59CB;&#x4F1A;&#x5FEB;&#x4E00;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x6162;&#x4E0B;&#x6765;&#xFF0C; &#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;map2&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width: 100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;button&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&#x56DE;&#x5230;&#x539F;&#x70B9;&quot;</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">&quot;backWithAnim2();&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">input</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> map2 = <span class="hljs-keyword">new</span> ol.Map({
-        layers: [
-          <span class="hljs-keyword">new</span> ol.layer.Tile({
-            source: <span class="hljs-keyword">new</span> ol.source.OSM()
-          })
-        ],
-        target: <span class="hljs-string">&apos;map2&apos;</span>,
-        view: <span class="hljs-keyword">new</span> ol.View({
-          center: ol.proj.transform(
-              [<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>),
-          zoom: <span class="hljs-number">10</span>
-        })
-    });
-
-    <span class="hljs-comment">// sin&#x66F2;&#x7EBF;&#x52A8;&#x753B;</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sin</span>(<span class="hljs-params">t</span>) </span>{
-        <span class="hljs-comment">// &#x4F7F;&#x7528;sin&#x66F2;&#x7EBF;&#x516C;&#x5F0F;</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.sin(t * <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">2</span>);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">backWithAnim2</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> pan = ol.animation.pan({
-      duration: <span class="hljs-number">2000</span>,
-      source: map2.getView().getCenter(),
-      easing: sin <span class="hljs-comment">// &#x5E94;&#x7528;sin&#x66F2;&#x7EBF;&#x52A8;&#x753B;</span>
-    });
-    map2.beforeRender(pan);
-    map2.getView().setCenter(ol.proj.transform([<span class="hljs-number">104</span>, <span class="hljs-number">30</span>], <span class="hljs-string">&apos;EPSG:4326&apos;</span>, <span class="hljs-string">&apos;EPSG:3857&apos;</span>));
-    }
-
-</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-</code></pre>
-
                     
                     </section>
                 
@@ -1609,10 +1619,10 @@
         </div>
 
         
-        <a href="../ch11/11-01.html" class="navigation navigation-prev " aria-label="Previous page: 动画简单应用"><i class="fa fa-angle-left"></i></a>
+        <a href="../ch05/05-04.html" class="navigation navigation-prev " aria-label="Previous page: 加载离线瓦片地图"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../ch11/11-03.html" class="navigation navigation-next " aria-label="Next page: 利用postcompose事件做动画"><i class="fa fa-angle-right"></i></a>
+        <a href="../ch05/05-05.html" class="navigation navigation-next " aria-label="Next page: 静态地图及应用"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
