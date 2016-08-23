@@ -65,7 +65,7 @@
         data-chapter-title="瓦片加载的源码浅析与小结"
         data-filepath="ch05/05-12.md"
         data-basepath=".."
-        data-revision="Tue Aug 23 2016 12:32:43 GMT+0800 (中国标准时间)"
+        data-revision="Tue Aug 23 2016 13:33:30 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -1461,7 +1461,7 @@
                         <h1 id="openlayers3&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x7684;&#x6E90;&#x7801;&#x6D45;&#x6790;&#x4E0E;&#x5C0F;&#x7ED3;">openlayers3&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x7684;&#x6E90;&#x7801;&#x6D45;&#x6790;&#x4E0E;&#x5C0F;&#x7ED3;</h1>
 <p><strong>--&#x611F;&#x8C22;&#x4F5C;&#x8005;&#xFF1A;&#x8001;&#x7FBD; (QQ&#xFF1A;274103592, &#x90AE;&#x7BB1;&#xFF1A;michael.zy@163.com, &#x7B80;&#x4E66;&#xFF1A;<a href="http://www.jianshu.com/users/261606a3714c/latest_articles" target="_blank">&#x8001;&#x7FBD;</a> )</strong></p>
 <h2 id="&#x4E00;&#x3001;&#x7C7B;&#x56FE;&#x4E0E;&#x903B;&#x8F91;">&#x4E00;&#x3001;&#x7C7B;&#x56FE;&#x4E0E;&#x903B;&#x8F91;</h2>
-<p><img src="http://upload-images.jianshu.io/upload_images/2137628-da315a4e3e904e6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ol-tilerender.png"></p>
+<p><img src="../img/ol.png" alt="ol-tilerender.png"></p>
 <p>&#x4E0A;&#x56FE;&#x4E2D;&#x5217;&#x4E86;&#x5173;&#x4E8E;&#x74E6;&#x7247;&#x56FE;&#x5C42;&#x52A0;&#x8F7D;&#x76F8;&#x5173;&#x7684;&#x91CD;&#x8981;&#x65B9;&#x6CD5;&#x3002;</p>
 <ol>
 <li>Map&#x5BF9;&#x8C61;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x6839;&#x636E;options.renderer&#x521B;&#x5EFA;ol.renderer.Map&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;ol.renderer.canvas.Map&#xFF1B;</li>
@@ -1523,7 +1523,7 @@ getTileRangeForExtentAndZ&#xFF0C;&#x6839;&#x636E;extent&#x8BA1;&#x7B97;&#x74E6;&
 <p>&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x5206;&#x6790;&#x540E;&#xFF0C;&#x5E94;&#x8BE5;&#x80FD;&#x8F83;&#x597D;&#x7684;&#x7406;&#x89E3;&#x74E6;&#x7247;&#x7684;&#x5750;&#x6807;&#x662F;&#x5982;&#x4F55;&#x8BA1;&#x7B97;&#x7684;&#xFF0C;&#x5F53;&#x5E94;&#x7528;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;&#x65F6;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5FC3;&#x5E94;&#x624B;&#x3002;&#x4EE5;&#x4E0B;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x7EE7;&#x7EED;&#x8BF4;&#x660E;&#x74E6;&#x7247;&#x8BA1;&#x7B97;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <h3 id="1&#x3001;tms&#x74E6;&#x7247;&#x52A0;&#x8F7D;">1&#x3001;TMS&#x74E6;&#x7247;&#x52A0;&#x8F7D;</h3>
 <p>&#x5148;&#x770B;&#x770B;TMS&#x74E6;&#x7247;&#x7684;&#x89C4;&#x5219;&#xFF0C;origin&#x5728;&#x5DE6;&#x4E0B;&#x89D2;&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x4ECE;&#x4E0B;&#x5F80;&#x4E0A;&#x9012;&#x589E;&#xFF08;&#x5148;&#x8BA1;&#x7B97;&#x5DE6;&#x4E0B;&#x89D2;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x53F3;&#x4E0A;&#x89D2;&#xFF09;&#x3002;
-<img src="http://upload-images.jianshu.io/upload_images/2137628-c759b54b0c7871ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TMS&#x74E6;&#x7247;&#x89C4;&#x5219;
+<img src="../img/ogc-tms.png" alt="TMS&#x74E6;&#x7247;&#x89C4;&#x5219;
 "></p>
 <p>&#x800C;TileGrid&#x8BBE;&#x7F6E;origin&#x4E3A;ol.extent.getBottomLeft(extent)&#x540E;&#xFF0C;&#x89C4;&#x5219;&#x4E5F;&#x662F;&#x4ECE;&#x5DE6;&#x4E0B;&#x89D2;&#x5230;&#x53F3;&#x4E0A;&#x89D2;&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x4ECE;&#x4E0B;&#x5F80;&#x4E0A;&#x9012;&#x589E;&#xFF0C;&#x4E0E;TMS&#x89C4;&#x5219;&#x662F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x4E0E;&#x53C2;&#x8003;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;       </p>
 <pre><code>  var resolutions = [];
@@ -1564,7 +1564,7 @@ getTileRangeForExtentAndZ&#xFF0C;&#x6839;&#x636E;extent&#x8BA1;&#x7B97;&#x74E6;&
     }),
   });
   map.getView().setZoom(1);
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/2137628-802f1c49917ee558.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x793A;&#x610F;&#x56FE;"></p>
+</code></pre><p><img src="../img/tms-demo.png" alt="&#x793A;&#x610F;&#x56FE;"></p>
 <p>&#x5047;&#x5982;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x60F3;&#x53EA;&#x663E;&#x793A;&#x6DF1;&#x5733;&#x5730;&#x533A;&#x7684;&#x74E6;&#x7247;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x74E6;&#x7247;&#x4E0D;&#x663E;&#x793A;&#xFF0C;&#x8FD9;&#x79CD;&#x573A;&#x666F;&#x662F;&#x5F88;&#x666E;&#x904D;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x4EE3;&#x7801;&#x8C03;&#x6574;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>  var tilegrid = new ol.tilegrid.TileGrid({
     origin: ol.extent.getBottomLeft(projectionExtent),  //origin&#x4F4D;&#x7F6E;&#x4E0D;&#x80FD;&#x53D8;&#xFF01;&#xFF01;&#xFF01;&#xFF01;&#xFF01;&#xFF01;
@@ -1586,7 +1586,7 @@ getTileRangeForExtentAndZ&#xFF0C;&#x6839;&#x636E;extent&#x8BA1;&#x7B97;&#x74E6;&
   })
 </code></pre><h3 id="2&#x3001;wmts&#x74E6;&#x7247;&#x52A0;&#x8F7D;">2&#x3001;WMTS&#x74E6;&#x7247;&#x52A0;&#x8F7D;</h3>
 <p>WMTS&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF0C;origin&#x5728;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x662F;&#x4ECE;&#x4E0A;&#x5F80;&#x4E0B;&#x9012;&#x589E;&#xFF08;&#x5148;&#x8BA1;&#x7B97;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x53F3;&#x4E0B;&#x89D2;&#xFF09;</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2137628-6e85d2549036f932.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WMTS&#x89C4;&#x5219;"></p>
+<p><img src="../img/ogc-wmts.png" alt="WMTS&#x89C4;&#x5219;"></p>
 <p>&#x90A3;&#x4E48;&#x5C06;tileGrid&#x8BBE;&#x7F6E;origin&#x4E3A;ol.extent.getTopLeft(projectionExtent), &#x4F46;&#x662F;TileGrid&#x59CB;&#x7EC8;&#x90FD;&#x662F;&#x5148;&#x8BA1;&#x7B97;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x53F3;&#x4E0A;&#x89D2;&#x7684;&#x74E6;&#x7247;&#x5750;&#x6807;&#xFF0C;&#x56E0;&#x6B64;Y&#x8F74;&#x662F;&#x76F8;&#x53CD;&#x7684;&#x3002;&#x90A3;&#x4E48;&#x4FEE;&#x6539;Y&#x8F74;&#x5750;&#x6807;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x503C;&#xFF1A;</p>
 <pre><code>  var tilegrid = new ol.tilegrid.TileGrid({
     origin: ol.extent.getTopLeft(projectionExtent),  // WMTS Origin&#x5728;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;origin&#x4F4D;&#x7F6E;&#x4E0D;&#x80FD;&#x53D8;&#xFF1B;
@@ -1614,7 +1614,7 @@ getTileRangeForExtentAndZ&#xFF0C;&#x6839;&#x636E;extent&#x8BA1;&#x7B97;&#x74E6;&
   })
 </code></pre><h3 id="3&#x3001;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;">3&#x3001;&#x767E;&#x5EA6;&#x5730;&#x56FE;&#x74E6;&#x7247;&#x52A0;&#x8F7D;</h3>
 <p>&#x767E;&#x5EA6;&#x74E6;&#x7247;&#x7247;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;Origin&#x5728;[0,0]&#xFF0C;X&#x8F74;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x9012;&#x589E;&#xFF0C;Y&#x8F74;&#x4ECE;&#x4E0B;&#x5F80;&#x4E0A;&#x9012;&#x589E;&#xFF08;&#x4ECE;&#x5DE6;&#x4E0B;&#x89D2;&#x5230;&#x53F3;&#x4E0A;&#x89D2;&#xFF09;&#x3002;</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2137628-8791a117b3243f5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="../img/baidu-tile.png" alt="Paste_Image.png"></p>
 <p>&#x4ECE;&#x767E;&#x5EA6;&#x7684;&#x74E6;&#x7247;&#x89C4;&#x5219;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x4E0E;TileGrid&#x7684;&#x89C4;&#x5219;&#x662F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#xFF0C;&#x5C06;origin&#x8BBE;&#x7F6E;&#x4E3A;[0,0]&#x5373;&#x53EF;&#x3002;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>  var tilegrid = new ol.tilegrid.TileGrid({
     origin: [0, 0],
