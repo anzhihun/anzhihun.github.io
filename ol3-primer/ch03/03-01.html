@@ -21,10 +21,6 @@
     <link rel="stylesheet" href="../gitbook/style.css">
     
         
-        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
-        
-    
-        
         <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
         
     
@@ -65,7 +61,7 @@
         data-chapter-title="初步解析地图组成"
         data-filepath="ch03/03-01.md"
         data-basepath=".."
-        data-revision="Thu Nov 17 2016 17:30:09 GMT+0800 (中国标准时间)"
+        data-revision="Tue Dec 06 2016 18:20:33 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
     
 
@@ -1553,8 +1549,9 @@
 <p>&#x901A;&#x8FC7;&#x5B57;&#x9762;&#x610F;&#x601D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5B83;&#x4E3A;&#x5730;&#x56FE;&#x5B9A;&#x4E49;&#x663E;&#x793A;&#x7A97;&#x53E3;&#xFF0C;&#x5BF9;&#x5E94;<code>ol.View</code>&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5730;&#x56FE;&#x663E;&#x793A;&#x7684;&#x4E2D;&#x5FC3;&#x70B9;&#xFF0C;&#x7F29;&#x653E;&#x5C42;&#x7EA7;&#x7B49;&#x3002;</p>
 </li>
 <li><p>&#x53C2;&#x6570;<code>target</code>&#xFF1A;</p>
-<pre><code>target: &apos;map&apos;
-</code></pre><p>&#x6307;&#x5B9A;&#x5730;&#x56FE;&#x5728;&#x9875;&#x9762;&#x4E2D;&#x5177;&#x4F53;&#x54EA;&#x4E2A;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x663E;&#x793A;&#xFF0C;&#x4E3A;&#x6B64;&#x8981;&#x8BB0;&#x4F4F;&#x5730;&#x56FE;&#x663E;&#x793A;&#x8FD8;&#x662F;&#x79BB;&#x4E0D;&#x5F00;&#x4F7F;&#x7528;dom&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x867D;&#x7136;&#x548C;&#x5730;&#x56FE;&#x4E1A;&#x52A1;&#x6CA1;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#xFF0C;&#x4F46;&#x4E5F;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;<code>Web GIS</code>&#xFF0C;&#x6700;&#x57FA;&#x672C;&#x7684;&#x8FD8;&#x662F;&#x4F9D;&#x8D56;&#x4E8E;HTML&#x3002;</p>
+<pre><code class="lang-javascript">target: <span class="hljs-string">&apos;map&apos;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x5730;&#x56FE;&#x5728;&#x9875;&#x9762;&#x4E2D;&#x5177;&#x4F53;&#x54EA;&#x4E2A;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x663E;&#x793A;&#xFF0C;&#x4E3A;&#x6B64;&#x8981;&#x8BB0;&#x4F4F;&#x5730;&#x56FE;&#x663E;&#x793A;&#x8FD8;&#x662F;&#x79BB;&#x4E0D;&#x5F00;&#x4F7F;&#x7528;dom&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x867D;&#x7136;&#x548C;&#x5730;&#x56FE;&#x4E1A;&#x52A1;&#x6CA1;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#xFF0C;&#x4F46;&#x4E5F;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;<code>Web GIS</code>&#xFF0C;&#x6700;&#x57FA;&#x672C;&#x7684;&#x8FD8;&#x662F;&#x4F9D;&#x8D56;&#x4E8E;HTML&#x3002;</p>
 </li>
 </ul>
 <p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x6E90;&#x7801;&#x89E3;&#x8BFB;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;OpenLayers 3&#x5730;&#x56FE;&#x4E3B;&#x8981;&#x662F;&#x7531;<code>layer</code>&#x548C;<code>view</code>&#x7EC4;&#x6210;&#xFF0C;<code>layer</code>&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#xFF0C;<code>view</code>&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x3002;
@@ -1582,11 +1579,7 @@
 <script src="../gitbook/app.js"></script>
 
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    <script src="../gitbook/plugins/gitbook-plugin-duoshuo/duoshuo.js"></script>
     
 
     
@@ -1595,6 +1588,14 @@
 
     
     <script src="../gitbook/plugins/gitbook-plugin-donate/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-github-buttons/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-github/plugin.js"></script>
     
 
     
@@ -1619,7 +1620,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"disqus":{"shortName":"ol3primer","useIdentifier":false},"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"donate":{"alipay":"http://weilin.me/ol3-primer/img/5rmb.jpg","button":"打赏","alipayText":"支付宝打赏","title":"","wechat":"","wechatText":"微信打赏"},"katex":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"baidu":{"token":"598c9c941360724a65331e7d9a66c9b6"},"search":{"maxIndexSize":10000},"donate":{"alipay":"http://weilin.me/ol3-primer/img/5rmb.jpg","wechat":"http://weilin.me/ol3-primer/img/weixin-5rmb.png","button":"打赏","alipayText":"支付宝打赏","title":"","wechatText":"微信打赏"},"duoshuo":{"short_name":"ol3-primer","theme":"default"},"github-buttons":{"repo":"anzhihun/OpenLayers3Primer","types":["star","watch"],"size":"small"},"github":{"url":"https://github.com/anzhihun/OpenLayers3Primer"},"sharing":{"facebook":false,"twitter":true,"google":false,"weibo":true,"instapaper":false,"vk":false,"all":["weibo","facebook","google","twitter"]},"katex":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>
